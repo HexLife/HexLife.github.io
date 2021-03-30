@@ -1,0 +1,395 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hexo | Hexo</title><meta name="description" content="目录 [toc] 基本信息报告名称：勒索病毒分析报告 报告更新日期：2019&#x2F;9&#x2F;7 样本发现日期：2019&#x2F;9&#x2F;2 壳信息：无壳 可能受到威胁的系统：Windows系列     FileName FileType FileSize MD5 SHA1    tfukrc.exe 勒索病毒 240640 bytes 72CCC18F3038E19273010D45AC2142CE A47612524"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/03/30/%E7%89%B9%E6%96%AF%E6%8B%89%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="Hexo"><meta property="og:url" content="http://example.com/2021/03/30/%E7%89%B9%E6%96%AF%E6%8B%89%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="目录 [toc] 基本信息报告名称：勒索病毒分析报告 报告更新日期：2019&#x2F;9&#x2F;7 样本发现日期：2019&#x2F;9&#x2F;2 壳信息：无壳 可能受到威胁的系统：Windows系列     FileName FileType FileSize MD5 SHA1    tfukrc.exe 勒索病毒 240640 bytes 72CCC18F3038E19273010D45AC2142CE A47612524"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2021-03-30T04:24:46.417Z"><meta property="article:modified_time" content="2021-03-30T04:24:11.339Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"Just","hours":"hours ago","day":"days ago"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 12:24:11'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">4</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">基本信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">动态行为分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">详细行为分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%97%85%E6%AF%92%E5%89%8D%E6%9C%9F%E5%B7%A5%E4%BD%9C"><span class="toc-number">5.1.</span> <span class="toc-text">病毒前期工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%B2%99%E7%AE%B1"><span class="toc-number">5.1.1.</span> <span class="toc-text">检测是否存在沙箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E7%BA%BF%E7%A8%8B%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">5.1.2.</span> <span class="toc-text">检测线程完整性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%AE%89%E5%85%A8%E5%BC%B9%E7%AA%97"><span class="toc-number">5.1.3.</span> <span class="toc-text">删除安全弹窗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">5.1.4.</span> <span class="toc-text">解密字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">5.1.4.1.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">5.1.4.2.</span> <span class="toc-text">获取生成密钥数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%A7%A3%E5%AF%86%E5%AF%86%E9%92%A5"><span class="toc-number">5.1.4.3.</span> <span class="toc-text">生成解密密钥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E8%A7%A3%E5%AF%86"><span class="toc-number">5.1.4.4.</span> <span class="toc-text">执行解密</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="toc-number">5.1.5.</span> <span class="toc-text">判断执行方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%97%85%E6%AF%92%E4%B8%BB%E9%80%BB%E8%BE%91%E8%BF%90%E4%BD%9C"><span class="toc-number">5.2.</span> <span class="toc-text">病毒主逻辑运作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80"><span class="toc-number">5.2.1.</span> <span class="toc-text">获取函数地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E4%BA%92%E6%96%A5%E4%BD%93"><span class="toc-number">5.2.2.</span> <span class="toc-text">判断互斥体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E8%BF%9B%E7%A8%8B%E6%9D%83%E9%99%90"><span class="toc-number">5.2.3.</span> <span class="toc-text">提升进程权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B1-kill%E6%8C%87%E5%AE%9A%E8%BF%9B%E7%A8%8B"><span class="toc-number">5.2.4.</span> <span class="toc-text">线程1-kill指定进程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E8%BF%9B%E7%A8%8B%E5%B9%B6kill%E6%8C%87%E5%AE%9A%E8%BF%9B%E7%A8%8B"><span class="toc-number">5.2.4.1.</span> <span class="toc-text">枚举进程并kill指定进程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B2-%E5%88%A0%E9%99%A4%E5%8D%B7%E5%BD%B1-%E5%8A%A0%E5%AF%86%E5%89%8D"><span class="toc-number">5.2.5.</span> <span class="toc-text">线程2-删除卷影(加密前)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%8D%B7%E5%BD%B1"><span class="toc-number">5.2.5.1.</span> <span class="toc-text">删除卷影</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5%E4%BF%A1%E6%81%AF"><span class="toc-number">5.2.6.</span> <span class="toc-text">生成密钥信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%B3%A8%E5%86%8C%E8%A1%A8%E9%A1%B9"><span class="toc-number">5.2.6.1.</span> <span class="toc-text">创建注册表项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%B3%A8%E5%86%8C%E8%A1%A8%E9%94%AE%E5%80%BC"><span class="toc-number">5.2.6.2.</span> <span class="toc-text">设置注册表键值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="toc-number">5.2.7.</span> <span class="toc-text">加入注册表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="toc-number">5.2.7.1.</span> <span class="toc-text">开机自启</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB"><span class="toc-number">5.2.7.2.</span> <span class="toc-text">网络共享</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%A1%E6%81%AF%E5%A4%87%E4%BB%BD%E5%88%B0%E6%96%87%E4%BB%B6-%E9%87%8D%E8%A6%81"><span class="toc-number">5.2.8.</span> <span class="toc-text">注册表信息备份到文件(重要)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E5%8B%92%E7%B4%A2%E4%BF%A1%E6%81%AFTXT"><span class="toc-number">5.2.9.</span> <span class="toc-text">制作勒索信息TXT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E5%8B%92%E7%B4%A2%E4%BF%A1%E6%81%AFPNG"><span class="toc-number">5.2.10.</span> <span class="toc-text">制作勒索信息PNG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B3-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C"><span class="toc-number">5.2.11.</span> <span class="toc-text">线程3-测试网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B4-%E5%8A%A0%E5%AF%86%E6%96%87%E4%BB%B6"><span class="toc-number">5.2.12.</span> <span class="toc-text">线程4-加密文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE-1"><span class="toc-number">5.2.12.1.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E7%9B%98%E7%AC%A6"><span class="toc-number">5.2.12.2.</span> <span class="toc-text">检索盘符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6"><span class="toc-number">5.2.12.3.</span> <span class="toc-text">遍历文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86"><span class="toc-number">5.2.12.3.1.</span> <span class="toc-text">递归遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%8B%92%E7%B4%A2%E4%BF%A1%E6%81%AF"><span class="toc-number">5.2.12.3.2.</span> <span class="toc-text">创建勒索信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E6%96%BD%E5%8A%A0%E5%AF%86"><span class="toc-number">5.2.12.4.</span> <span class="toc-text">实施加密</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8B%92%E7%B4%A2%E4%BF%A1%E6%81%AF%E5%BC%B9%E7%AA%97"><span class="toc-number">5.2.13.</span> <span class="toc-text">勒索信息弹窗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B5-%E5%88%A0%E9%99%A4%E5%8D%B7%E5%BD%B1-%E5%8A%A0%E5%AF%86%E5%90%8E"><span class="toc-number">5.2.14.</span> <span class="toc-text">线程5-删除卷影(加密后)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B6-%E6%89%A7%E8%A1%8C%E7%BD%91%E7%BB%9C%E8%A1%8C%E4%B8%BA"><span class="toc-number">5.2.15.</span> <span class="toc-text">线程6-执行网络行为</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E5%87%BA"><span class="toc-number">5.2.16.</span> <span class="toc-text">退出</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E6%BA%AF%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">样本溯源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E6%9D%80%E6%96%B9%E6%A1%88"><span class="toc-number">7.</span> <span class="toc-text">查杀方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86%E8%A2%AB%E5%8A%A0%E5%AF%86%E6%96%87%E4%BB%B6"><span class="toc-number">7.1.</span> <span class="toc-text">解密被加密文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="toc-number">7.2.</span> <span class="toc-text">删除开机自启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%97%85%E6%AF%92%E6%96%87%E4%BB%B6"><span class="toc-number">7.3.</span> <span class="toc-text">删除病毒文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="toc-number">7.4.</span> <span class="toc-text">恢复注册表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">No title</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-30T04:24:46.417Z" title="Created 2021-03-30 12:24:46">2021-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-30T04:24:11.339Z" title="Updated 2021-03-30 12:24:11">2021-03-30</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p><B><font size = 6 color = blue>目录</font></B></p>
+<p>[toc]</p>
+<h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>报告名称：勒索病毒分析报告</p>
+<p>报告更新日期：2019/9/7</p>
+<p>样本发现日期：2019/9/2</p>
+<p>壳信息：无壳</p>
+<p>可能受到威胁的系统：Windows系列</p>
+
+<table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileType</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tfukrc.exe</td>
+<td>勒索病毒</td>
+<td>240640 bytes</td>
+<td>72CCC18F3038E19273010D45AC2142CE</td>
+<td>A47612524C64636C2ADB2FE01E09DFEFACB78ACA</td>
+</tr>
+</tbody></table>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p style="text-indent:2em">tfukrc.exe是一个网络上面的FTP服务或邮件系统传播，通过改名或其他方式诱导用户执行该程序，加密受害主机进而进行勒索。该病毒在启动的时候没有类似弹窗等任何提示信息，并且刚刚运行之后进行了自我删除，接着发现电脑的内存和CPU占用过高，当想要打开任务管理器或者是processExplorer监测的时候，这些程序已经被监控，怎么打都打不开。大概经过一分钟左右，分别弹出两个弹窗，一个是txt文本格式文件，一个是png图片格式文件，两种文件中内容相同，分别是勒索者的话和勒索者的信息以及被勒索者的ID。</p>
+
+<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_1.png" alt="image"></p>
+<h1 id="动态行为分析"><a href="#动态行为分析" class="headerlink" title="动态行为分析"></a>动态行为分析</h1><p style="test-indent:2em">1.运行自我删除</p>
+<p style="">2.运行后创建ldnjol.exe到C:\Users\john\Documents\ldnjol.exel</p>
+<p style="">3.调用卷影复制服务命令行接口，执行命令删除所有卷影
+"C:\Windows\System32\vssadmin.exe"Delete Shadows/All /Quiet</p>
+<p>4.cmd命令行删除自身"C:\Windowstsystem32\cmd.exe"/c DELC:\Userstjohn\Desktop\lttukrc.exe >>NUL</P>
+<p>5.勒索程序主要加密 .txt .png .mdb .rar .zip .7z .docx .doc .js .css .py等偏向文本类型格式的文件</P>
+<p>6.访问85.128.216.188/85.13.137.133:80/ptgp.pl/tmp/binstr.php/minteee.com/images/binstr.php</P>
+<p>7.创建了C:\Users\john\Documents\ldnjol.exel，并自我复制，再设置隐藏属性，启动释放文件，cmd命令行执行添加开机自启动C:\Windows\SYSTEM321CMD.EXE /C START ""C:\Users\john\Documentsildnjol.exe"</P>
+
+<p>8.修改浏览器代理设置的注册表HEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ProxyEnable</P>
+<p>9.加入注册表开机启动项HEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\+++qdfq</P>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_2.png" alt="image"></p>
+<p>10.通过修改注册表键值，以关闭自动检测企业内联网络。
+包括所有网络路径（UNC）目的是为了不被企业内部安全设备所查杀。</P>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_3.png" alt="image"></p>
+<p>11.修改浏览器代理服务器设置</P>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_3_1.png" alt="image"></p>
+<p>12.勒索的提示文件中内容。
+您的个人主页或浏览器</P>
+
+<blockquote>
+<p>k7t3ghr3m4n2tu.onion/78e6ef7c85c1b41e<br>您的个人ID 78E6EF7C85C1B41E</p>
+</blockquote>
+<p>13.修改注册表键值,使其无法访问当前登录的用户的外壳文件夹包括我的文档、收藏夹、桌面、开始菜单、发送到、打印机、网上邻居这些。</P>
+
+<blockquote>
+<p>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders</p>
+</blockquote>
+<h1 id="详细行为分析"><a href="#详细行为分析" class="headerlink" title="详细行为分析"></a>详细行为分析</h1><h2 id="病毒前期工作"><a href="#病毒前期工作" class="headerlink" title="病毒前期工作"></a>病毒前期工作</h2><h3 id="检测是否存在沙箱"><a href="#检测是否存在沙箱" class="headerlink" title="检测是否存在沙箱"></a>检测是否存在沙箱</h3><p>通过com组件中的接口调用，从而检测沙箱环境，如果存在沙箱环境执行退出。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_4.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_5.png" alt="image"></p>
+<h3 id="检测线程完整性"><a href="#检测线程完整性" class="headerlink" title="检测线程完整性"></a>检测线程完整性</h3><p>检测线程的完整性，判断是否继续运行程序。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_6.png" alt="image"></p>
+<h3 id="删除安全弹窗"><a href="#删除安全弹窗" class="headerlink" title="删除安全弹窗"></a>删除安全弹窗</h3><p style="text-indent:2em">获取自身文件的路径，将路径拷贝到内存中，拼接上:Zone.Identifier后缀然后删除该文件，该文件拼接上后缀的作用是在启动的时候弹出安全相关的确认框。删除这个隐藏文件是为了不让弹出安全窗口。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_7.png" alt="image"></p>
+<h3 id="解密字符串"><a href="#解密字符串" class="headerlink" title="解密字符串"></a>解密字符串</h3><h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_8.png" alt="image"></p>
+<h4 id="获取生成密钥数据"><a href="#获取生成密钥数据" class="headerlink" title="获取生成密钥数据"></a>获取生成密钥数据</h4><p>在全局变量中定义好了数据用来生成解密字符串的密钥。关于生成密钥的数据如下：</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7ABE8BA3A5FC704269791F472E7961F729B73F99B92CE2487CB263094C16390001000000D4024200000000002E3F4156476469706C75734261736540476469706C75734040000000D4024200000000002E3F4156496D61676540476469706C7573404000D4024200000000002E3F41564269746D617040476469706C7573404000000000759800007398000000000000</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_9.png" alt="image"></p>
+<h4 id="生成解密密钥"><a href="#生成解密密钥" class="headerlink" title="生成解密密钥"></a>生成解密密钥</h4><p>调用函数将获取的数据生成密钥,关于生成的密钥如下：</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4EEE07C8886BD7A64374C6C2660F94039C9501DEB42ECA29E9D1694071B7465A3594D30581D676DC158596A7CEE638DDAA8CC45228BBCBF75DFFA36998662F1AB581753BB442A5D99453E07BDB63AE7AF4F4468182370FA57544689EC5998C737153CCE801C3D0E2201145A24F304E01A7BF8C9376C34924F773673BB0DDE4EDFD8156DD70901C0A21D295406F210BA34B880C6BD17CC5B781B02E1F47AE83D68C10FAFE8D114AD75142894A4EF39EE37CF235FF9AF4C9DC50CCEBA8C61EADC946729F590101B029DC53C39D1FB117A9B9D3E7B5E606FC23CA38227496D24661A38BBE7A4270FCA5471F7969F761792E</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_10.png" alt="image"></p>
+<h4 id="执行解密"><a href="#执行解密" class="headerlink" title="执行解密"></a>执行解密</h4><p>调用解密函数传入密钥和定义好的全局变量，解密出需要用到的字符串。一共为5条。
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_11.png" alt="image"></p>
+<p>1.解密出文件后缀，病毒根据这些后缀判断是否为需要加密的文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r3d;ptx;pef;srw;x3f;der;cer;crt;pem;odt;ods;odp;odm;odc;odb;doc;docx;kdc;mef;mrwref;nrw;orf;raw;rwl;rw2;mdf;dbf;psd;pdd;pdf;eps;jpg;jpe;dng;3fr;arw;srf;sr2;bay;crw;cr2;dcr;ai;indd;cdr;erf;bar;hkx;raf;rofl;dba;db0;kdb;mpqge;vfs0;mcmeta;m2;lrf;vpp_pc;ff;cfr;snx;lvl;arch00;ntl;fsh;itdb;itl;mddata;sidd;sidn;bkf;qic;bkp;bc7;bc6;pkpass;tax;gdb;qdf;t12;t13;ibank;sum;sie;zip;w3x;rim;psk;tor;vpk;iwd;kf;mlx;fpk;dazip;vtf;vcf;esm;blob;dmp;layout;menu;ncf;sid;sis;ztmp;vdf;mov;fos;sb;itm;wmo;itm;map;wmo;sb;svg;cas;gho;syncdb;mdbackup;hkdb;hplg;hvpl;icxs;docm;wps;xls;xlsx;xlsm;xlsb;xlk;ppt;pptx;pptm;mdb;accdb;pst;dwg;xf;dxg;wpd;rtf;wb2;pfx;p12;p7b;p7c;txt;jpeg;png;rb;css;js;flv;m3u;py;desc;xxx;litesql;wallet;big;pak;rgss3a;epk;bik;slm;lbf;sav;re4;apk;bsa;ltx;forge;asset;litemod;iwi;das;upk;d3dbsp;csv;wmv;avi;wma;m4a;rar;7z;mp4;sql;bak;tiff</span><br></pre></td></tr></table></figure>
+<p>2.解密出关键字信息，拼接字符串关键字，盘符特征等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">com;REcovER;%s\+%s+%s+%s;png;txt;html;A:\;B:\;\*.*;recove</span><br></pre></td></tr></table></figure>
+<p>3.解密出程序命令的关键字，比如删除卷影、管理员运行、cmd命令、注册表操作等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">windir;%s\system32\cmdexe;&#x2F;c start &quot;&quot; &quot;;runas;vssadminexe; Delete Shadows &#x2F;All &#x2F;Quiet ;open;%s\%s;%s\%sexe;SeDebugPrivilege;Software\%s;data;S-1-5-18\;S-1-5-18\Software\MSVCC\;%X%X%X%X%X%X%X%X;Software\MSVCC\;FIX;\+recover+filetxt;%s%s%S%d;image&#x2F;png;Software\Microsoft\Windows\CurrentVersion\Run;%s\SYSTEM32\CMDEXE &#x2F;C START &quot;&quot; &quot;;SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System;EnableLinkedConnections;taskmg;regedi;procex;msconfi;cmd;reg add HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run &#x2F;v %s &#x2F;t REG_SZ  &#x2F;d &quot;%s&quot; &#x2F;f</span><br></pre></td></tr></table></figure>
+<p>4.解密出网络相关的字符串，例如主机名称、域名、子域名、请求类型、应用程序名、请求参数格式等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;videoaminproduktion.de&#x2F;plugins&#x2F;binstr.php;http:&#x2F;&#x2F;clubsaintandre.fr&#x2F;images&#x2F;binstr.php;http:&#x2F;&#x2F;affiliateproductes.com&#x2F;binstr.php;http:&#x2F;&#x2F;ptgp.pl&#x2F;tmp&#x2F;binstr.php;http:&#x2F;&#x2F;strategicdisaster.info&#x2F;wordpress&#x2F;wp-content&#x2F;plugins&#x2F;binstr.php;http:&#x2F;&#x2F;minteee.com&#x2F;images&#x2F;binstr.php;Sub&#x3D;%s&amp;dh&#x3D;%s&amp;addr&#x3D;%s&amp;size&#x3D;%lld&amp;version&#x3D;4.0&amp;OS&#x3D;%ld&amp;ID&#x3D;%d&amp;inst_id&#x3D;%X%X%X%X%X%X%X%X;0324532423723948572379453249857;Mozilla&#x2F;5.0 (Windows NT 6.3 rv:11.0) like Gecko;Content-Type: application&#x2F;x-www-form-urlencoded;*&#x2F;*;Crypted;Ping;data&#x3D;%s;POST;INSERTED</span><br></pre></td></tr></table></figure>
+<p>5.解密出勒索者给受害者的勒索信息，该信息是格式信息，不包含受害者的ID信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NOT YOUR LANGUAGE? USE https:&#x2F;&#x2F;translate.google.com....What&#39;s the matter with your files?....Your data was secured using a strong encryption with RSA4096...Use the link down below to find additional information on theencryption keysusing RSA-4096 https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;RSA_(cryptosystem)....What exactly that means?....It means that on a structural level your files have been transformed . You won&#39;t be able to use, read , see orwork with them anymore ...In other words they are useless , however , there is a possibility torestore them with our help .....What exactly happened to your files ???....*** Two personal RSA-4096 keys were generated for your PC&#x2F;Laptop; one key is public,another key is private...*** All your data and files were encrypted by the means of the public key , which you received over the web ...*** In order to decryptyour data and gain access to your computer you need a private key and a decryption software, which can be foundon one of our secret servers.....What should you do next ?....There are severaloptions for youto consider :..***  You can wait for a while until the price ofa private key will raise, so you will have to pay twice as muchto access your files or..***  You can start getting BitCoins right now and get access to your data quite fast ...In case you have valuable files , we advise you to act fast asthere is no other option rather..than paying inorder to get back your data. ....In order to obtain specific instructions , please access your personal homepage by choosing one of the few addresses down below :..http:&#x2F;&#x2F;uj5nj.onanwhit.com&#x2F;XXXXXXXXXXXXX..http:&#x2F;&#x2F;2gdb4.leoraorage.at&#x2F;XXXXXXXXXXXXX..http:&#x2F;&#x2F;9hrds.wolfcrap.at&#x2F;XXXXXXXXXXXXX....If you can&#39;t access your personal homepage or the addresses are not working, complete the following steps:..*** Download TOR Browser - http:&#x2F;&#x2F;www.torproject.org&#x2F;projects&#x2F;torbrowser.html.en..*** Install TOR Browser and openTOR Browser..*** Insert the following link in the address bar: k7tlx3ghr3m4n2tu.onion&#x2F;XXXXXXXXXXXXX..*** Read instructions  !!!....*** *** *** *** *** *** *** IMPORTANT INFORMATION *** *** *** *** *** *** ....Your personal homepages ..http:&#x2F;&#x2F;uj5nj.onanwhit.com&#x2F;XXXXXXXXXXXXX..http:&#x2F;&#x2F;2gdb4.leoraorage.at&#x2F;XXXXXXXXXXXXX..http:&#x2F;&#x2F;9hrds.wolfcrap.at&#x2F;XXXXXXXXXXXXX ....Your personal homepageTor-Browser k7tlx3ghr3m4n2tu.onion&#x2F;XXXXXXXXXXXXX..Your personalID XXXXXXXXXXXXX</span><br></pre></td></tr></table></figure>
+
+<h3 id="判断执行方式"><a href="#判断执行方式" class="headerlink" title="判断执行方式"></a>判断执行方式</h3><p>通过申请授权的方式获取错误代码，分析错误代码判断是主程序执行加密逻辑还是释放程序执行加密逻辑，加密逻辑在LABEL_31处。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_12.png" alt="image"></p>
+<p>若需要执行拷贝，则进入del_copy_407360函数，下面分析这个函数。此函数的逻辑在于判断document目录下有没有该病毒，若有返回 0，若无启动进程返回 1。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_13.png" alt="image"></p>
+<p>在函数外的判断逻辑中，若函数返回值为 1(复制程序已启动)，退出winmain主函数，若返回值为0(document是主程序),执行加密逻辑</p>
+
+<h2 id="病毒主逻辑运作"><a href="#病毒主逻辑运作" class="headerlink" title="病毒主逻辑运作"></a>病毒主逻辑运作</h2><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_14.png" alt="image"></p>
+<h3 id="获取函数地址"><a href="#获取函数地址" class="headerlink" title="获取函数地址"></a>获取函数地址</h3><p>该病毒并没有使用常规的手段去获取需要用的函数地址，而是自己写出一个函数通过传入参数函数名称hash和dll，来获取函数地址。例如下面获取函数地址，第一个参数0代表循环，第二个参数1代表哪个dll模块，第三个参数为函数hash。
+</p>
+![image](https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_15.png)
+![image](https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_16.png)
+
+<h3 id="判断互斥体"><a href="#判断互斥体" class="headerlink" title="判断互斥体"></a>判断互斥体</h3><p>判断互斥体是否存在，就是判断在运行过程当中程序是否已经运行，如果运行则退出，如果没有运行则继续运行</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_17.png" alt="image"></p>
+<h3 id="提升进程权限"><a href="#提升进程权限" class="headerlink" title="提升进程权限"></a>提升进程权限</h3><p>首先在解密出来的字符串中获取指定权限的字符串，传入函数中将指定权限的值加入进程当中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_18.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_19.png" alt="image"></p>
+<h3 id="线程1-kill指定进程"><a href="#线程1-kill指定进程" class="headerlink" title="线程1-kill指定进程"></a>线程1-kill指定进程</h3><h4 id="枚举进程并kill指定进程"><a href="#枚举进程并kill指定进程" class="headerlink" title="枚举进程并kill指定进程"></a>枚举进程并kill指定进程</h4><p>病毒主程序创建了一个新的线程，用来执行杀掉指定进程的功能，在一个while死循环中，枚举进程id，如果当病毒程序在运行当中，匹配到了自己程序的id，就杀掉指定进程。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_20.png" alt="image"></p>
+<h3 id="线程2-删除卷影-加密前"><a href="#线程2-删除卷影-加密前" class="headerlink" title="线程2-删除卷影(加密前)"></a>线程2-删除卷影(加密前)</h3><h4 id="删除卷影"><a href="#删除卷影" class="headerlink" title="删除卷影"></a>删除卷影</h4><p>病毒首先判断了当前系统版本，如果命中则启用新的线程，执行删除卷影函数</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_21.png" alt="image"></p>
+<p>对删除卷影函数进行分析，此删除卷影的逻辑是执行系统进程vssadmin.exe，在解密出来的字符串中提取删除卷影操作的字符串，传给系统进程执行即可。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_22.png" alt="image"></p>
+<h3 id="生成密钥信息"><a href="#生成密钥信息" class="headerlink" title="生成密钥信息"></a>生成密钥信息</h3><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_23.png" alt="image"></p>
+<h4 id="创建注册表项"><a href="#创建注册表项" class="headerlink" title="创建注册表项"></a>创建注册表项</h4><p>在不同的路径下创建注册表键值，在两个路径下创建的注册表键值并没有全部使用，而是经过逻辑判断选择在哪个路径下添加数据。并利用加密算法随机生成一串8位大小的字符串作为注册表项</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注册表1：HKEY_USERS_S-1-5-18\Software\MSVCC\</span><br><span class="line">注册表2：HKEY_CURRENT_USER_Software\MSVCC</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_24.png" alt="image"></p>
+<h4 id="设置注册表键值"><a href="#设置注册表键值" class="headerlink" title="设置注册表键值"></a>设置注册表键值</h4><p>在判断设置注册表项成功之后，在字符串中获取字符为“data”，作为注册表的键名称，接着分别在两个addToReg函数添加注册表数据，该数据是文件加密时所填充的部分数据。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_25.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_26.png" alt="image"></p>
+<p>利用椭圆曲线加密算法生成一串密钥，该密钥为加密文件时所用的密钥信息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_27.png" alt="image"></p>
+<p>那么为什么把密钥信息加入到注册表里呢？是因为病毒在第一次执行加密的时候将公钥信息以注册表项的形式保存，为了防止病毒程序出现更换密钥二次加密的情况。</p>
+
+<h3 id="加入注册表"><a href="#加入注册表" class="headerlink" title="加入注册表"></a>加入注册表</h3><h4 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h4><p>病毒通过注册表操作实现开机自启，注册表所用到的字符串从解密字符串中得到，通过RegCreateKeyExW函数执行创建注册表，在通过RegSetValueExW函数设置注册表键值。设置的注册表为：</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">注册表项：HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run</span><br><span class="line">键：+++(4个随机字母)</span><br><span class="line">值：C:\Windows\SYSTEM32\CMD.EXE &#x2F;C START &quot;&quot;&quot;C:\Users\john\Documents\tfukrc.exe</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_28.png" alt="image"></p>
+<h4 id="网络共享"><a href="#网络共享" class="headerlink" title="网络共享"></a>网络共享</h4><p>病毒通过注册表操作实现网络共享，注册表所用到的字符串从解密字符串中得到，通过RegCreateKeyExW函数执行创建注册表，在通过RegSetValueExW函数设置注册表键值。设置的注册表为：</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">注册表项：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</span><br><span class="line">键：EnableLinkedConnections</span><br><span class="line">值：1</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_29.png" alt="image"> </p>
+<h3 id="注册表信息备份到文件-重要"><a href="#注册表信息备份到文件-重要" class="headerlink" title="注册表信息备份到文件(重要)"></a>注册表信息备份到文件(重要)</h3><p>在病毒第一次生成加密密钥相关的注册表之后，以文件备份的方式存储到受害主机，但是存储的是密文。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">明文为：15agV7WrjAGvel3r45JYKqw2k65n9Qggyy.0473CFE676765616200F62E7ED9FFDF8A08A29FFAF5D78E2B89AEA66F05E5375895694EA4A6FAC15527D7E12004D40DE6D089D7944F6D40EE2EOA3E4DB8A55CB38B3CFDA2B5B94D64FA75C29738A26994FEOB39B18D107E085B423EFBA6B32C546.E5732827E9CFEED.1105</span><br></pre></td></tr></table></figure>
+<p>每台设备加密的密钥信息明文不同，仅供参考。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_30.png" alt="image"></p>
+<h3 id="制作勒索信息TXT"><a href="#制作勒索信息TXT" class="headerlink" title="制作勒索信息TXT"></a>制作勒索信息TXT</h3><p>在前面的解密字符串环节中，最后一串是解密出来的勒索信息，换句话说，解密出来的勒索信息其实是一个勒索信息模板，在模板中用xxxxxxxxxxx填充的地方要被替换成受害主机的key值，此方法就在做这个事情。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_31.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_32.png" alt="image"></p>
+<h3 id="制作勒索信息PNG"><a href="#制作勒索信息PNG" class="headerlink" title="制作勒索信息PNG"></a>制作勒索信息PNG</h3><p>在制作完勒索信息的txt之后，紧接着就是制作png文件，然后将文本写入图片中并添加到内存。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_33.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_34.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_35.png" alt="image"></p>
+<h3 id="线程3-测试网络"><a href="#线程3-测试网络" class="headerlink" title="线程3-测试网络"></a>线程3-测试网络</h3><p>病毒在完成制作勒索和密钥之后，在准备加密文件之前启用一个新的线程，提交的是被勒索的信息，但是类型是ping，勒索者是通过类型去判断该受害主机是否真正被加密。如果是第二次或之后运行该程序，就不再开启此线程</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_36.png" alt="image"></p>
+<h3 id="线程4-加密文件"><a href="#线程4-加密文件" class="headerlink" title="线程4-加密文件"></a>线程4-加密文件</h3><h4 id="流程图-1"><a href="#流程图-1" class="headerlink" title="流程图"></a>流程图</h4><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_37.png" alt="image"></p>
+<h4 id="检索盘符"><a href="#检索盘符" class="headerlink" title="检索盘符"></a>检索盘符</h4><p>通过获取当前设备上的有效盘符，去遍历文件并进行加密，在过程当中绕过了三个文件夹，推测是病毒故意绕过系统文件，不会因为加密文件导致系统崩溃，从而达不到勒索效果。重点在写入文件的函数。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_38.png" alt="image"></p>
+<h4 id="遍历文件"><a href="#遍历文件" class="headerlink" title="遍历文件"></a>遍历文件</h4><h5 id="递归遍历"><a href="#递归遍历" class="headerlink" title="递归遍历"></a>递归遍历</h5><p>病毒通过递归遍历文件夹，判断是文件还是目录。绕过windows、programData、programfile这三个目录，不对这三个文件夹实施加密。如果匹配到是文件，就再匹配是否为病毒程序释放的txt文件，然后匹配是否在解密出来的后缀表中，再进行加密操作。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_39.png" alt="image"></p>
+<h5 id="创建勒索信息"><a href="#创建勒索信息" class="headerlink" title="创建勒索信息"></a>创建勒索信息</h5><p>在每遍历到一个匹配的文件夹的时候，创建勒索信息的txt文件和png文件，</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_40.png" alt="image"></p>
+<h4 id="实施加密"><a href="#实施加密" class="headerlink" title="实施加密"></a>实施加密</h4><p>实施加密的时候，首先要获取文件句柄，然后把文件信息读取到内存中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_41.png" alt="image"></p>
+<p>接着要申请一块同样大小的内存，传入读取的文件内容和生成的密钥以及暂存加密数据的地址等参数，对文件进行加密。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_42.png" alt="image"></p>
+<p>将加密的文件写入到内存中之后，需要再写入到文件当中，从而完成加密阶段。写文件的过程一共分为三次，前两次分别写入了固定大小的文件，判断前两次判断能否正常写入数据，第三次写入是将加密数据写入到文件。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_43.png" alt="image"></p>
+<h3 id="勒索信息弹窗"><a href="#勒索信息弹窗" class="headerlink" title="勒索信息弹窗"></a>勒索信息弹窗</h3><p>设置线程的优先级并等待线程返回信号或者超时，从而运行接下来的代码，紧接着就是弹出勒索信息</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_44.png" alt="image"></p>
+<p>执行弹窗是在加密文件加密完成之后或者超时之后运行的函数，首先将txt内容写入DC文件中，然后调用执行文件打开两个勒索文件</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_45.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_46.png" alt="image"></p>
+<h3 id="线程5-删除卷影-加密后"><a href="#线程5-删除卷影-加密后" class="headerlink" title="线程5-删除卷影(加密后)"></a>线程5-删除卷影(加密后)</h3><p>该部分执行逻辑与加密前删除卷影逻辑一致。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_47.png" alt="image"></p>
+<h3 id="线程6-执行网络行为"><a href="#线程6-执行网络行为" class="headerlink" title="线程6-执行网络行为"></a>线程6-执行网络行为</h3><p>程序的最后阶段是发起网络请求，该网络行为的目的是发送受害主机的信息和获取网络返回的字符串关键信息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_48.png" alt="image"></p>
+<p>首先获取的是在解密字符串中得到的几个C&C域名</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_49.png" alt="image"></p>
+<p>接下来就是将受害者的信息以网络请求参数的方式发送给C&C服务区，</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_50.png" alt="image"></p>
+<p>然后是加密请求参数，为了保证安全传输，病毒作者将受害主机的参数信息用加密的形式进行传输，采用的加密算法与加密文件算法相同。加密过程如下：</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_51.png" alt="image"></p>
+<p>接着进行是传输信息，是一些解读主机信息和设置请求方式，在循环传输的过程中，程序会判断服务器返回的数据，如果匹配到Inserted字符串，就表明提交数据成功，此时则可以退出线程。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_52.png" alt="image"></p>
+<h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><p>等待执行网络行为的线程结束或者超时，执行cmd命令删除当前进程，不为后续网络安全人员采集信息留下痕迹。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_53.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Tesla%20Ransomware%20virus%20analysis%20report/Tesla%20Ransomware%20virus%20analysis%20report_54.png" alt="image"></p>
+<h1 id="样本溯源"><a href="#样本溯源" class="headerlink" title="样本溯源"></a>样本溯源</h1><table>
+<thead>
+<tr>
+<th>C&amp;C服务器域名</th>
+<th>访问资源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="http://ptgp.pl/">http://ptgp.pl</a></td>
+<td>/tmp/binstr-php</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://affiliateproductes.com/">http://affiliateproductes.com</a></td>
+<td>/binstr-php</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://videoaminproduktion.de/">http://videoaminproduktion.de</a></td>
+<td>/plugins/binstr-php</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://clubsaintandre.fr/">http://clubsaintandre.fr</a></td>
+<td>/images/binstr.php</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://strategicdisaster.info/">http://strategicdisaster.info</a></td>
+<td>/wordpress/wp-content/plugins/binstr.php</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://minteee.com/">http://minteee.com</a></td>
+<td>/images/binstr-php</td>
+</tr>
+</tbody></table>
+<h1 id="查杀方案"><a href="#查杀方案" class="headerlink" title="查杀方案"></a>查杀方案</h1><h2 id="解密被加密文件"><a href="#解密被加密文件" class="headerlink" title="解密被加密文件"></a>解密被加密文件</h2><ul>
+<li>首先下载解密工具：链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1yRlRV4_qBXbK62KGKAalzw">https://pan.baidu.com/s/1yRlRV4_qBXbK62KGKAalzw</a> 提取码: 2333</li>
+<li>在工具目录下执行命令行窗口，输入工具名称(ESETTeslaCryptDecryptor.exe)+盘符(或某个文件夹或某个文件)。</li>
+<li>回车执行即可。<h2 id="删除开机自启"><a href="#删除开机自启" class="headerlink" title="删除开机自启"></a>删除开机自启</h2></li>
+<li>在”运行”窗口输入regedit打开注册表</li>
+<li>打开注册表项：HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run</li>
+<li>打开该项中的以+++(4个随机字母)命名的键的名称，并备份CMD.exe /c start 后面跟的路径及其程序名称。在删除病毒文件时需要用到。</li>
+<li>删除以该+++(4个随机字母)生成的键以及值。<h2 id="删除病毒文件"><a href="#删除病毒文件" class="headerlink" title="删除病毒文件"></a>删除病毒文件</h2></li>
+<li>确认下载的病毒主文件是否存在<ul>
+<li>或在存放目录下找同名文件。</li>
+<li>或在文件搜索中搜索该文件。</li>
+<li>或在目录：C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Recent 下找最近运行的程序。</li>
+</ul>
+</li>
+<li>删除病毒释放程序<ul>
+<li>进入目录：C:\Users\用户名\我的文档(Documents)\下或者是删除开机自启中备份的路径下。</li>
+<li>找到以6位随机字母生成的程序则为病毒释放程序。</li>
+<li>删除之前确认该程序的名称与注册表中备份的程序名称一致。</li>
+</ul>
+</li>
+<li>删除病毒释放勒索信息<ul>
+<li>在任意目录下创建.bat文本，分别将勒索信息的.txt文件和.png文件名称替换到批处理代码中。代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">rem 指定待搜索的文件</span><br><span class="line">set &quot;FileName&#x3D;此处替换文件名称.txt&quot;</span><br><span class="line">set &quot;FileName2&#x3D;此处替换文件名称.png&quot;</span><br><span class="line">echo 正在搜索，请稍候...</span><br><span class="line">for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (</span><br><span class="line">  if exist %%a:\ (</span><br><span class="line">    for &#x2F;f &quot;delims&#x3D;&quot; %%b in (&#39;dir &#x2F;a-d &#x2F;s &#x2F;b &quot;%%a:\*%FileName%&quot; 2^&gt;nul&#39;) do (</span><br><span class="line">      if &#x2F;i &quot;%%~nxb&quot; equ &quot;%FileName%&quot; (</span><br><span class="line">        echo,&quot;%%b&quot;</span><br><span class="line">	del,&quot;%%b&quot;</span><br><span class="line">      )</span><br><span class="line">    )</span><br><span class="line">    for &#x2F;f &quot;delims&#x3D;&quot; %%b in (&#39;dir &#x2F;a-d &#x2F;s &#x2F;b &quot;%%a:\*%FileName2%&quot; 2^&gt;nul&#39;) do (</span><br><span class="line">      if &#x2F;i &quot;%%~nxb&quot; equ &quot;%FileName2%&quot; (</span><br><span class="line">        echo,&quot;%%b&quot;</span><br><span class="line">	del,&quot;%%b&quot;</span><br><span class="line">      )</span><br><span class="line">    )</span><br><span class="line">  )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="恢复注册表"><a href="#恢复注册表" class="headerlink" title="恢复注册表"></a>恢复注册表</h2></li>
+</ul>
+</li>
+<li>在”运行”窗口输入regedit打开注册表</li>
+<li>打开注册表项：HKEY_USERS_S-1-5-18\Software\MSVCC\并删除该项。</li>
+<li>打开注册表项：HKEY_CURRENT_USER_Software\MSVCC，里面FIX键所对应的值为受害主机解密ID，记录其ID，在删除下个注册表需要用到。</li>
+<li>打开注册表项：HKEY_CURRENT_USER_Software\ID，删除以上面ID为名字的注册表项。</li>
+<li>打开注册表项：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System，删除键名称为：EnableLinkedConnections，值为1的项。<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p style="text-indent:2em">该病毒主要在网络上进行传播，通过修改名称等方式诱导用户执行，进而对磁盘中文件进行加密，弹窗勒索者信息并索要赎金，虽然被加密文件可以进行解密，但也是有了作者的私钥的前提下才能够被解密，如果没有私钥，无法进行解密。所以用户在需要到网上下载程序的时候，必须选择正规厂商的正规文件下载执行，不要随意在一些不知名网站上下载程序。如果不幸中招，应首先断开网络连接，避免再次到恶意网站上下载恶意内容，然后不要随意到网站下载解密工具，否则会造成对文件的二次加密。应尽量减少对电脑的操作，等待维护人员采集信息。</p></li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/03/30/%E7%89%B9%E6%96%AF%E6%8B%89%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">http://example.com/2021/03/30/%E7%89%B9%E6%96%AF%E6%8B%89%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/12/01/BD_wifi%E6%A8%A1%E5%9D%97%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info"></div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
