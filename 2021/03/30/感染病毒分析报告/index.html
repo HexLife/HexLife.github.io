@@ -1,0 +1,447 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>感染病毒分析报告 | Hexo</title><meta name="description" content="基本信息报告名称：感染病毒分析报告 报告更新日期：2019&#x2F;9&#x2F;23 样本发现日期：2019&#x2F;9&#x2F;15 样本格式：.exe 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    FF5E1F27193CE51EEC318714EF038B"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/03/30/%E6%84%9F%E6%9F%93%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="感染病毒分析报告"><meta property="og:url" content="http://example.com/2021/03/30/%E6%84%9F%E6%9F%93%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="基本信息报告名称：感染病毒分析报告 报告更新日期：2019&#x2F;9&#x2F;23 样本发现日期：2019&#x2F;9&#x2F;15 样本格式：.exe 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    FF5E1F27193CE51EEC318714EF038B"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2021-03-30T05:45:25.000Z"><meta property="article:modified_time" content="2021-03-30T11:03:18.456Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"Just","hours":"hours ago","day":"days ago"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 19:03:18'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">14</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">基本信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">动态行为分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">详细行为分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90"><span class="toc-number">5.1.</span> <span class="toc-text">注入过程分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E4%B8%BB%E6%9C%BA%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-number">5.1.1.</span> <span class="toc-text">查找主机浏览器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%92%E6%96%A5%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.1.2.</span> <span class="toc-text">创建互斥对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E8%87%AA%E8%BA%AB%E8%B7%AF%E5%BE%84"><span class="toc-number">5.1.3.</span> <span class="toc-text">判断自身路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hook%E4%B8%8E%E6%B3%A8%E5%85%A5"><span class="toc-number">5.1.4.</span> <span class="toc-text">Hook与注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hook"><span class="toc-number">5.1.4.1.</span> <span class="toc-text">Hook</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5%E4%BB%A3%E7%A0%81"><span class="toc-number">5.1.4.2.</span> <span class="toc-text">注入代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%84%9F%E6%9F%93%E6%A8%A1%E5%9D%97dll%E5%88%86%E6%9E%90"><span class="toc-number">5.2.</span> <span class="toc-text">感染模块dll分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%92%E6%96%A5%E4%BD%93"><span class="toc-number">5.2.1.</span> <span class="toc-text">创建互斥体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%BB%E6%9C%BA%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-number">5.2.2.</span> <span class="toc-text">获取主机的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B1-%E6%B7%BB%E5%8A%A0%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="toc-number">5.2.3.</span> <span class="toc-text">线程1-添加注册表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B2-%E5%88%9B%E5%BB%BAsocket%E6%B5%8B%E8%AF%95%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="toc-number">5.2.4.</span> <span class="toc-text">线程2-创建socket测试连通性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B3-%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E6%97%A5%E6%9C%9F"><span class="toc-number">5.2.5.</span> <span class="toc-text">线程3-创建文件写入日期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B4-%E5%90%91C-amp-C%E5%8F%91%E9%80%81%E4%BF%A1%E6%81%AF"><span class="toc-number">5.2.6.</span> <span class="toc-text">线程4-向C&amp;C发送信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B5-%E6%84%9F%E6%9F%93%E4%B8%BB%E6%9C%BA%E7%A1%AC%E7%9B%98"><span class="toc-number">5.2.7.</span> <span class="toc-text">线程5-感染主机硬盘</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">5.2.7.1.</span> <span class="toc-text">前期准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%9B%98%E7%AC%A6"><span class="toc-number">5.2.7.2.</span> <span class="toc-text">获取盘符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6"><span class="toc-number">5.2.7.3.</span> <span class="toc-text">遍历目录文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%84%9F%E6%9F%93%E9%80%BB%E8%BE%91-PE%E6%96%87%E4%BB%B6"><span class="toc-number">5.2.7.4.</span> <span class="toc-text">感染逻辑-PE文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%84%9F%E6%9F%93%E9%80%BB%E8%BE%91-html%E6%96%87%E4%BB%B6"><span class="toc-number">5.2.7.5.</span> <span class="toc-text">感染逻辑-html文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B6-%E6%84%9F%E6%9F%93%E5%8F%AF%E7%A7%BB%E5%8A%A8%E7%A3%81%E7%9B%98"><span class="toc-number">5.2.8.</span> <span class="toc-text">线程6-感染可移动磁盘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="toc-number">5.3.</span> <span class="toc-text">写入文件数据分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E6%BA%AF%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">样本溯源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8A%E6%94%BE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-number">6.1.</span> <span class="toc-text">释放文件信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-amp-C%E5%9F%9F%E5%90%8D"><span class="toc-number">6.2.</span> <span class="toc-text">C&amp;C域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8EIP%E7%9B%B8%E5%85%B3%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">6.3.</span> <span class="toc-text">与IP相关的文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E6%9D%80%E6%96%B9%E6%A1%88%E4%B8%8E%E6%80%9D%E8%B7%AF"><span class="toc-number">7.</span> <span class="toc-text">查杀方案与思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PE"><span class="toc-number">7.1.</span> <span class="toc-text">PE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Html"><span class="toc-number">7.2.</span> <span class="toc-text">Html</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%9F%A5%E6%9D%80"><span class="toc-number">7.3.</span> <span class="toc-text">可移动硬盘查杀</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">感染病毒分析报告</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-30T05:45:25.000Z" title="Created 2021-03-30 13:45:25">2021-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-30T11:03:18.456Z" title="Updated 2021-03-30 19:03:18">2021-03-30</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>报告名称：感染病毒分析报告</p>
+<p>报告更新日期：2019/9/23</p>
+<p>样本发现日期：2019/9/15</p>
+<p>样本格式：.exe</p>
+<p>可能受到威胁的系统：Windows系列</p>
+<p>分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑</p>
+
+<table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileType</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FF5E1F27193CE51EEC318714EF038BEF</td>
+<td>感染病毒</td>
+<td>56320 bytes</td>
+<td>FF5E1F27193CE51EEC318714EF038BEF</td>
+<td>B4FA74A6F4DAB3A7BA702B6C8C129F889DB32CA6</td>
+</tr>
+</tbody></table>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p style="text-indent:2em">该病毒了类型是感染型病毒，所谓感染型病毒，就是病毒利用读取文件的手法，将主机中的指定文件中写入自己的数据，而不破坏用户的原有的数据，本报告将讲述此感染病毒的感染过程以及用到的手法。</p>
+
+
+<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_1.png" alt="image"></p>
+<h1 id="动态行为分析"><a href="#动态行为分析" class="headerlink" title="动态行为分析"></a>动态行为分析</h1><h1 id="详细行为分析"><a href="#详细行为分析" class="headerlink" title="详细行为分析"></a>详细行为分析</h1><h2 id="注入过程分析"><a href="#注入过程分析" class="headerlink" title="注入过程分析"></a>注入过程分析</h2><h3 id="查找主机浏览器"><a href="#查找主机浏览器" class="headerlink" title="查找主机浏览器"></a>查找主机浏览器</h3><p style="text-indent:2em">程序执行的开始， 通过查找注册表中的路径，查找了主机上的浏览器所在的位置，拿到这个路径后继续执行下面的代码逻辑，如果注册表中没有浏览器，执行代码找本地的IE浏览器的路径，拿到路径继续执行代码逻辑。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_2.png" alt="image"></p>
+<h3 id="创建互斥对象"><a href="#创建互斥对象" class="headerlink" title="创建互斥对象"></a>创建互斥对象</h3><p style="text-indent:2em">定义字符串为：KyUffThOkYwRRtgPP，作为互斥体的名称标识，用这个名称来创建并检测互斥体是否存在，进而判断文件是否已经运行。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_3.png" alt="image"></p>
+<h3 id="判断自身路径"><a href="#判断自身路径" class="headerlink" title="判断自身路径"></a>判断自身路径</h3><p style="text-indent:2em">首先通过函数获取自身路径和自身的名称，判断当前执行程序名称是否是：DesktopLayer.exe，若不是将拷贝自身到指定路径，代码中给出了6个备选路径，依次是：C:\Program Files\Common Files、Administrator、C:\Users\Administrator\AppData\Roaming、C:\Windows\System32、C:\Windows、C:\Users\Administrator\AppData\Local\Temp，若匹配到其中的某一个，在这个路径下创建文件夹Microsoft，并在目录下检查能否创建文件成功。之后将自身拷贝到创建的目录下。程序名称为：DesktopLayer.exe</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_4.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_5.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_6.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_7.png" alt="image"></p>
+<h3 id="Hook与注入"><a href="#Hook与注入" class="headerlink" title="Hook与注入"></a>Hook与注入</h3><h4 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h4><p style="text-indent:2em">在hook的函数看传入的参数，重要的参数有三个，第一个是ntdll.dll，第二个是ZwWriteVirtualMemory，第三个是一个函数地址。代码通过计算大小，申请了内存空间，拷贝到函数的内存当中，在被hook的函数前面添加jmp指令，jmp后跟恶意函数的地址，使得调用函数的时候，无条件跳转到恶意函数，从而执行恶意函数。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_8.png" alt="image"></p>
+<h4 id="注入代码"><a href="#注入代码" class="headerlink" title="注入代码"></a>注入代码</h4><p style="text-indent:2em">被hook函数给的恶意函数地址是注入恶意代码用的函数，下面分析这个函数，在执行注入代码之前，函数首先会执行正常函数的逻辑，待正常函数的逻辑执行完毕之后，执行注入代码逻辑。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_9.png" alt="image"></p>
+<p style="text-indent:2em">全局变量中，恶意的PE文件。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_10.png" alt="image"></p>
+<p style="text-indent:2em">代码逻辑首先获取了浏览器的PE格式信息，申请内存，将恶意dll加载进该内存。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_11.png" alt="image"></p>
+<p style="text-indent:2em">模拟系统加载dll，将恶意程序扩展到当前申请的内存当中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_12.png" alt="image"></p>
+<p style="text-indent:2em">创建执行获取到的浏览器进程。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_13.png" alt="image"></p>
+<h2 id="感染模块dll分析"><a href="#感染模块dll分析" class="headerlink" title="感染模块dll分析"></a>感染模块dll分析</h2><h3 id="创建互斥体"><a href="#创建互斥体" class="headerlink" title="创建互斥体"></a>创建互斥体</h3><p style="text-indent:2em">在感染模块中，首先判断并创建了该文件的互斥体对象，并判断了是否已经存在该互斥体，互斥体的名称在全局变量中定义，为：KyUffThOkYwRRtgPP</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_14.png" alt="image"></p>
+<h3 id="获取主机的信息"><a href="#获取主机的信息" class="headerlink" title="获取主机的信息"></a>获取主机的信息</h3><p style="text-indent:2em">代码的第二个逻辑主要是获取主机信息，将主机的一些信息保存到内存，之后将字符串加密，保存到内存当中。</p>
+<p style="text-indent:2em">首先找到浏览器目录下的complete.dat文件，将此文件的内容读到内存中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_15.png" alt="image"></p>
+<p style="text-indent:2em">根据全局变量中的十六进制数据，解密出了C&C服务器，和一些字符串信息。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C&amp;C : fget-career.com</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_16.png" alt="image"></p>
+<p style="text-indent:2em">接下来是获取主机的信息，获取的主机信息大致是硬盘信息，操作系统信息和国家语言标识符等，放入内存。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_17.png" alt="image"></p>
+<p style="text-indent:2em">之后是将获取到的主机信息，后面拼接上字符串：45Bn99gT，然后将主机信息字符串计算出hash保存到内存中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_18.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_19.png" alt="image"></p>
+<p style="text-indent:2em">创建dmlconf.dat文件到当前系统目录下，这个文件内将要写入当前系统日期信息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_20.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_21.png" alt="image"></p>
+<h3 id="线程1-添加注册表"><a href="#线程1-添加注册表" class="headerlink" title="线程1-添加注册表"></a>线程1-添加注册表</h3><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_22.png" alt="image"></p>
+<p style="text-indent:2em">代码开启线程进行分工，线程1的主要任务是追加值到注册表，将当前程序路径追加到系统注册表，实现开机启动，并间隔1秒钟执行，防止注册表被删除。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">注册表项：HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon</span><br><span class="line">键：Userinit</span><br><span class="line">值： 路径\desktoplayer.exe</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_23.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_24.png" alt="image"></p>
+<h3 id="线程2-创建socket测试连通性"><a href="#线程2-创建socket测试连通性" class="headerlink" title="线程2-创建socket测试连通性"></a>线程2-创建socket测试连通性</h3><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_25.png" alt="image"></p>
+<p style="text-indent:2em">线程2主要是创建socket连接，并在全局变量中定义了三个网站的80端口，测试网络的连通性。并设置了等待时间为10秒，循环执行测试网络连通性。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_26.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_27.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_28.png" alt="image"></p>
+<h3 id="线程3-创建文件写入日期"><a href="#线程3-创建文件写入日期" class="headerlink" title="线程3-创建文件写入日期"></a>线程3-创建文件写入日期</h3><p style="text-indent:2em">线程3的内容较少，该线程的作用是将系统当前日期写入创建好的文件当中。并间歇性循环执行写入操作。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_29.png" alt="image"></p>
+<h3 id="线程4-向C-amp-C发送信息"><a href="#线程4-向C-amp-C发送信息" class="headerlink" title="线程4-向C&amp;C发送信息"></a>线程4-向C&amp;C发送信息</h3><p style="text-indent:2em">线程5主要对获取到的信息进行发送，包括主机CPU信息，文件时间等信息，发送完信息会接收到C&C的响应信息，代码会根据响应的数据执行内存拷贝和字符串拼接的操作。该线程的主方法也是间歇循环执行。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_30.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_31.png" alt="image"></p>
+<h3 id="线程5-感染主机硬盘"><a href="#线程5-感染主机硬盘" class="headerlink" title="线程5-感染主机硬盘"></a>线程5-感染主机硬盘</h3><h4 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h4><p style="text-indent:2em">这个线程是感染病毒的主逻辑线程，在开启这个线程之前，代码还做了许多事情，包括检测已知注册表项是否存在，获取检查文件自校验和的函数，读取文件内容拷贝到内存，读取全局变量拷贝到内存等。这些数据在线程中都需要用到，也是感染文件的前期准备工作。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_32.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_33.png" alt="image"></p>
+<p style="text-indent:2em">前期工作准备好之后，开启线程执行感染逻辑，感染逻辑是间歇性循环执行，间隔时间为30秒。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_34.png" alt="image"></p>
+<h4 id="获取盘符"><a href="#获取盘符" class="headerlink" title="获取盘符"></a>获取盘符</h4><p style="text-indent:2em">感染首先获取的是系统的目录，通过获取系统的两个路径，将路径保存起来，在感染的过程中会绕过这两个路径，判断是病毒为了防止感染系统文件导致系统崩溃或程序崩溃等因素。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_35.png" alt="image"></p>
+<p style="text-indent:2em">获取主机上有效的盘符，将盘符的卷标拷贝到内存，通过代码的逻辑判断，病毒感染的磁盘类型为硬盘驱动器和可移动驱动器两种。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_36.png" alt="image"></p>
+<h4 id="遍历目录文件"><a href="#遍历目录文件" class="headerlink" title="遍历目录文件"></a>遍历目录文件</h4><p style="text-indent:2em">获取盘符之后，在路径上加上*.*，匹配所有目录和文件。执行感染前，首先判断了目录的名称，首先排除三个目录是不能遍历的：. 或 .. 或 RMNetwork。再判断获取到的File是目录还是文件，若是目录，则判断目录名称是不是两个系统目录，若不是，则递归遍历下一层，若是文件，则执行感染文件的函数。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_37.png" alt="image"></p>
+<p style="text-indent:2em">如果拿到一个文件，代码首先判断文件的后缀类型，判断的标准有两类四种，分别是：exe、dll、htm、html。不同的文件，执行不同的感染逻辑。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_38.png" alt="image"></p>
+<h4 id="感染逻辑-PE文件"><a href="#感染逻辑-PE文件" class="headerlink" title="感染逻辑-PE文件"></a>感染逻辑-PE文件</h4><p style="text-indent:2em">判断出文件后缀之后进入文件的感染逻辑，感染过程首先把文件数据映射到内存，通过PE结构信息获取文件的区段，在最后一个区段中加入一个新的区段，命名在全局变量中为.rmnt区段，在此区段中写入两端数据，获取函数地址代码解密PE代码和被加密的PE，修改文件的入口点指向该区段的偏移。流程如下：</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_39.png" alt="image"></p>
+<p style="text-indent:2em">调用函数创建映射，使将要被感染的PE加载到内存。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_40.png" alt="image"></p>
+<p style="text-indent:2em">检查PE格式，判断此文件PE的位数等信息</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_41.png" alt="image"></p>
+<p style="text-indent:2em">寻找全局变量中指定的区段名称，为.rmnet，判断该区段是否存在。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_42.png" alt="image"></p>
+<p style="text-indent:2em">通过遍历文件中的IAT表，检查文件的导入表是否包含传入的两个函数，如果包含此函数，修改这两个函数的偏移值，能够使注入的PE方便利用起来。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_43.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_44.png" alt="image"></p>
+<p style="text-indent:2em">之后做的是将新定义的区段信息加入到文件的section中，首先找到最后一个区段所在的位置，将要加入的区段进行对齐，之后将文件中的OEP指向该区段的偏移值。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_45.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_46.png" alt="image"></p>
+<p style="text-indent:2em">区段信息加入之后，接下来要做的是将数据写入到区段当中，代码逻辑是定义文件指针，将文件指针指向PE的末尾，之后在末尾写入数据，写入的数据分为两段，第一段是解密PE的函数和获取函数地址的代码。第二段是被加密的PE数据。将此两段数据写入PE完成注入。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_47.png" alt="image"></p>
+<p style="text-indent:2em">写入数据执行完成之后，判断一下计算文件校验和的函数是否获取成功，若有这个函数的地址，再看PE中有没有自校验和的数据，若为0，则写入文件完成，若不为0，重新计算PE文件的校验和，写入到PE中。之后完成写入操作。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_48.png" alt="image"></p>
+<h4 id="感染逻辑-html文件"><a href="#感染逻辑-html文件" class="headerlink" title="感染逻辑-html文件"></a>感染逻辑-html文件</h4><p style="text-indent:2em">病毒感染文件的第二个目标就是html文件，此类型的感染逻辑相对来讲简单很多，大致为在html文件的标签最后，加上一段vbs代码，这段vbs的代码在全局变量中定义好，在vbs中写入PE的16进制，在执行文件的时候执行脚本，将PE的数据写入到指定目录下的指定文件名称，指定目录为：temp目录，文件名称为：svchost.exe，达到执行恶意文件的目的。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_49.png" alt="image"></p>
+<p style="text-indent:2em">通过判断文件最后的字符串是否为</script>来判断文件是否已经被感染，若已经为感染则不进行感染。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_50.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_51.png" alt="image"></p>
+<h3 id="线程6-感染可移动磁盘"><a href="#线程6-感染可移动磁盘" class="headerlink" title="线程6-感染可移动磁盘"></a>线程6-感染可移动磁盘</h3><p style="text-indent:2em">病毒感染可移动硬盘的时候，大致分为两个步骤，第一个是写入文件autorun.inf，第二个是写入PE文件。首先来简单说一下autorun.inf这个文件的作用，这个文件的实质就是当双击打开运行该磁盘时，在该文件中指向的程序会随之运行起来，也就是病毒将恶意文件拷贝到移动磁盘，让用户打开磁盘便自动运行恶意程序。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_52.png" alt="image"></p>
+<p style="text-indent:2em">首先遍历磁盘上的驱动器，寻找可移动类型的驱动器，并检查该驱动器中是否有autorun.inf文件，若都满足则继续执行，同样执行感染逻辑的函数是间歇循环执行的，间隔时间为10秒。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_53.png" alt="image"></p>
+<p style="text-indent:2em">感染可移动磁盘时，分为两个步骤，首先分析第一个是将恶意的PE写入到磁盘下的指定路径。根据磁盘的特征生成一个随机的文件夹名称，之后再随机出一个文件名称，拼接上后缀.exe，获取一个完整的文件绝对路径。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例子：F:\RECYCLER\S-4-4-65-6670427684-6688006654-527824087-3216\ZgZLwWbA.exe</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_54.png" alt="image"></p>
+<p style="text-indent:2em">将文件路径拼接起来存到内存中，创建这个文件并写入数据，写入的数据为恶意PE的数据。也就是desktoplayer.exe本身。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_55.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_56.png" alt="image"></p>
+<p style="text-indent:2em">打开文件中的autorun.inf文件，将全局变量中定义的字符串给拼接好，设置文件属性之后，将拼接好的字符串写入到文件中。写入的过程分为多次写入，除了一次写入正常数据外，其余写入的时候随机字符串，启到混淆作用。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_57.png" alt="image"></p>
+<p style="text-indent:2em">全局变量定义的字符串。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_58.png" alt="image"></p>
+<p style="text-indent:2em">双击硬盘自动执行的代码如下，其中文件的名称和路径的名称为随机产生，在文件中通过写入随机字符串进行混淆。
+</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[autorun]..action&#x3D;Open..icon&#x3D;%WinDir%\system32\shell32.dll,4..shellexecute&#x3D;.\RECYCLER\S-4-4-65-6670427684-6688006654-527824087-3216\ZgZLwWbA.exe..shell\explore\command&#x3D;.\RECYCLER\S-4-4-65-6670427684-6688006654-527824087-3216\ZgZLwWbA.exe..USEAUTOPLAY&#x3D;1..shell\Open\command&#x3D;.\RECYCLER\S-4-4-65-6670427684-6688006654-527824087-3216\ZgZLwWbA.exe.</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_59.png" alt="image"></p>
+<h2 id="写入文件数据分析"><a href="#写入文件数据分析" class="headerlink" title="写入文件数据分析"></a>写入文件数据分析</h2><p style="text-indent:2em">查看被写入的PE，发现文件的OEP被修改，之后我们可以找到这段代码是在哪里被写入的。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_60.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_61.png" alt="image"></p>
+<p style="text-indent:2em">OD跟一下发现PE的解密代码。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_62.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_63.png" alt="image"></p>
+<p style="text-indent:2em">之后在查杀会有较为详细的说明注入数据的结构和功能点。</p>
+
+<h1 id="样本溯源"><a href="#样本溯源" class="headerlink" title="样本溯源"></a>样本溯源</h1><h2 id="释放文件信息"><a href="#释放文件信息" class="headerlink" title="释放文件信息"></a>释放文件信息</h2><table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C:\Program Files\Microsoft\DesktopLayer.exe</td>
+<td>139776 bytes</td>
+<td>05C039871E23CB8A3B92710E2AC0589A</td>
+<td>C861BCE1B0491439236F93152F2AD4E8015BB15B</td>
+</tr>
+<tr>
+<td>C:\Program Files\InternetExplorer\dmlconf.dat</td>
+<td>不固定</td>
+<td>不固定</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>移动磁盘</td>
+<td>14731 bytes</td>
+<td>不固定</td>
+<td>不固定</td>
+</tr>
+<tr>
+<td>移动磁盘</td>
+<td>139776 bytes</td>
+<td>05C039871E23CB8A3B92710E2AC0589A</td>
+<td>C861BCE1B0491439236F93152F2AD4E8015BB15B</td>
+</tr>
+</tbody></table>
+<h2 id="C-amp-C域名"><a href="#C-amp-C域名" class="headerlink" title="C&amp;C域名"></a>C&amp;C域名</h2><table>
+<thead>
+<tr>
+<th>域名</th>
+<th>端口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fget-career.com</td>
+<td>443</td>
+</tr>
+</tbody></table>
+<h2 id="与IP相关的文件"><a href="#与IP相关的文件" class="headerlink" title="与IP相关的文件"></a>与IP相关的文件</h2><table>
+<thead>
+<tr>
+<th>FileType</th>
+<th>FileName</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Win32 EXE</td>
+<td>YOUR FILE IS READY TO DOWNLOAD-85DB59D1BA.EXE</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>KING.EXE</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>ECHOZY CFG-7C62A3B959.EXE</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>SYSTEM.EXE.STARTUP</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>EVEREST_DISKBENCH.DLL</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>ACTIVATOR (BICFIC).EXE</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>iexplore.exe</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>CFLauncher.exe</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>uzcbzbtm.exe</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>&lt;PATH_SAMPLE.DLL&gt;</td>
+</tr>
+</tbody></table>
+<h1 id="查杀方案与思路"><a href="#查杀方案与思路" class="headerlink" title="查杀方案与思路"></a>查杀方案与思路</h1><h2 id="PE"><a href="#PE" class="headerlink" title="PE"></a>PE</h2><p style="text-indent:2em">要对样本进行查杀，首先要清楚文件被感染的流程。我们已经知道文件是被写入了一个恶意区段，之后修改了文件的OEP。我的思路是从被感染文件入手。</p>
+<p style="text-indent:2em">我们已经知道了感染文件的条件是什么，我这里找了两个符合条件的PE文件，前面我们已经知道病毒写入两段文件，第一段是解密的，第二段是被加密的PE文件，通过对比发现只有这几个字节不同。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_64.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_65.png" alt="image"></p>
+<p style="text-indent:2em">图上介绍的是OEP的位置，那么为什么说是OEP的位置呢，随便用OD打开一个被感染的文件，感染型文件仿照壳的原理，才实现了在不影响原文件的前提下去写入PE数据，那么我们可以仿照壳去寻找PE真正的OEP位置。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_66.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_67.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_68.png" alt="image"></p>
+<p style="text-indent:2em">惊奇的发现，利用ESP定律可以找到文件真正的OEP位置，那么问题来了。还是没体现出为什么上图指出的四个字节是OEP的位置。</p>
+<p style="text-indent:2em">首先记录刚刚获取的OEP地址为：102D554，这个时候重新运行OD，单步进行观察。因为PE文件原来的逻辑没有被破坏，感染程序正常运行后，总会调到真正OEP的位置去执行正常代码。</p>
+
+<p style="text-indent:2em">看看这个壳都做了什么事情，首先是获取两个函数：loadlibrary，getProcAddress，这也验证了前面分析的为什么要修改这两个函数的偏移，有了这两个函数，去获取病毒解密需要用到的函数地址。解密的PE我dump下来就是病毒自身DesktopLayer.exe</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_69.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_70.png" alt="image"></p>
+<p style="text-indent:2em">解密完之后就是相注入浏览器一样运行这个恶意代码。我们关注的重点是在执行完恶意代码之后，跳回OEP的位置是在什么地方获取的。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_71.png" alt="image"></p>
+<p style="text-indent:2em">jmp的这个地址就是真正的OEP。而内存中的地址与文件中的地址一样，印证了我们说的文件不同的位置是文件的OEP。</p>
+<p style="text-indent:2em">拿到这个数据之后发现，此四字节数据并不是OEP偏移，通过研究发现，真正OEP的偏移量是：该恶意区段偏移-四字节数据。</p>
+<p style="text-indent:2em">为了证实OEP偏移的正确性，手动修改文件的OEP。经计算得到OEP偏移为：3D554。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_72.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_73.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_74.png" alt="image"></p>
+<p style="text-indent:2em">验证成功，到达真正的OEP地址。多测试几个文件，发现仍然能成功。</p>
+
+<p style="text-indent:2em">之后开始写专杀工具，写这个工具的思路与之前的类似。总结如下：</p>
+<p style="text-indent:2em">1.根据结构体定义找到PE的DosHeader位置，OptionHeader位置等。</p>
+<p style="text-indent:2em">2.获取SectionHeader中的name名称，也就是区段名称与.rmnet字符串做对比，判断该PE是否被感染。</p>
+<p style="text-indent:2em">3.若被感染，首先拿到区段偏移地址，用区段偏移地址+0x328，这个值是因为被感染的PE写入的值固定，所以这个值也被固定下来。取四个字节获取到的是OEP的假偏移。之后用区段地址-假偏移获取OEP的VA地址。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">总结为：OEP&#x3D;区段VA-DWORD(区段VA+0x328)</span><br></pre></td></tr></table></figure>
+<p style="text-indent:2em">4.将获取的OEP添加到VAEntrypoint中。</p>
+<p style="text-indent:2em">5.删除区段末尾的固定字节的恶意代码。</p>
+<p style="text-indent:2em">6.删除区段固定字节与名称的恶意数据。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Infection%20virus%20analysis%20report/Infection%20virus%20analysis%20report_75.png" alt="image"></p>
+<h2 id="Html"><a href="#Html" class="headerlink" title="Html"></a>Html</h2><p style="text-indent:2em">结合病毒的感染逻辑，首先判断文件后缀，符合文件的后缀读取到内存中，在内存中判断最后的标签是否为</sctrpt>,不过为了防止误杀，在判断条件中增加字符串的长度。若匹配的到，在文件流中删除最后一个<sctrpt></sctrpt>标签中内容。</p>
+
+<h2 id="可移动硬盘查杀"><a href="#可移动硬盘查杀" class="headerlink" title="可移动硬盘查杀"></a>可移动硬盘查杀</h2><p style="text-indent:2em">打开文件autorun.inf，通过字符串判断混淆字符开头和末尾，记录添加到文件的自启命令中的文件夹名称。一般一眼都能看出来。删除这些内容。</p>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p style="text-indent:2em">该病毒以任意形式传播，通过网上下载，U盘传播等途径，将恶意代码注入浏览器，让浏览器执行恶意行为。在不影响用户程序的前提下，对磁盘中的文件进行感染，使用户在执行任意程序的同时执行恶意代码，窃取用户信息，这种遍历全盘的感染文件以及所用到技术是很难被受害者发现，被感染后也是很难查杀的干净。</p>
+<p style="text-indent:2em">若感染此类型的病毒，首先要做的是断开网络，目的是为了不让程序连接上C&C接收下发的数据。之后尝试使用杀毒软件对文件进行修复，若不能修复，收集病毒样本信息，提交给专业人员进行分析。总结一句话：重要数据多备份。</p></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/03/30/%E6%84%9F%E6%9F%93%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">http://example.com/2021/03/30/%E6%84%9F%E6%9F%93%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/30/%E5%AE%8F%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="prev-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">宏病毒分析报告</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/30/%E6%8C%96%E7%9F%BF%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">挖矿病毒分析报告</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>

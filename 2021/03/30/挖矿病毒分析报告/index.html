@@ -1,0 +1,368 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>挖矿病毒分析报告 | Hexo</title><meta name="description" content="基本信息报告名称：挖矿病毒分析报告 报告更新日期：2019&#x2F;10&#x2F;14 样本发现日期：2019&#x2F;10&#x2F;10 样本格式：.exe 壳信息：无壳 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    d48ab2e921f5c725672fc"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/03/30/%E6%8C%96%E7%9F%BF%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="挖矿病毒分析报告"><meta property="og:url" content="http://example.com/2021/03/30/%E6%8C%96%E7%9F%BF%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="基本信息报告名称：挖矿病毒分析报告 报告更新日期：2019&#x2F;10&#x2F;14 样本发现日期：2019&#x2F;10&#x2F;10 样本格式：.exe 壳信息：无壳 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    d48ab2e921f5c725672fc"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2021-03-30T05:45:25.000Z"><meta property="article:modified_time" content="2021-03-30T11:02:28.841Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"Just","hours":"hours ago","day":"days ago"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 19:02:28'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">14</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">基本信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">动态行为分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%A1%8C%E4%B8%BA"><span class="toc-number">4.1.</span> <span class="toc-text">文件行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%A1%8C%E4%B8%BA"><span class="toc-number">4.2.</span> <span class="toc-text">进程行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8%E8%A1%8C%E4%B8%BA"><span class="toc-number">4.3.</span> <span class="toc-text">注册表行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%A1%8C%E4%B8%BA"><span class="toc-number">4.4.</span> <span class="toc-text">网络行为</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">详细行为分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%97%85%E6%AF%92%E2%80%9C%E5%A3%B3%E2%80%9D%E5%88%86%E6%9E%90"><span class="toc-number">5.1.</span> <span class="toc-text">病毒“壳”分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%97%85%E6%AF%92%E4%B8%BB%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90"><span class="toc-number">5.2.</span> <span class="toc-text">病毒主程序分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%92%E6%96%A5%E4%BD%93"><span class="toc-number">5.2.1.</span> <span class="toc-text">创建互斥体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%B7%E8%B4%9D%E8%87%AA%E8%BA%AB%E5%B9%B6%E5%88%9B%E5%BB%BA%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1"><span class="toc-number">5.2.2.</span> <span class="toc-text">拷贝自身并创建计划任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B-%E9%98%B2%E6%AD%A2%E7%94%B5%E8%84%91%E8%BF%9B%E5%85%A5%E7%9D%A1%E7%9C%A0"><span class="toc-number">5.2.3.</span> <span class="toc-text">创建线程-防止电脑进入睡眠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%B7%E8%B4%9D%E7%9F%BF%E6%9C%BA%E7%A8%8B%E5%BA%8F"><span class="toc-number">5.2.4.</span> <span class="toc-text">拷贝矿机程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E8%87%AA%E8%BA%AB%E8%BF%9B%E7%A8%8B%E5%B9%B6%E6%B3%A8%E5%85%A5%E7%9F%BF%E6%9C%BA"><span class="toc-number">5.2.5.</span> <span class="toc-text">启自身进程并注入矿机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE-1"><span class="toc-number">5.2.5.1.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E4%B8%BB%E6%9C%BA%E7%B9%81%E5%BF%99%E7%8A%B6%E6%80%81"><span class="toc-number">5.2.5.2.</span> <span class="toc-text">检测主机繁忙状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86%E7%9F%BF%E6%9C%BA%E5%8F%82%E6%95%B0"><span class="toc-number">5.2.5.3.</span> <span class="toc-text">解密矿机参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%87%AA%E8%BA%AB%E8%BF%9B%E7%A8%8B%E5%B9%B6%E6%B3%A8%E5%85%A5"><span class="toc-number">5.2.5.4.</span> <span class="toc-text">创建自身进程并注入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%82%80%E5%84%A1%E8%BF%9B%E7%A8%8B%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">5.2.5.4.1.</span> <span class="toc-text">傀儡进程实现原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%8C%82%E8%B5%B7%E8%BF%9B%E7%A8%8B"><span class="toc-number">5.2.5.4.2.</span> <span class="toc-text">创建挂起进程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%BA%BF%E7%A8%8B%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">5.2.5.4.3.</span> <span class="toc-text">获取线程上下文</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E6%98%AF%E5%90%A6%E5%8D%B8%E8%BD%BD%E6%98%A0%E5%B0%84"><span class="toc-number">5.2.5.4.4.</span> <span class="toc-text">检测是否卸载映射</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%B3%E8%AF%B7%E5%86%85%E5%AD%98%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">5.2.5.4.5.</span> <span class="toc-text">申请内存写入数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9ImageBase%E5%92%8COEP"><span class="toc-number">5.2.5.4.6.</span> <span class="toc-text">修改ImageBase和OEP</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E7%BA%BF%E7%A8%8B"><span class="toc-number">5.2.5.4.7.</span> <span class="toc-text">恢复线程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E4%B8%BB%E6%9C%BA%E7%8A%B6%E6%80%81%E6%89%A7%E8%A1%8C%E6%8C%96%E7%9F%BF"><span class="toc-number">5.2.5.5.</span> <span class="toc-text">检测主机状态执行挖矿</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">5.2.5.6.</span> <span class="toc-text">检测任务管理器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">5.3.</span> <span class="toc-text">结论</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E6%BA%AF%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">样本溯源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8A%E6%94%BE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-number">6.1.</span> <span class="toc-text">释放文件信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-amp-C"><span class="toc-number">6.2.</span> <span class="toc-text">C&amp;C</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8EIP%E7%9B%B8%E5%85%B3%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">6.3.</span> <span class="toc-text">与IP相关的文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E6%9D%80%E6%96%B9%E6%A1%88"><span class="toc-number">7.</span> <span class="toc-text">查杀方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">挖矿病毒分析报告</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-30T05:45:25.000Z" title="Created 2021-03-30 13:45:25">2021-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-30T11:02:28.841Z" title="Updated 2021-03-30 19:02:28">2021-03-30</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>报告名称：挖矿病毒分析报告</p>
+<p>报告更新日期：2019/10/14</p>
+<p>样本发现日期：2019/10/10</p>
+<p>样本格式：.exe</p>
+<p>壳信息：无壳</p>
+<p>可能受到威胁的系统：Windows系列</p>
+<p>分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑</p>
+
+<table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileType</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>d48ab2e921f5c725672fce16135d1f09</td>
+<td>挖矿病毒</td>
+<td>468480 bytes</td>
+<td>D48AB2E921F5C725672FCE16135D1F09</td>
+<td>7F5D1649BA49C20FAFFCDD140A1E3AE219B6F086</td>
+</tr>
+</tbody></table>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p style="text-indent:2em">该病毒的类型是挖矿病毒，挖矿病毒的特点是占用主机资源较多且不容易被识别，通过主机资源挖取虚拟货币。本病毒是挖矿病毒的一种，其实现方式是病毒启动自身进程，将自身进程注入矿机，把矿机所用的用户名密码等参数传递过去实现挖矿，并绕过任务管理器执行等行为。</p>
+
+
+<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_1.png" alt="image"></p>
+<h1 id="动态行为分析"><a href="#动态行为分析" class="headerlink" title="动态行为分析"></a>动态行为分析</h1><h2 id="文件行为"><a href="#文件行为" class="headerlink" title="文件行为"></a>文件行为</h2><ul>
+<li>复制自身到：C:\Users\john\AppData\Roaming\svchostx64.exe<h2 id="进程行为"><a href="#进程行为" class="headerlink" title="进程行为"></a>进程行为</h2></li>
+<li>开启计划任务进程schtasks.exe，设置计划任务，传入命令行为：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32\schtasks.exe&quot; &#x2F;SC MINUTE &#x2F;MO 1 &#x2F;F &#x2F;Create &#x2F;TN Adasdsadas3id &#x2F;tr &quot;\&quot;C:\Users\john\AppData\Roaming\svchostx64.exe\&quot;</span><br></pre></td></tr></table></figure></li>
+<li>启动自身进程，传入命令行为：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-o monerohash.com:3333 -u 4BrL51JCc9NGQ71kWhnYoDRffsDZy7m1HUU7MRU4nUMXAHNFBEJhkTZV9HdaL4gfuNBxLPc3BeMkLGaPbF5vWtANQni58KYZqH43YSDeqY -p x -k --donate-level&#x3D;1 -t 3</span><br></pre></td></tr></table></figure></li>
+<li>系统程序taskeng.exe循环启用病毒释放的程序 svchostx64.exe。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_2.png" alt="image"></p>
+<h2 id="注册表行为"><a href="#注册表行为" class="headerlink" title="注册表行为"></a>注册表行为</h2><ul>
+<li>写入注册表，主要是一些浏览器的自动检测和代理之类的注册表项。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_3.png" alt="image"></p>
+<h2 id="网络行为"><a href="#网络行为" class="headerlink" title="网络行为"></a>网络行为</h2><ul>
+<li>107.191.99.221:3333</li>
+<li>107.191.99.95:3333<h1 id="详细行为分析"><a href="#详细行为分析" class="headerlink" title="详细行为分析"></a>详细行为分析</h1><h2 id="病毒“壳”分析"><a href="#病毒“壳”分析" class="headerlink" title="病毒“壳”分析"></a>病毒“壳”分析</h2><p style="text-indent:2em">拿到病毒样本之后，首先进行查壳，发现病毒是无壳的，通过拖入IDA的静态分析发现，该病毒是存在壳的，首先是一大堆的代码混淆，之后是申请内存放入数据，并解密数据执行。这一系列操作与壳相似，但我认为这是病毒作者手写的类似于壳原理的混淆代码，来增加分析人员的分析难度。具体如下：</p>
+<p style="text-indent:2em">查壳发现无壳。</p>
+
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_4.png" alt="image"></p>
+<p style="text-indent:2em">ida静态分析的时候，发现许多功能性的函数所传入的句柄都是0，所以这些代码并无实际意义作用，继续向下寻找线索。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_5.png" alt="image"></p>
+<p style="text-indent:2em">之后分析发现程序在申请堆空间，此时会感觉到壳的味道，由于第一次见到这种混淆加壳的程序，没有去直接OD脱壳，先将流程走一遍。可以先猜测一下之后程序会干嘛，根据壳的原理，接下来要做的是给内存放入数据，再解密或解压缩该数据。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_6.png" alt="image"></p>
+<p style="text-indent:2em">果然发现有存放数据的操作，将这段数据反汇编看下是否为可执行逻辑的代码，发现并不是，此时还剩解密与调用。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_7.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_8.png" alt="image"></p>
+<p style="text-indent:2em">修改内存属性，解密数据，解密数据逻辑是将数据异或一个数获取解密数据。之后转向执行恶意数据。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_9.png" alt="image"></p>
+<p style="text-indent:2em">把解密出来的恶意数据dump下来，之后分析该数据。</p>
+
+<h2 id="病毒主程序分析"><a href="#病毒主程序分析" class="headerlink" title="病毒主程序分析"></a>病毒主程序分析</h2><h3 id="创建互斥体"><a href="#创建互斥体" class="headerlink" title="创建互斥体"></a>创建互斥体</h3><p style="text-indent:2em">病毒最开始检查并创建了互斥体，互斥体名称为：NIHILMsINERaassdaa，在分析创建互斥体的时候发现病毒获取函数地址的方法，在后面的病毒逻辑中同样用此方法获取需要用到的函数地址。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_10.png" alt="image"></p>
+<p style="text-indent:2em">首先传入kernel32.dll字符串和函数名称字符串，再通过PEB获取模块基址，获取函数loadlibrary地址，之后再加载自己需要用到的函数地址。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_11.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_12.png" alt="image"></p>
+<p style="text-indent:2em">拿到要用到的函数地址，再传入参数执行这个函数，返回函数的执行结果，在病毒后面的逻辑中都是这么动态加载以及调用所用的敏感函数。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_13.png" alt="image"></p>
+<h3 id="拷贝自身并创建计划任务"><a href="#拷贝自身并创建计划任务" class="headerlink" title="拷贝自身并创建计划任务"></a>拷贝自身并创建计划任务</h3><p style="text-indent:2em">拷贝自身处首先申请了内存，用来存放拼接好的路径，这个路径和程序名称是在代码中写死的，并判断执行程序是否为此路径下的程序，若是则不执行拷贝与计划任务，若不是则执行拷贝并添加计划任务。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_14.png" alt="image"></p>
+<p style="text-indent:2em">创建计划任务并传入的参数。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">参数：open schtasks &quot;&#x2F;SC MINUTE &#x2F;MO 1 &#x2F;F &#x2F;Create &#x2F;TN Adasdsadasid &#x2F;tr &quot;&quot;C:\Users\ john\AppData\Roaming\suchostx6.exe\ </span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_15.png" alt="image"></p>
+<h3 id="创建线程-防止电脑进入睡眠"><a href="#创建线程-防止电脑进入睡眠" class="headerlink" title="创建线程-防止电脑进入睡眠"></a>创建线程-防止电脑进入睡眠</h3><p style="text-indent:2em">获取创建线程函数，并开启线程作用为每隔1秒执行函数SetThreadExecutionState，防止主机进入睡眠模式。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_16.png" alt="image"></p>
+<h3 id="拷贝矿机程序"><a href="#拷贝矿机程序" class="headerlink" title="拷贝矿机程序"></a>拷贝矿机程序</h3><p style="text-indent:2em">之后病毒做的是拷贝矿机程序，这个程序的PE数据被藏在一个区段中，区段名称为：.plato，通过分析其伪代码可知，程序首先获取自己的dos头，然后根据PE结构遍历区段名称并与恶意区段名称做对比，若匹配到了将数据拷贝到堆内存中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_17.png" alt="image"></p>
+<p style="text-indent:2em">验证一下程序的恶意区段中的数据是否存在着一个PE文件数据。通过查看数据发现确实有一个PE存在。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_18.png" alt="image"></p>
+<p style="text-indent:2em">将该PE dump下来查看源文件名可知是xmrig，通过网上搜索是一款xmrig门罗币挖矿程序。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_19.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_20.png" alt="image"></p>
+<h3 id="启自身进程并注入矿机"><a href="#启自身进程并注入矿机" class="headerlink" title="启自身进程并注入矿机"></a>启自身进程并注入矿机</h3><h4 id="流程图-1"><a href="#流程图-1" class="headerlink" title="流程图"></a>流程图</h4><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_21.png" alt="image"></p>
+<h4 id="检测主机繁忙状态"><a href="#检测主机繁忙状态" class="headerlink" title="检测主机繁忙状态"></a>检测主机繁忙状态</h4><p style="text-indent:2em">首先检测的是用户的输入，从而获取当前主机是否在被用户所使用。使用不适用返回两个不同的值。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_22.png" alt="image"></p>
+<p style="text-indent:2em">之后调用函数CallNtPowerInformation传递参数检测当前主机的CPU使用率是怎样，若大于固定值，则返回值，若小于返回不同的值。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_23.png" alt="image"></p>
+<p style="text-indent:2em">通过获取不同的值，生成的矿机参数不同，但其实本病毒逻辑中生成的参数没有做任何变化。</p>
+
+<h4 id="解密矿机参数"><a href="#解密矿机参数" class="headerlink" title="解密矿机参数"></a>解密矿机参数</h4><p style="text-indent:2em">病毒作者拿到矿机之后，怎么运行它呢？在前面抓行为的过程中，我并没有发现病毒调用了这个进程，没有发现此进程的任何信息。</p>
+<p style="text-indent:2em">继续进行分析发现，在代码逻辑中程序从全局变量数据中解密出一些数据，通过观察这些数据发现，与动态分析抓到的行为中传递的参数一致。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">解密参数：-o monerohash.com:3333 -u 4BrL51JCc9NGQ71kWhnYoDRffsDZy7m1HUU7MRU4nUMXAHNFBEJhkTZV9HdaL4gfuNBxLPc3BeMkLGaPbF5vWtANQni58KYZqH43YSDeqY -p x -k --donate-level&#x3D;1 -t 3</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_24.png" alt="image"></p>
+<h4 id="创建自身进程并注入"><a href="#创建自身进程并注入" class="headerlink" title="创建自身进程并注入"></a>创建自身进程并注入</h4><h5 id="傀儡进程实现原理"><a href="#傀儡进程实现原理" class="headerlink" title="傀儡进程实现原理"></a>傀儡进程实现原理</h5><p style="text-indent:2em">通过分析可知该行为是典型的创建傀儡进程并注入代码的行为。为更好的分析，在网上找到傀儡进程的基本实现方法与步骤，如下：</p>
+<p style="text-indent:2em">1.通过CreateProcess创建进程，传入参数CREATE_SUSPENDED使进程挂起。</p>
+<p style="text-indent:2em">2.通过NtUnmapViewOfSection清空新进程的内存数据</p>
+<p style="text-indent:2em">3.通过VirtualAllocEx申请新的内存</p>
+<p style="text-indent:2em">4.通过WriteProcessMemory向内存写入恶意数据</p>
+<p style="text-indent:2em">5.通过SetThreadContext设置入口点</p>
+<p style="text-indent:2em">6.通过ResumeThread唤醒进程，执行恶意数据</p>
+
+<h5 id="创建挂起进程"><a href="#创建挂起进程" class="headerlink" title="创建挂起进程"></a>创建挂起进程</h5><p style="text-indent:2em">首先创建了挂起状态的进程，进程的路径为自身进程路径，传入参数地址，并将该进程设置为挂起状态。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_25.png" alt="image"></p>
+<h5 id="获取线程上下文"><a href="#获取线程上下文" class="headerlink" title="获取线程上下文"></a>获取线程上下文</h5><p style="text-indent:2em">之后获取线程上下文，线程上下文就是程序被创建的时候，一些程序的基本信息被保存到内存中，比如进程的OEP，PEB所在的地址等信息。此处获取线程上下文的主要目的是从PEB表中获取傀儡进程加载到内存的基址。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_26.png" alt="image"></p>
+<p style="text-indent:2em">分析如何获取到进程的基址，首先获取到的线程上下文的EBX中存放的PEB表的地址。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_27.png" alt="image"></p>
+<h5 id="检测是否卸载映射"><a href="#检测是否卸载映射" class="headerlink" title="检测是否卸载映射"></a>检测是否卸载映射</h5><p style="text-indent:2em">拿到加载的模块基址之后，与矿机的imageBase作对比，若地址冲突则卸载傀儡进程中的模块。矿机的imageBase为400000，也就是对比基址400000.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_28.png" alt="image"></p>
+<h5 id="申请内存写入数据"><a href="#申请内存写入数据" class="headerlink" title="申请内存写入数据"></a>申请内存写入数据</h5><p style="text-indent:2em">之后调用函数VirtualAllocEx给远进程申请内存空间，在此空间中写入恶意数据。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_29.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_30.png" alt="image"></p>
+<h5 id="修改ImageBase和OEP"><a href="#修改ImageBase和OEP" class="headerlink" title="修改ImageBase和OEP"></a>修改ImageBase和OEP</h5><p style="text-indent:2em">之后在傀儡进程的PEB中修改了文件的ImageBase，在获取到的线程上下文内存中修改了文件的OEP。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_31.png" alt="image"></p>
+<p style="text-indent:2em">修改PEB中的ImageBase。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_32.png" alt="image"></p>
+<p style="text-indent:2em">修改傀儡进程的OEP。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_33.png" alt="image"></p>
+<h5 id="恢复线程"><a href="#恢复线程" class="headerlink" title="恢复线程"></a>恢复线程</h5><p style="text-indent:2em">之后是将线程上下文重新设置进去，唤醒线程执行。与传统的创建傀儡进程的步骤相似。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_34.png" alt="image"></p>
+<h4 id="检测主机状态执行挖矿"><a href="#检测主机状态执行挖矿" class="headerlink" title="检测主机状态执行挖矿"></a>检测主机状态执行挖矿</h4><p style="text-indent:2em">病毒完成注入过程之后就想尽办法来提高病毒的存活时间，前面说到病毒代码检测主机的状态从而生成一个标志，若发现此标志被改变也就是主机状态改变，结束当前进程，重新执行注入矿机传递参数操作。若主机状态没发生改变，就尝试打开矿机进程检测矿机是否在正常运行，若正常则继续执行代码，若打不开，则重新注入并执行。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_35.png" alt="image"></p>
+<h4 id="检测任务管理器"><a href="#检测任务管理器" class="headerlink" title="检测任务管理器"></a>检测任务管理器</h4><p style="text-indent:2em">病毒对当前环境中的进程进行遍历并找进程名称为：Taskmgr.exe  任务管理器进程，并写入代码逻辑为出现任务管理器进程，就退出挖矿程序，并sleep，直到任务管理器程序退出，继续执行注入逻辑启用进程。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_36.png" alt="image"></p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p style="text-indent:2em">通过详细分析得出病毒执行的结论，病毒的主要工作是将开源的矿机程序注入到创建的进程当中，通过判断系统资源和任务管理器等条件，循环执行矿机程序从而取得收益。</p>
+<p style="text-indent:2em">此时做一个测试，在dump下来的矿机程序中传入参数并执行，看会不会有同样的效果。可以发现直接运行矿机程序并传入病毒跑出来的参数，也可以执行挖矿。</p>
+<p style="text-indent:2em">根据在github上找到的矿机源码获取命令行的意义如下：</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">url：-o monerohash.com:3333</span><br><span class="line">username：4BrL51JCc9NGQ71kWhnYoDRffsDZy7m1HUU7MRU4nUMXAHNFBEJhkTZV9HdaL4gfuNBxLPc3BeMkLGaPbF5vWtANQni58KYZqH43YSDeqY</span><br><span class="line">password：-p x</span><br><span class="line">长连接：-k</span><br><span class="line">等级：--donate-level&#x3D;1</span><br><span class="line">线程数：-t 3</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Mining%20virus%20analysis%20report/Mining%20virus%20analysis%20report_37.png" alt="image"></p>
+<h1 id="样本溯源"><a href="#样本溯源" class="headerlink" title="样本溯源"></a>样本溯源</h1><h2 id="释放文件信息"><a href="#释放文件信息" class="headerlink" title="释放文件信息"></a>释放文件信息</h2><table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C:\Users\john\AppData\Roaming\svchostx64.exe</td>
+<td>468480 bytes</td>
+<td>D48AB2E921F5C725672FCE16135D1F09</td>
+<td>7F5D1649BA49C20FAFFCDD140A1E3AE219B6F086</td>
+</tr>
+<tr>
+<td>xmrig.exe</td>
+<td>283691 bytes</td>
+<td>8FAEEED649D41F1D7EA23B2880FBA6AD</td>
+<td>A6E9813F0B91F057030739DAE7E7C3A8B651FBC2</td>
+</tr>
+</tbody></table>
+<h2 id="C-amp-C"><a href="#C-amp-C" class="headerlink" title="C&amp;C"></a>C&amp;C</h2><table>
+<thead>
+<tr>
+<th>ip</th>
+<th>端口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>107.191.99.221</td>
+<td>3333</td>
+</tr>
+<tr>
+<td>107.191.99.95</td>
+<td>3333</td>
+</tr>
+</tbody></table>
+<h2 id="与IP相关的文件"><a href="#与IP相关的文件" class="headerlink" title="与IP相关的文件"></a>与IP相关的文件</h2><table>
+<thead>
+<tr>
+<th>FileType</th>
+<th>FileName</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Win32 EXE</td>
+<td>service.exe</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>m.exe</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>11111019191015161813.EXE</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>t26.exe</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>59ed37d4c6b51fcafe09631746c1f8a3.virus</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>xmrig.exe</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>Svchost.exe</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>AA.exe</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>c30b2ace736e8d74e01520a8b40206536b04996d82c034d3802e01995efcef73.exe.bin</td>
+</tr>
+<tr>
+<td>Win32 EXE</td>
+<td>WK2017</td>
+</tr>
+</tbody></table>
+<h1 id="查杀方案"><a href="#查杀方案" class="headerlink" title="查杀方案"></a>查杀方案</h1><ul>
+<li>首先在任务管理器或者ProcessExplorer上找到程序，并结束该程序，结束进程之后删除该病毒文件。</li>
+<li>win+r打开运行界面，输入taskschd.msc打开计划任务界面，删除计划任务名称为：Adasdsadasid 的计划任务项。</li>
+<li>同样打开任务管理器或ProcessExplorer找名称为：svchostx64.exe 的程序，终止程序。</li>
+<li>文档路径输入 %APPDATA%，找到该目录下的svchostx64.exe程序并删除。</li>
+<li>后三步也可创建文本文件修改后缀为.bat，将以下代码粘贴并运行。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo off</span><br><span class="line">schtasks &#x2F;Delete &#x2F;TN Adasdsadas3id &#x2F;F</span><br><span class="line">taskkill &#x2F;F &#x2F;IM svchostx64.exe</span><br><span class="line">set strPath&#x3D;%APPDATA%%\svchostx64.exe</span><br><span class="line">del &#x2F;f &#x2F;s &#x2F;q %strPath%</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p style="text-indent:2em">挖矿程序被恶意程序加载之后很难被发现，特别是本样本中创建傀儡进程来注入恶意程序数据，进而执行该恶意程序，对主机的一些信息进行检测，从而防止用户发现挖矿程序的存在。一旦发现主机异常卡顿或CPU占用过高，应使用工具查看当前进程是否有一个进程多次开启的状况，从而发现其挖矿程序。</p>
+<p style="text-indent:2em">中招后立即断开网络，若要手动清除先查看计划任务和开机启动项，再对恶意程序进行清理，或断开网络采集样本信息交由专业分析人员。</p></li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/03/30/%E6%8C%96%E7%9F%BF%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">http://example.com/2021/03/30/%E6%8C%96%E7%9F%BF%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2021/03/30/%E6%84%9F%E6%9F%93%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="prev-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">感染病毒分析报告</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>

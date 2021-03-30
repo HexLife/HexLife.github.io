@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AES + RSA 勒索病毒总结 | Hexo</title><meta name="description" content="AES + RSA 勒索病毒简介本分享的目的在于如何快速对AES + RSA类型的勒索病毒进行分析并写出勒索病毒解密工具，文中对专业算法和函数运用均为个人理解，若要了解的更深入，可自行百度或谷歌。 本文将介绍在编程勒索工具时遇到的一些坑和类库的使用以及编程思路的描述。  加密算法介绍AES：对称加密算法，什么是对称加密算法，就是加密和解密使用同一个密钥，该算法的优点在于具有多种模式可供选择，具体多"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/03/30/AES%20+%20RSA%20%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="AES + RSA 勒索病毒总结"><meta property="og:url" content="http://example.com/2021/03/30/AES%20+%20RSA%20%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="AES + RSA 勒索病毒简介本分享的目的在于如何快速对AES + RSA类型的勒索病毒进行分析并写出勒索病毒解密工具，文中对专业算法和函数运用均为个人理解，若要了解的更深入，可自行百度或谷歌。 本文将介绍在编程勒索工具时遇到的一些坑和类库的使用以及编程思路的描述。  加密算法介绍AES：对称加密算法，什么是对称加密算法，就是加密和解密使用同一个密钥，该算法的优点在于具有多种模式可供选择，具体多"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2021-03-30T05:45:25.000Z"><meta property="article:modified_time" content="2021-03-30T11:06:57.859Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"Just","hours":"hours ago","day":"days ago"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 19:06:57'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">14</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AES-RSA-%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92"><span class="toc-number">1.</span> <span class="toc-text">AES + RSA 勒索病毒</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.2.</span> <span class="toc-text">加密算法介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AES%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">AES：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RSA%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">RSA：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RSA-%E5%AF%86%E9%92%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.3.</span> <span class="toc-text">RSA 密钥格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PEM-%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">PEM 格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#XML-%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">XML 格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DER-%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">DER 格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RSA-%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.4.</span> <span class="toc-text">RSA 填充模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA-PKCS1-PADDING"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">RSA_PKCS1_PADDING</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA-PKCS1-OAEP-PADDING"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">RSA_PKCS1_OAEP_PADDING</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RSA-NO-PADDING"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">RSA_NO_PADDING</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AES-%E8%A7%A3%E5%AF%86-EVP-%E6%A1%86%E6%9E%B6"><span class="toc-number">1.2.5.</span> <span class="toc-text">AES 解密(EVP 框架)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AES-%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.6.</span> <span class="toc-text">AES 填充方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.2.7.</span> <span class="toc-text">测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">AES + RSA 勒索病毒总结</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-30T05:45:25.000Z" title="Created 2021-03-30 13:45:25">2021-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-30T11:06:57.859Z" title="Updated 2021-03-30 19:06:57">2021-03-30</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="AES-RSA-勒索病毒"><a href="#AES-RSA-勒索病毒" class="headerlink" title="AES + RSA 勒索病毒"></a>AES + RSA 勒索病毒</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p style="text-indent:2em">本分享的目的在于如何快速对AES + RSA类型的勒索病毒进行分析并写出勒索病毒解密工具，文中对专业算法和函数运用均为个人理解，若要了解的更深入，可自行百度或谷歌。</p>
+<p style="text-indent:2em">本文将介绍在编程勒索工具时遇到的一些坑和类库的使用以及编程思路的描述。</p>
+
+<h2 id="加密算法介绍"><a href="#加密算法介绍" class="headerlink" title="加密算法介绍"></a>加密算法介绍</h2><h3 id="AES："><a href="#AES：" class="headerlink" title="AES："></a>AES：</h3><p style="text-indent:2em">对称加密算法，什么是对称加密算法，就是加密和解密使用同一个密钥，该算法的优点在于具有多种模式可供选择，具体多种模式之后介绍。还有一个优点就是加解密速度快，效率高。还有一点需要说明，虽说AES是对称加密算法，但是在没有密钥的情况下，想要解密还是非常非常困难，拿AES-256来说单纯的暴力破解在时间和财力上几乎是不可能。</p>
+
+<h3 id="RSA："><a href="#RSA：" class="headerlink" title="RSA："></a>RSA：</h3><p style="text-indent:2em">非对称加密算法，什么是非对称加密算法，就是加密与解密时使用的是不同的密钥，公钥加密，私钥才能解密。很显然RSA加密算法看起来更加安全，那都用RSA算法得了，为什么还要用AES呢，原因在于RSA加密速度慢，效率低。</p>
+
+<hr>
+<p style="text-indent:2em">其实说到这里就把该类型的勒索病毒摸索清楚了，假设你是勒索病毒作者，勒索病毒要加密大量文件数据，AES加密效率高，所以选择AES加密算法加密文件数据。既然是勒索，在加密的同时，数据还是需要被解密的，但是AES是对称加密算法，密钥藏在哪里都会被发现，所以就出现了非对称加密算法RSA在勒索中的作用，RSA将AES的密钥加密起来，保存下来，就算你知道保存的位置，也无能为力，因为被非对称加密了。</p>
+
+<hr>
+<p style="text-indent:2em">按照这个思路倒推一下，你想解密文件内容，文件是被AES加密的，你需要拿到AES密钥，该密钥会被存到任何位置，这个位置是需要你去分析或是查分析报告的方式获取，知道密钥位置之后，你发现这个密钥是被RSA加密了。你要解密这个密钥，这个密钥是RSA加密的，怎么解密，你需要知道加密该AES密钥的RSA私钥，无需知道公钥，解密与公钥无关。</p>
+<p style="text-indent:2em">此时要去查询很多资料去获取这个RSA私钥信息，若没有此私钥，就认定是不可解密的(根据缩小随机数种子范围爆破AES密钥，此方法不适用所有勒索病毒，本文不提及)。</p>
+
+<hr>
+<h3 id="RSA-密钥格式"><a href="#RSA-密钥格式" class="headerlink" title="RSA 密钥格式"></a>RSA 密钥格式</h3><p style="text-indent:2em">此时拿到了RSA密钥，可以对AES的密钥进行解密了，但是别慌，此处坑也来了，在openssl类库当中，对RSA密钥的格式也是有分类的，并且每种密钥的格式读取的函数不同，文件读取与内存读取的函数不同。</p>
+
+<h4 id="PEM-格式"><a href="#PEM-格式" class="headerlink" title="PEM 格式"></a>PEM 格式</h4><p style="text-indent:2em">PEM格式我认为是最普遍而且在openssl中是最经常用的格式，其中的密钥真实数据是从base64转换过来的，不管是公钥还是私钥，在密钥的开头和结尾，都会有对应标签，举例如下：</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">RSA-PEM 格式公钥例子：</span><br><span class="line"></span><br><span class="line">-----BEGIN PUBLIC KEY-----</span><br><span class="line">MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCh5Nk2GLiyQFMIU+h3OEA4UeFb</span><br><span class="line">u3dCH5sjd&#x2F;sLTxxvwjXq7JLqJbt2rCIdzpAXOi4jL+FRGQnHaxUlHUBZsojnCcHv</span><br><span class="line">hrz2knV6rXNogt0emL7f7ZMRo8IsQGV8mlKIC9xLnlOQQdRNUssmrROrCG99wpTR</span><br><span class="line">RNZjOmLvkcoXdeuaCQIDAQAB</span><br><span class="line">-----END PUBLIC KEY-----</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">RSA-PEM 格式私钥例子：</span><br><span class="line"></span><br><span class="line">-----BEGIN RSA PRIVATE KEY-----</span><br><span class="line">MIICWwIBAAKBgQCh5Nk2GLiyQFMIU+h3OEA4UeFbu3dCH5sjd&#x2F;sLTxxvwjXq7JLq</span><br><span class="line">Jbt2rCIdzpAXOi4jL+FRGQnHaxUlHUBZsojnCcHvhrz2knV6rXNogt0emL7f7ZMR</span><br><span class="line">o8IsQGV8mlKIC9xLnlOQQdRNUssmrROrCG99wpTRRNZjOmLvkcoXdeuaCQIDAQAB</span><br><span class="line">AoGAUTcJ1H6QYTOts9bMHsrERLymzir8R9qtLBzrfp&#x2F;gRxxpigHGLdph8cWmk8dl</span><br><span class="line">N5HDRXmmkdV6t2S7xdOnzZen31lcWe0bIzg0SrFiUEOtg3Lwxzw2Pz0dKwg4ZUoo</span><br><span class="line">GKpcIU6kEpbC2UkjBV4+2E6P1DXuhdgTyHoUA3ycxOdjCAUCQQCyjTzGPXFoHq5T</span><br><span class="line">miJyVd4VXNyCXGU0ZuQayt6nPN8Gd5CcEb2S4kggzPXQcd90FO0kHfZV6+PGTrc2</span><br><span class="line">ZUuz5uwPAkEA6B3lmEmiZsJS&#x2F;decLzWR0T1CXaFGwTjBQbHXJ0RziAfkuy+VwSmh</span><br><span class="line">vrW&#x2F;ipk5xbREr5rKx3jVI2PzVOvLw7NgZwJAbUsvDFnH9WfyZZJPy5TsID97awCL</span><br><span class="line">oovozM2phM0p55eAmUfyttp0ND&#x2F;BqBpMIY49qoH8q5N9FYJRe6Z9tF2B2QJAQBEo</span><br><span class="line">cw039xcB4zCk2l713YQEEmXWarSomuJkWWFKZiyPlJ8Ava0pCMOPl8jNKmWkY7fc</span><br><span class="line">6ovOgJMw8aqXtm+HVwJAerJeUEDez2djG5pIF6aCV0bP3fhQUq8OQCgGF5Qzo9Cn</span><br><span class="line">qvYreGpYKPJGVixAsEPCiLzJRhy1XfFona6VRXIIxw&#x3D;&#x3D;</span><br><span class="line">-----END RSA PRIVATE KEY-----</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p style="text-indent:2em">提供一个方法，该方法引用了openssl的类库，参数1：私钥-PEM格式，参数2：被加密字符串。需要注意的是，这个接口所读取的密钥文件为内存读取，也就是将PEM格式密钥当做char*传递到内存，还有另外一种方法，读取PEM密钥文件，只需将下面注释的方法替换即可。返回值为解密出来的明文。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">char *RSA_decrypt(char *key, char *str)</span><br><span class="line">&#123;</span><br><span class="line">	RSA *rsa &#x3D; NULL;</span><br><span class="line">	char *de &#x3D; NULL;</span><br><span class="line">	int rsa_len &#x3D; 0;</span><br><span class="line">	BIO *keybio;</span><br><span class="line">	keybio &#x3D; BIO_new_mem_buf(key, -1);</span><br><span class="line">	if (keybio &#x3D;&#x3D; NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;Error:fail to create Key BIO\n&quot;);</span><br><span class="line">		return NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	rsa &#x3D; PEM_read_bio_RSAPrivateKey(keybio, &amp;rsa, NULL, NULL); &#x2F;&#x2F; fp &#x3D; fopen(prikey_path, &quot;r+&quot;)</span><br><span class="line">	                                                           &#x2F;&#x2F;  rsa &#x3D; PEM_read_RSAPrivateKey(fp, NULL, NULL, NULL)</span><br><span class="line">	if (rsa &#x3D;&#x3D; NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;Error:fail to create RSA\n&quot;);</span><br><span class="line">		return NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	rsa_len &#x3D; RSA_size(rsa);</span><br><span class="line">	de &#x3D; (char *)malloc(rsa_len + 1);</span><br><span class="line">	memset(de, 0, rsa_len + 1);</span><br><span class="line">	if (RSA_private_decrypt(rsa_len, (unsigned char *)str, (unsigned char*)de, rsa, RSA_PKCS1_OAEP_PADDING) &lt; 0) &#123;</span><br><span class="line">		return NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	RSA_free(rsa);</span><br><span class="line">	return de;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p style="text-indent:2em">若是第一次编码此处可能会出现一些错误，下面给出几种排错的方法，首先是下断点调试，查看RSA与BIO类型定义的变量是否有值(内存窗口给的是地址)，若没值则大概率是读取密钥没读取到。原因有2个，密钥格式不是PEM和密钥不是有效的密钥。</p>
+<p style="text-indent:2em">这里给出一个在线转换的网站：<a href = "https://superdry.apphb.com/tools/online-rsa-key-converter">PEM转XML</a>， 从而验证密钥是否为有效的密钥，若为有效的密钥，则可以在线解析为xml格式的密钥，若不是有效的密钥，则转换失败。xml格式的密钥之后介绍。</p>
+<p style="text-indent:2em">还可将openssl解析的密钥输出出来，用到的函数是：RSA_print_fp(stdout, rsa, 0);参数2为读取到的RSA密钥。</p>
+
+<h4 id="XML-格式"><a href="#XML-格式" class="headerlink" title="XML 格式"></a>XML 格式</h4><p style="text-indent:2em">XML格式的密钥，该密钥多用于C#中，在C#中有专门的API去读取解析此格式的密钥，在openssl中本人还没发现解析此格式所用到的函数，因为可以在线转换，<a href = "https://superdry.apphb.com/tools/online-rsa-key-converter">PEM转XML</a>，所以还是转换过来使用比较好。XML格式类型的密钥例子如下：</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;RSAKeyValue&gt;&lt;Modulus&gt;oeTZNhi4skBTCFPodzhAOFHhW7t3Qh+bI3f7C08cb8I16uyS6iW7dqwiHc6QFzouIy&#x2F;hURkJx2sVJR1AWbKI5wnB74a89pJ1eq1zaILdHpi+3+2TEaPCLEBlfJpSiAvcS55TkEHUTVLLJq0TqwhvfcKU0UTWYzpi75HKF3Xrmgk&#x3D;&lt;&#x2F;Modulus&gt;&lt;Exponent&gt;AQAB&lt;&#x2F;Exponent&gt;&lt;P&gt;so08xj1xaB6uU5oiclXeFVzcglxlNGbkGsrepzzfBneQnBG9kuJIIMz10HHfdBTtJB32Vevjxk63NmVLs+bsDw&#x3D;&#x3D;&lt;&#x2F;P&gt;&lt;Q&gt;6B3lmEmiZsJS&#x2F;decLzWR0T1CXaFGwTjBQbHXJ0RziAfkuy+VwSmhvrW&#x2F;ipk5xbREr5rKx3jVI2PzVOvLw7NgZw&#x3D;&#x3D;&lt;&#x2F;Q&gt;&lt;DP&gt;bUsvDFnH9WfyZZJPy5TsID97awCLoovozM2phM0p55eAmUfyttp0ND&#x2F;BqBpMIY49qoH8q5N9FYJRe6Z9tF2B2Q&#x3D;&#x3D;&lt;&#x2F;DP&gt;&lt;DQ&gt;QBEocw039xcB4zCk2l713YQEEmXWarSomuJkWWFKZiyPlJ8Ava0pCMOPl8jNKmWkY7fc6ovOgJMw8aqXtm+HVw&#x3D;&#x3D;&lt;&#x2F;DQ&gt;&lt;InverseQ&gt;erJeUEDez2djG5pIF6aCV0bP3fhQUq8OQCgGF5Qzo9CnqvYreGpYKPJGVixAsEPCiLzJRhy1XfFona6VRXIIxw&#x3D;&#x3D;&lt;&#x2F;InverseQ&gt;&lt;D&gt;UTcJ1H6QYTOts9bMHsrERLymzir8R9qtLBzrfp&#x2F;gRxxpigHGLdph8cWmk8dlN5HDRXmmkdV6t2S7xdOnzZen31lcWe0bIzg0SrFiUEOtg3Lwxzw2Pz0dKwg4ZUooGKpcIU6kEpbC2UkjBV4+2E6P1DXuhdgTyHoUA3ycxOdjCAU&#x3D;&lt;&#x2F;D&gt;&lt;&#x2F;RSAKeyValue&gt;</span><br></pre></td></tr></table></figure>
+<p style="text-indent:2em">同样排查此格式文件是否合法时，看是否能正常转换格式。</p>
+
+<h4 id="DER-格式"><a href="#DER-格式" class="headerlink" title="DER 格式"></a>DER 格式</h4><p style="text-indent:2em">DER 格式的密钥，说白了就是PEM格式的密钥通过DecodeBase64转化过来的，PEM格式的生成也是DER通过base64转换再加上头尾标签得到。该密钥多用于JAVA语言中，此密钥格式体现为16进制，在openssl中可以转换，如果遇到此种格式的密钥，还是建议转换到PEM格式再进行解密，通过查询资料，openssl对这种格式的密钥也是有函数可以读取和解析的，函数名称为：d2i_PKCS8PrivateKey_bio()，由于没使用过此函数，感兴趣的可以继续研究。这里给出一个可以在线转换密钥格式的网站：<a href = "https://gchq.github.io/CyberChef/">DER转PEM</a>，在DataFormat标签下的Hex to PEM，DER格式的密钥文件具体表现如下：</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/AES%2BRSA%20report/AES%2BRSA%20report_1.png" alt="image"></p>
+<p style="text-indent:2em">同样排查此格式文件是否合法时，看是否能正常转换格式。</p>
+
+<hr>
+<h3 id="RSA-填充模式"><a href="#RSA-填充模式" class="headerlink" title="RSA 填充模式"></a>RSA 填充模式</h3><p style="text-indent:2em">当你拿到了PEM格式的密钥之后，离解密已经不远了。但这个时候，还是会有一个坑会等着你跳进去，就是RSA的填充的方式，首先比较官方的介绍一下这几种填充方式。</p>
+
+<h4 id="RSA-PKCS1-PADDING"><a href="#RSA-PKCS1-PADDING" class="headerlink" title="RSA_PKCS1_PADDING"></a>RSA_PKCS1_PADDING</h4><p style="text-indent:2em">输入：必须 比 RSA 钥模长(modulus) 短至少11个字节, 也就是　RSA_size(rsa) – 11</p>
+<p style="text-indent:2em">输出：和modulus一样长</p>
+
+<h4 id="RSA-PKCS1-OAEP-PADDING"><a href="#RSA-PKCS1-OAEP-PADDING" class="headerlink" title="RSA_PKCS1_OAEP_PADDING"></a>RSA_PKCS1_OAEP_PADDING</h4><p style="text-indent:2em">输入：RSA_size(rsa) – 41</p>
+<p style="text-indent:2em">输出：和modulus一样长</p>
+
+<h4 id="RSA-NO-PADDING"><a href="#RSA-NO-PADDING" class="headerlink" title="RSA_NO_PADDING"></a>RSA_NO_PADDING</h4><p style="text-indent:2em">输入：可以和RSA钥模长一样长，如果输入的明文过长，必须切割，　然后填充</p>
+<p style="text-indent:2em">输出：和modulus一样长</p>
+<p style="text-indent:2em">你可能看不懂这些填充方式到底是什么意思，但是作为勒索病毒解密来说，不需要知道这些东西是什么，你只要知道病毒作者加密的时候使用的填充方式是什么就行了，加密的填充方式是什么，解密的就用什么填充方式。</p>
+<p style="text-indent:2em">有的人可能要问，我要是不知道加密的填充方式怎么办，很好办，在加密代码中把这三种填充方式都试一遍，能解出明文的就是正确的填充方式，对于AES-256密钥，解出来的都是32字节的数据，如果你的代码解密出32字节的数据，那么恭喜你，你已经得到AES的密钥了。</p>
+
+<h3 id="AES-解密-EVP-框架"><a href="#AES-解密-EVP-框架" class="headerlink" title="AES 解密(EVP 框架)"></a>AES 解密(EVP 框架)</h3><p style="text-indent:2em">现在拿到了AES的密钥，AES的解密相对来说简单很多，它没有密钥格式的区别，但是有密钥长度的区别，现在主流的AES-256密钥长度为32字节，密钥的长度和复杂度决定了暴力破解的难度。</p>
+<p style="text-indent:2em">本文介绍的AES解密函数是在openssl中集成的加解密框架EVP，此框架的优点在于集成了多种加密算法，包括对称或者非对称算法，所以在应对不同的AES加密模式，都可以用EVP来解决，这样可以提高代码的复用性。下面将根据解密流程来阐述AES的解密过程。首先给出解密函数：</p>
+<p style="text-indent:2em">注意此时需要判断AES的加密模式，除了ECB模式外，其他模式中解密需要两个参数，一个是密钥Key，另一个是初始化偏移量IV，有些勒索病毒会在加密密钥的时候，把初始化偏移量IV也加密起来保存，此时要将IV也解密出来，以便AES能够正常解密。</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* AES_CBC_Zeros_Decrypt（AES-256-CBC-Zeros 解密函数）</span><br><span class="line">* 入参:</span><br><span class="line">* src:密文</span><br><span class="line">* srcLen:密文长度</span><br><span class="line">* key:密钥</span><br><span class="line">* keyLen:密钥长度</span><br><span class="line">* outLen:明文长度</span><br><span class="line">* 返回值: 明文 需要free</span><br><span class="line">*&#x2F;</span><br><span class="line">unsigned char *AES_CBC_Zeros_Decrypt(unsigned char *src, int srcLen, unsigned char *key, int keyLen, int *outLen, unsigned char *iv)</span><br><span class="line">&#123;</span><br><span class="line">	EVP_CIPHER_CTX *ctx &#x3D; NULL;</span><br><span class="line">	unsigned char *out &#x3D; (unsigned char*)malloc(srcLen);</span><br><span class="line">	memset(out, 0, srcLen);</span><br><span class="line">	if (!(ctx &#x3D; EVP_CIPHER_CTX_new())) &#123;</span><br><span class="line">		return nullptr;</span><br><span class="line">	&#125;</span><br><span class="line">	if (1 !&#x3D; EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key, iv)) &#123;</span><br><span class="line">		return nullptr;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (1 !&#x3D; EVP_DecryptUpdate(ctx, out, outLen, src, srcLen)) &#123;</span><br><span class="line">		handleOpenSSLErrors();</span><br><span class="line">		return nullptr;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	free(src);</span><br><span class="line">	if (ctx !&#x3D; NULL)</span><br><span class="line">		EVP_CIPHER_CTX_free(ctx);</span><br><span class="line">	return (unsigned char*)out;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p style="text-indent:2em">现在已经有了AES的密钥，接下来就是套进上述函数中，在解密时需要注意的是AES的加密模式，AES有五种加密模式，本文不再对这五种加密模式介绍，在解密过程中，加密用的是什么模式，在解密的时候用什么模式就可以了，唯一需要注意的是，除了AES的ECB模式外，其他的模式解密需要两个参数，一个是密钥Key，另一个是初始偏移量IV，若是无IV的参数，可以尝试默认0 IV进行解密。</p>
+
+<h3 id="AES-填充方式"><a href="#AES-填充方式" class="headerlink" title="AES 填充方式"></a>AES 填充方式</h3><p style="text-indent:2em">如果知道了搞清楚了AES的加密模式，在解密时，函数EVP_DecryptInit_ex中替换掉相应的AES算法模式，与所获取的密钥key和初始化IV的值。</p>
+<p style="text-indent:2em">当然这还没有完，在AES算法中也有填充方式的设置，这里介绍两个AES常用的填充方式，其实很好理解，由于AES是块加密算法，所以在数据的最后必须要对齐AES的块大小16字节数据。第一个是zeropadding，也就是零填充，在文件末尾如果不够16字节的数据，将用0补齐。第二个是PKCS5Padding，这种填充模式是你数据最后少了几个位，就填充几。</p>
+<p style="text-indent:2em">AES的填充效果在加密后的数据是体现不出来的，只有当数据解密后，你会发现比较原来的数据，末尾会多出来一部分填充。</p>
+<p style="text-indent:2em">在EVP框架中专门给了应对填充的解决方案，也就是函数EVP_DecryptFinal_ex(),此函数是对数据的最后的块处理，由于本人在解密数据时所遇到的填充都比较好理解，所以最后的块数据进行了手动处理，没有调用库函数。</p>
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p style="text-indent:2em">如果之前的步骤没有问题，到此处应该已经可以得到解密数据了，但此处还是会有坑出现，有的勒索病毒在加密数据的时候是有条件的，比如加密数据头多少字节，隔多少数据加密多少字节等。</p>
+<p style="text-indent:2em">如果不知道勒索病毒的加密逻辑是什么，那解决方案就是测试中毒电脑中的大量文件，包括各种格式类型的文件，以及各种大小类型的文件。如果发现在解密过程中出现成段加密的现象(隔固定值发现解密不成功)，此时要在代码中加入分段解密的逻辑，因为勒索病毒很可能是分段加密，所以要分段解密才行。</p>
+<p style="text-indent:2em">还有一点也是非常重要的一点，就是被解密的文件一定要与原文件的hash保持一致，若是hash上有偏差，说明解密出现问题，就算当时没有发现问题，那么在之后解密大量数据的时候，很可能会将问题暴露出来。</p>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p style="text-indent:2em">无论是解密工具的编程还是其他类型的编程，我认为考验的不是你懂得知识有多么的多，考验的是遇到问题解决问题的能力，我认为没有什么问题是解决不了的，如果有，那就埋起头来继续刚！！！</p></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/03/30/AES%20+%20RSA%20%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92/">http://example.com/2021/03/30/AES%20+%20RSA%20%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/30/%E7%89%B9%E6%96%AF%E6%8B%89%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="prev-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">特斯拉勒索病毒分析报告</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/30/ChernoLocker%20%E8%A7%A3%E5%AF%86%E6%8A%A5%E5%91%8A/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">ChernoLocker 解密报告</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>

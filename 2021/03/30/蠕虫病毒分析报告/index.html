@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>蠕虫病毒分析报告 | Hexo</title><meta name="description" content="基本信息报告名称：蠕虫病毒分析报告 报告更新日期：2019&#x2F;9&#x2F;16 样本发现日期：2019&#x2F;9&#x2F;10 壳信息：UPX(3.07)[NRV,best] 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，IDA7.0，Ollydbg，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    sample.exe"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/03/30/%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="蠕虫病毒分析报告"><meta property="og:url" content="http://example.com/2021/03/30/%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="基本信息报告名称：蠕虫病毒分析报告 报告更新日期：2019&#x2F;9&#x2F;16 样本发现日期：2019&#x2F;9&#x2F;10 壳信息：UPX(3.07)[NRV,best] 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，IDA7.0，Ollydbg，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    sample.exe"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2021-03-30T05:45:25.000Z"><meta property="article:modified_time" content="2021-03-30T11:02:45.497Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"Just","hours":"hours ago","day":"days ago"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 19:02:45'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">14</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">基本信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%B1%E5%A3%B3"><span class="toc-number">3.</span> <span class="toc-text">脱壳</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">动态行为分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">6.</span> <span class="toc-text">详细行为分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">6.1.</span> <span class="toc-text">获取函数方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%92%E6%96%A5%E5%AF%B9%E8%B1%A1121212"><span class="toc-number">6.2.</span> <span class="toc-text">创建互斥对象121212</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C-Net-CLR%E6%9C%8D%E5%8A%A1"><span class="toc-number">6.3.</span> <span class="toc-text">注册 .Net CLR服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%92%E6%96%A5%E5%AF%B9%E8%B1%A1-Net-CLR"><span class="toc-number">6.4.</span> <span class="toc-text">创建互斥对象 .Net CLR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE%E8%B5%84%E6%BA%90"><span class="toc-number">6.5.</span> <span class="toc-text">枚举资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%9B%B4%E6%96%B0dll"><span class="toc-number">6.6.</span> <span class="toc-text">修改注册表更新dll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E8%83%BD%E5%90%A6%E5%8A%A0%E8%BD%BD%E5%88%B0hra33-dll"><span class="toc-number">6.7.</span> <span class="toc-text">判断能否加载到hra33.dll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B1-%E6%A8%AA%E5%90%91%E4%BC%A0%E6%92%AD%E6%84%9F%E6%9F%93"><span class="toc-number">6.8.</span> <span class="toc-text">线程1-横向传播感染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%B1%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E4%B8%BB%E6%9C%BA"><span class="toc-number">6.8.1.</span> <span class="toc-text">弱密码爆破主机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E8%A1%8C%E6%A8%AA%E5%90%91%E4%BC%A0%E6%92%AD"><span class="toc-number">6.8.2.</span> <span class="toc-text">进行横向传播</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B2-%E5%88%A4%E6%96%AD%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="toc-number">6.9.</span> <span class="toc-text">线程2-判断系统时间创建线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E7%B3%BB%E7%BB%9F%E6%97%A5%E6%9C%9F"><span class="toc-number">6.9.1.</span> <span class="toc-text">判断当前系统日期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B3-%E8%BF%9E%E6%8E%A5C-amp-C%E8%8E%B7%E5%8F%96%E6%8C%87%E4%BB%A4"><span class="toc-number">6.9.2.</span> <span class="toc-text">线程3-连接C&amp;C获取指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8Bsocket%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="toc-number">6.9.2.1.</span> <span class="toc-text">建立socket套接字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%BB%E6%9C%BA%E4%BF%A1%E6%81%AF"><span class="toc-number">6.9.2.2.</span> <span class="toc-text">获取主机信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%8C%87%E4%BB%A4"><span class="toc-number">6.9.2.3.</span> <span class="toc-text">获取指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A4%E9%80%BB%E8%BE%91"><span class="toc-number">6.9.2.4.</span> <span class="toc-text">执行指令逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4-0x10"><span class="toc-number">6.9.2.4.1.</span> <span class="toc-text">指令 0x10</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4-0x12"><span class="toc-number">6.9.2.4.2.</span> <span class="toc-text">指令 0x12</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4-0x14"><span class="toc-number">6.9.2.4.3.</span> <span class="toc-text">指令 0x14</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4-0x06"><span class="toc-number">6.9.2.4.4.</span> <span class="toc-text">指令 0x06</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4-0x02"><span class="toc-number">6.9.2.4.5.</span> <span class="toc-text">指令 0x02</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4-0x03"><span class="toc-number">6.9.2.4.6.</span> <span class="toc-text">指令 0x03</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4-0x04"><span class="toc-number">6.9.2.4.7.</span> <span class="toc-text">指令 0x04</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B4-%E8%BF%9E%E6%8E%A5%E5%86%85%E7%BD%91url%E8%8E%B7%E5%8F%96%E6%8C%87%E4%BB%A4"><span class="toc-number">6.10.</span> <span class="toc-text">线程4-连接内网url获取指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86url%E5%BB%BA%E7%AB%8Bsocket%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="toc-number">6.10.1.</span> <span class="toc-text">解密url建立socket套接字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86url"><span class="toc-number">6.10.1.1.</span> <span class="toc-text">解密url</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8Bsocket%E5%A5%97%E6%8E%A5%E5%AD%97-1"><span class="toc-number">6.10.1.2.</span> <span class="toc-text">建立socket套接字</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E9%80%80%E5%87%BA"><span class="toc-number">6.11.</span> <span class="toc-text">关于退出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E6%BA%AF%E6%BA%90"><span class="toc-number">7.</span> <span class="toc-text">样本溯源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E6%9D%80%E6%96%B9%E6%A1%88"><span class="toc-number">8.</span> <span class="toc-text">查杀方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%97%85%E6%AF%92%E6%96%87%E4%BB%B6"><span class="toc-number">8.1.</span> <span class="toc-text">删除病毒文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%9C%8D%E5%8A%A1"><span class="toc-number">8.2.</span> <span class="toc-text">删除服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="toc-number">8.3.</span> <span class="toc-text">恢复注册表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">总结</span></a></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">蠕虫病毒分析报告</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-30T05:45:25.000Z" title="Created 2021-03-30 13:45:25">2021-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-30T11:02:45.497Z" title="Updated 2021-03-30 19:02:45">2021-03-30</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>报告名称：蠕虫病毒分析报告</p>
+<p>报告更新日期：2019/9/16</p>
+<p>样本发现日期：2019/9/10</p>
+<p>壳信息：UPX(3.07)[NRV,best]</p>
+<p>可能受到威胁的系统：Windows系列</p>
+<p>分析环境及工具：win7 32位，IDA7.0，Ollydbg，ProcessMonitor，火绒剑</p>
+
+<table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileType</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sample.exe</td>
+<td>感染病毒</td>
+<td>28160 bytes</td>
+<td>4D049BC19B03572EF8A00980050BAFFF</td>
+<td>9BD1E922352F759275DD716A7A8E853BC676EB89</td>
+</tr>
+</tbody></table>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p style="text-indent:2em">sample.exe是一个通过局域网传播的感染型病毒，通过UPX加壳对首先在宿主机上获取所在ip地址的网段，通过弱口令爆破进入局域网主机，在局域网主机内复制病毒主程序并执行，执行病毒程序之后，从C&C服务器上获取指令，根据指令执行不同的代码逻辑，从而达到病毒作者的目的。
+</p>
+
+<h1 id="脱壳"><a href="#脱壳" class="headerlink" title="脱壳"></a>脱壳</h1><p style="text-indent:2em">查壳的时候发现，该病毒样本加壳为UPX，在脱壳过程当中，发现该病毒样本使用UPX加了两次课，所以需要用同样的方法执行两次。</p>
+<p>第一次打开OD的时候，会有提示说明此程序被加壳。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_1.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_2.png" alt="image"></p>
+<p style="text-indent:2em">当我们觉得到底OEP的时候，发现代码还是被压缩了，此时就是UPX的第二层，我们需要用同样的方法脱壳。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_3.png" alt="image"></p>
+<p style="text-indent:2em">方法是在这个点再次下ESP硬件断点，注意此时下断点之前把之前的硬件断点删掉，之后执行相同的操作。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_4.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_5.png" alt="image"></p>
+<p>之后修复导入表IAT就已经脱完壳，可以开始分析了。</p>
+
+<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_6.png" alt="image"></p>
+<h1 id="动态行为分析"><a href="#动态行为分析" class="headerlink" title="动态行为分析"></a>动态行为分析</h1><p style="text-indent:2em">该病毒样本运行之后没有出现界面等于用户交互的行为，修改了相关服务的注册表，创建了若干个线程。发现3个网络行为分别为：连接本地IP网关地址的80端口、连接默认路由的8090端口、连接本地ip地址192.168.1.107:83端口。</p>
+
+<h1 id="详细行为分析"><a href="#详细行为分析" class="headerlink" title="详细行为分析"></a>详细行为分析</h1><h2 id="获取函数方式"><a href="#获取函数方式" class="headerlink" title="获取函数方式"></a>获取函数方式</h2><p style="text-indent:2em">该病毒获取函数的方式是利用ascii码拼接的方式，将要用到的dll名称和函数名称用ascii码表示 出来，再获取函数地址。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_7.png" alt="image"></p>
+<h2 id="创建互斥对象121212"><a href="#创建互斥对象121212" class="headerlink" title="创建互斥对象121212"></a>创建互斥对象121212</h2><p style="text-indent:2em">首先创建了互斥体并判断是否创建成功，并且判断了文件已经存在是否执行病毒的主逻辑。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_8.png" alt="image"></p>
+<h2 id="注册-Net-CLR服务"><a href="#注册-Net-CLR服务" class="headerlink" title="注册 .Net CLR服务"></a>注册 .Net CLR服务</h2><p style="text-indent:2em">在执行病毒主逻辑的刚开始，注册了一个名字为.Net CLR的服务，该服务免去了程序设置开机自启，在后面将下载程序注册到服务中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_9.png" alt="image"></p>
+<h2 id="创建互斥对象-Net-CLR"><a href="#创建互斥对象-Net-CLR" class="headerlink" title="创建互斥对象 .Net CLR"></a>创建互斥对象 .Net CLR</h2><p style="text-indent:2em">与创建互斥对象121212方法相同，首先判断创建互斥对象.Net CLR是否成功，并判断文件是否存在，再执行病毒逻辑或是退出。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_10.png" alt="image"></p>
+<h2 id="枚举资源"><a href="#枚举资源" class="headerlink" title="枚举资源"></a>枚举资源</h2><p style="text-indent:2em">通过枚举0xA类型的二进制资源，将资源写入到文件中，即产生了hra33.dll文件。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_11.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_12.png" alt="image"></p>
+<h2 id="修改注册表更新dll"><a href="#修改注册表更新dll" class="headerlink" title="修改注册表更新dll"></a>修改注册表更新dll</h2><p style="text-indent:2em">修改注册表文件，如果注册表修改成功，创建名字为.Net CLR的二进制文件，将该文件的值更新到hra33.dll
+中。</p>
+![image](https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_13.png)
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_14.png" alt="image"></p>
+<h2 id="判断能否加载到hra33-dll"><a href="#判断能否加载到hra33-dll" class="headerlink" title="判断能否加载到hra33.dll"></a>判断能否加载到hra33.dll</h2><p style="text-indent:2em">加载释放的hra33.dll，返回是否成功加载到dll的布尔值。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_15.png" alt="image"></p>
+<h2 id="线程1-横向传播感染"><a href="#线程1-横向传播感染" class="headerlink" title="线程1-横向传播感染"></a>线程1-横向传播感染</h2><h3 id="弱密码爆破主机"><a href="#弱密码爆破主机" class="headerlink" title="弱密码爆破主机"></a>弱密码爆破主机</h3><p style="text-indent:2em">病毒程序定义了弱密码，利用这些字典类型的值爆破内网主机的administrator账户，从而达到非法进入主机的目的。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_16.png" alt="image"></p>
+<p style="text-indent:2em">获取计算机的主机名称，通过主机名称获取对应名称的主机信息，在主机信息中查找被感染主机所在的网段，在这个网段内获取检查administrator账户，如果是这个账户类型，就进行病毒的自我复制。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_17.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_18.png" alt="image"></p>
+<h3 id="进行横向传播"><a href="#进行横向传播" class="headerlink" title="进行横向传播"></a>进行横向传播</h3><p style="text-indent:2em">调用函数WNetAddConnection2A函数，对本地资源的网络共享，根据被感染主机的IP地址，利用IPC管道进行局域网渗透。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_19.png" alt="image"></p>
+<p style="text-indent:2em">判断如果渗透成功，就执行拷贝自身，通过不同的程序名称进行拷贝，同时判断拷贝不成功的情况，利用了改变盘符拷贝和改变拷贝程序的名称等方法。拷贝完成后在指定时间执行该拷贝程序。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_20.png" alt="image"></p>
+<h2 id="线程2-判断系统时间创建线程"><a href="#线程2-判断系统时间创建线程" class="headerlink" title="线程2-判断系统时间创建线程"></a>线程2-判断系统时间创建线程</h2><h3 id="判断当前系统日期"><a href="#判断当前系统日期" class="headerlink" title="判断当前系统日期"></a>判断当前系统日期</h3><p style="text-indent:2em">线程开始的时候，通过获取当前的系统时间，判断是否大于20130221，分析该病毒样本在这个时间左右产生并实施传播。若系统时间满足条件，则创建下一个线程。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_21.png" alt="image"></p>
+<h3 id="线程3-连接C-amp-C获取指令"><a href="#线程3-连接C-amp-C获取指令" class="headerlink" title="线程3-连接C&amp;C获取指令"></a>线程3-连接C&amp;C获取指令</h3><h4 id="建立socket套接字"><a href="#建立socket套接字" class="headerlink" title="建立socket套接字"></a>建立socket套接字</h4><p style="text-indent:2em">在病毒的主逻辑中首先创建了socket用来将进行网络连接与传输内容，是网络编程中的重要部分，在其中发现C&C域名信息为：arwah.uy1433.com，并判断是否能正常连接。返回连接结果。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_23.png" alt="image"></p>
+<h4 id="获取主机信息"><a href="#获取主机信息" class="headerlink" title="获取主机信息"></a>获取主机信息</h4><p style="text-indent:2em">病毒程序获取直接的相关信息，包括ip地址，CPU等参数，并将这些参数保存起来，传递给C&C服务器。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_24.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_25.png" alt="image"></p>
+<h4 id="获取指令"><a href="#获取指令" class="headerlink" title="获取指令"></a>获取指令</h4><p style="text-indent:2em">创建完套接字之后，对目标主机进行发送数据并获取返回数据的逻辑，通过对返回数据的判断，执行不同的病毒逻辑。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_26.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_27.png" alt="image"></p>
+<h4 id="执行指令逻辑"><a href="#执行指令逻辑" class="headerlink" title="执行指令逻辑"></a>执行指令逻辑</h4><p style="text-indent:2em">病毒程序通过对返回指令的判断，通过switch case的方法，执行不同指令的不同病毒逻辑，以下是指令所对应的病毒逻辑。</p>
+
+<h5 id="指令-0x10"><a href="#指令-0x10" class="headerlink" title="指令 0x10"></a>指令 0x10</h5><p style="text-indent:2em">该指令所对应的逻辑为将返回的数据写入到文件中，文件名称为随机，文件路径是temp目录下，并执行该程序。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_28.png" alt="image"></p>
+<h5 id="指令-0x12"><a href="#指令-0x12" class="headerlink" title="指令 0x12"></a>指令 0x12</h5><p style="text-indent:2em">该指令对应的逻辑同样为下载返回的文件，并以xxxxxcn.exe命名，放在temp目录下，不同的是，该指令在执行的时候，禁用了互斥对象并删除了注册表和服务，判断是该指令对应的下载程序有自己对应服务可能与现有的产生互斥，或者是下载程序是其他逻辑，并不需要这些服务。病毒执行的痕迹越少越好，删除之前的痕迹，减少被发现的机会。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_29.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_30.png" alt="image"></p>
+<h5 id="指令-0x14"><a href="#指令-0x14" class="headerlink" title="指令 0x14"></a>指令 0x14</h5><p style="text-indent:2em">该指令所对应的逻辑是打开本地的IE浏览器并传入参数，参数是C&C服务器地址。判断此逻辑是病毒作者如果想告知被感染主机用户的一些信息或者勒索一类的信息，采用此逻辑，打开IE，打开网址。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_31.png" alt="image"></p>
+<h5 id="指令-0x06"><a href="#指令-0x06" class="headerlink" title="指令 0x06"></a>指令 0x06</h5><p style="text-indent:2em">该指令是删除病毒，清除痕迹的指令，并没有其他的逻辑，判断是病毒作者对该主机停止攻击所用到的逻辑，删除一切病毒痕迹，恢复系统正常逻辑。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_32.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_33.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_34.png" alt="image"></p>
+<h5 id="指令-0x02"><a href="#指令-0x02" class="headerlink" title="指令 0x02"></a>指令 0x02</h5><p style="text-indent:2em">该指令是创建socket连接，通过参数判断不同的ip地址，连接成功后向这些地址发送网络包。判断病毒作者使用DDos攻击或者web渗透所执行的逻辑</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_35.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_36.png" alt="image"></p>
+<h5 id="指令-0x03"><a href="#指令-0x03" class="headerlink" title="指令 0x03"></a>指令 0x03</h5><p style="text-indent:2em">该指令通过参数获取不同类型的http请求头格式，有文本类型或图片类型，有进行DDos攻击的线程，有指定端口80的http请求头，不指定端口的请求头等。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_37.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_38.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_39.png" alt="image"></p>
+<h5 id="指令-0x04"><a href="#指令-0x04" class="headerlink" title="指令 0x04"></a>指令 0x04</h5><p style="text-indent:2em">该指令重新对socket连接的C&C服务器地址的设置进行改动，重新接受指令执行逻辑。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_40.png" alt="image"></p>
+<h2 id="线程4-连接内网url获取指令"><a href="#线程4-连接内网url获取指令" class="headerlink" title="线程4-连接内网url获取指令"></a>线程4-连接内网url获取指令</h2><p style="text-indent:2em">线程4与线程3的逻辑一致，是连接指定的url并接受指令，根据接受到的指令执行具体的逻辑，线程的不同在于url的不同，线程4是连接的一个内网的url。</p>
+
+<h3 id="解密url建立socket套接字"><a href="#解密url建立socket套接字" class="headerlink" title="解密url建立socket套接字"></a>解密url建立socket套接字</h3><h4 id="解密url"><a href="#解密url" class="headerlink" title="解密url"></a>解密url</h4><p style="text-indent:2em">首先获取一串字符串“EgoRHRIVCx0SHRITFAkLEEM=”，作为密钥进行解密，解密出的ip地址为：192.168.1.107:83</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_41.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_42.png" alt="image"></p>
+<h4 id="建立socket套接字-1"><a href="#建立socket套接字-1" class="headerlink" title="建立socket套接字"></a>建立socket套接字</h4><p style="text-indent:2em">与线程3一致，建立套接字用来进行网络连接，不同的是，线程4连接的url是192.168.1.107:83，而这个url是通过解密得到的。建立完套接字之后，执行的逻辑与线程3一致，开始接收指令。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Worm%20analysis%20report/Worm%20analysis%20report_43.png" alt="image"></p>
+<h2 id="关于退出"><a href="#关于退出" class="headerlink" title="关于退出"></a>关于退出</h2><p style="text-indent:2em">程序当启动的时候，就进入消息循环阶段，除了C&C服务器给出退出指令，该程序不会自动退出。要手动结束进程才能退出。</p>
+
+<h1 id="样本溯源"><a href="#样本溯源" class="headerlink" title="样本溯源"></a>样本溯源</h1><table>
+<thead>
+<tr>
+<th>C&amp;C域名</th>
+<th>内网被感染主机做服务器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>arwah.uy1433.com</td>
+<td>192.168.1.107:83</td>
+</tr>
+</tbody></table>
+<h1 id="查杀方案"><a href="#查杀方案" class="headerlink" title="查杀方案"></a>查杀方案</h1><h2 id="删除病毒文件"><a href="#删除病毒文件" class="headerlink" title="删除病毒文件"></a>删除病毒文件</h2><ul>
+<li>利用任务管理器或者ProcessExplorer停止该进程，删除病毒主程序。</li>
+<li>在主机文件的temp目录下，查找以时间格式命名的文件，查看创建日期，如果是发现中毒之后，则为病毒文件，应当删除。</li>
+<li>在主机文件的temp目录下，查找以随机名称xxxxxcn.exe命名的文件，查看创建日期，若为中毒之后，则为病毒文件，应当删除。<h2 id="删除服务"><a href="#删除服务" class="headerlink" title="删除服务"></a>删除服务</h2></li>
+<li>在”运行”窗口输入services.msc，打开服务窗口</li>
+<li>查找名为 .Net CLR的服务，删除该服务。<h2 id="恢复注册表"><a href="#恢复注册表" class="headerlink" title="恢复注册表"></a>恢复注册表</h2></li>
+<li>在”运行”窗口输入regedit打开注册表。</li>
+<li>打开注册表项：HKEY_LOCAL_MACHINE\system\currentControlSet\services\ .Net CLR，删除该注册表项。<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p style="text-indent:2em">该病毒应该是拿其他程序为载体，然后释放的该程序，用户通过执行该程序，在局域网内进行传播，感染其他主机，使得病毒作者对这些被感染主机发送指令，从而控制被感染机，这些指令具有丰富的功能，有更新程序的，有创建新执行文件的，有自我删除等。建议如果发现被此类病毒感染，首先要做的是断开网络，不管是局域网还是互联网，首先断开网络，再检测程序的网络行为，再进行查杀。同时检测局域网内其他主机，是否感染病毒并进行查杀。</p></li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/03/30/%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">http://example.com/2021/03/30/%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/30/PewCrypt%20%E8%A7%A3%E5%AF%86%E6%8A%A5%E5%91%8A/"><img class="prev-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">PewCrypt 解密报告</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/30/MBR%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">MBR病毒分析报告</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>

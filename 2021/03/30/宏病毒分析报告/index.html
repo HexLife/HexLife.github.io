@@ -1,0 +1,400 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>宏病毒分析报告 | Hexo</title><meta name="description" content="基本信息报告名称：宏病毒分析报告 报告更新日期：2019&#x2F;9&#x2F;23 样本发现日期：2019&#x2F;9&#x2F;15 样本格式：xls文本文档 释放程序加壳：穿山甲壳、UPX 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    3EFFEBA64D9A"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/03/30/%E5%AE%8F%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="宏病毒分析报告"><meta property="og:url" content="http://example.com/2021/03/30/%E5%AE%8F%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="基本信息报告名称：宏病毒分析报告 报告更新日期：2019&#x2F;9&#x2F;23 样本发现日期：2019&#x2F;9&#x2F;15 样本格式：xls文本文档 释放程序加壳：穿山甲壳、UPX 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    3EFFEBA64D9A"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2021-03-30T05:45:25.000Z"><meta property="article:modified_time" content="2021-03-30T11:03:04.136Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"Just","hours":"hours ago","day":"days ago"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 19:03:04'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">14</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">基本信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">动态行为分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">详细行为分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E5%AE%8F%E4%BB%A3%E7%A0%81"><span class="toc-number">5.1.</span> <span class="toc-text">分析宏代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%BD%E8%B8%AA%E6%96%87%E4%BB%B6"><span class="toc-number">5.2.</span> <span class="toc-text">追踪文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8A%E6%94%BE%E6%96%87%E4%BB%B6exchange1-dll"><span class="toc-number">5.3.</span> <span class="toc-text">释放文件exchange1.dll</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%B1%E5%A3%B3exchange1-dll"><span class="toc-number">5.3.1.</span> <span class="toc-text">脱壳exchange1.dll</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90getandgodll-dll"><span class="toc-number">5.4.</span> <span class="toc-text">分析getandgodll.dll</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%89%88%E6%9C%AC"><span class="toc-number">5.4.1.</span> <span class="toc-text">定义应用程序版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0"><span class="toc-number">5.4.2.</span> <span class="toc-text">获取主机名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%90%8D%E7%A7%B0"><span class="toc-number">5.4.3.</span> <span class="toc-text">获取用户名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC"><span class="toc-number">5.4.4.</span> <span class="toc-text">获取操作系统版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%BF%9B%E7%A8%8B%E5%90%8D%E7%A7%B0"><span class="toc-number">5.4.5.</span> <span class="toc-text">获取进程名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A0%BC%E5%BC%8F"><span class="toc-number">5.4.6.</span> <span class="toc-text">修改字符串格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="toc-number">5.4.7.</span> <span class="toc-text">设置网络相关信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D"><span class="toc-number">5.4.7.1.</span> <span class="toc-text">获取域名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E8%AF%B7%E6%B1%82%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%AB%AF%E5%8F%A3"><span class="toc-number">5.4.7.2.</span> <span class="toc-text">获取请求类型与端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">5.4.7.3.</span> <span class="toc-text">设置参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5C-amp-C%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">5.4.7.4.</span> <span class="toc-text">连接C&amp;C服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%AF%B7%E6%B1%82%E5%8F%A5%E6%9F%84"><span class="toc-number">5.4.7.5.</span> <span class="toc-text">创建请求句柄</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82"><span class="toc-number">5.4.7.6.</span> <span class="toc-text">发送请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%93%8D%E5%BA%94"><span class="toc-number">5.4.7.7.</span> <span class="toc-text">获取响应</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="toc-number">5.4.8.</span> <span class="toc-text">写入文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-number">5.4.9.</span> <span class="toc-text">执行文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E6%BA%AF%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">样本溯源</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E9%87%8A%E6%94%BE%E6%96%87%E4%BB%B6"><span class="toc-number">6.1.</span> <span class="toc-text">样本释放文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%81%B6%E6%84%8Fip%E8%BF%BD%E6%BA%AF%E7%9A%84%E5%9F%9F%E5%90%8D"><span class="toc-number">6.2.</span> <span class="toc-text">恶意ip追溯的域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8EIP%E7%9B%B8%E5%85%B3%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">6.3.</span> <span class="toc-text">与IP相关的文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E6%9D%80%E6%96%B9%E6%A1%88"><span class="toc-number">7.</span> <span class="toc-text">查杀方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%B8%85%E7%90%86%E9%87%8A%E6%94%BE%E6%96%87%E4%BB%B6"><span class="toc-number">7.1.</span> <span class="toc-text">手动清理释放文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E6%B8%85%E7%90%86"><span class="toc-number">7.2.</span> <span class="toc-text">脚本自动清理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">宏病毒分析报告</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-30T05:45:25.000Z" title="Created 2021-03-30 13:45:25">2021-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-30T11:03:04.136Z" title="Updated 2021-03-30 19:03:04">2021-03-30</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>报告名称：宏病毒分析报告</p>
+<p>报告更新日期：2019/9/23</p>
+<p>样本发现日期：2019/9/15</p>
+<p>样本格式：xls文本文档</p>
+<p>释放程序加壳：穿山甲壳、UPX</p>
+<p>可能受到威胁的系统：Windows系列</p>
+<p>分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑</p>
+
+<table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileType</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3EFFEBA64D9A1A4DD1BDDAEB1858E4D0.xls</td>
+<td>宏病毒</td>
+<td>346112 bytes</td>
+<td>3EFFEBA64D9A1A4DD1BDDAEB1858E4D0</td>
+<td>061A82DA809B8AC0CC4E75A155C9E3EE9C1B2C9E</td>
+</tr>
+</tbody></table>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p style="text-indent:2em">该病毒以附件的形式呈现，通过发送钓鱼邮件在网络上传播，通过图片的展现的形式诱导用户启用宏，继而执行宏代码。在xls文件中有一张图片，图片以对象的形式添加进去，宏代码利用xls生成的对象文件(实质就是这个图片)，将内容拷贝生成一个dll文件，之后调用dll中的主函数，主函数的逻辑是采集受害主机信息并上传，拿到C&C服务器响应的数据，写入到文件boost*.exe中，循环执行这个exe文件。</p>
+
+
+
+<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_1.png" alt="image"></p>
+<h1 id="动态行为分析"><a href="#动态行为分析" class="headerlink" title="动态行为分析"></a>动态行为分析</h1><ul>
+<li><p>打开文件提示需要打开宏，点击启用宏之后，利用ProcessMonitor和火绒剑抓取行为，发现在“%temp%” 目录下生成3个文件，在 “%appdata%” 目录下生成文件。<br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_2.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_3.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_4.png" alt="image"></p>
+</li>
+<li><p>获取网络行为，连接远端ip地址：195.123.214.226。<br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_5.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_6.png" alt="image"></p>
+</li>
+</ul>
+<h1 id="详细行为分析"><a href="#详细行为分析" class="headerlink" title="详细行为分析"></a>详细行为分析</h1><h2 id="分析宏代码"><a href="#分析宏代码" class="headerlink" title="分析宏代码"></a>分析宏代码</h2><p style="text-indent:2em">打开表格中的宏代码，对宏代码进行调试发现，宏代码首先定义了几个文件和路径，主要为两个路径，分别为环境变量中获取的Temp目录和AppData目录,在这两个目录下初始化了文件名称。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_7.png" alt="image"></p>
+<p style="text-indent:2em">生成文件之前，首先删除目录下的文件，防止因为文件已经存在而导致病毒文件生成失败。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_8.png" alt="image"></p>
+<p style="text-indent:2em">之后的代码逻辑首先创建了一个与自身一模一样的工作簿，设置不提示运行宏的窗口，再将这个文件保存为指定的名称，该名称就是Temp目录下的13.xlsx，之后关闭现在运行的工作簿。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_9.png" alt="image"></p>
+<p style="text-indent:2em">利用xlsx文件改成压缩包的形式，将压缩包解压出来，目的是为了获取.bin文件。接着调用函数，该函数为将bin文件的内容循环写入到定义好的dll文件中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_10.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_11.png" alt="image"></p>
+<p style="text-indent:2em">将释放的dll加载到内存，并调用函数Amway函数。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_12.png" alt="image"></p>
+<p style="text-indent:2em">在该xlsx文件中，发现有几段数据，</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_13.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_14.png" alt="image"></p>
+<h2 id="追踪文件"><a href="#追踪文件" class="headerlink" title="追踪文件"></a>追踪文件</h2><p style="text-indent:2em">首先我们知道了宏代码的执行逻辑，总体来讲，当宏代码执行结束，会释放一个dll文件，那么这个dll文件从何而来？在宏代码中我们便分析出了，dll文件其实是xlsx文件中的bin文件数据被写入到dll文件中，那么我们追踪这个bin文件的生成。</p>
+<p style="text-indent:2em">这里直接给出分析结果，通过分析发现，这个bin文件的生成和嵌套在xlsx中的图片有关，用BCompare发现，bin文件内容除了最上面无用的数据外，其主要数据来自图片文件。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_15.png" alt="image"></p>
+<p style="text-indent:2em">为了进一步验证这个bin文件是怎么生成的，我模拟了一下bin文件生成的过程：</p>
+<p style="text-indent:2em">将指定文件以对象的形式插入带表格当中，查看无对象和有对象的文件目录区别发现，有对象的文件在其目录下会生成几个文件夹，其中一个文件夹是存放.bin文件的文件夹，这个.bin文件除了开始生成一些无用数据，其余是源文件的内容。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_16.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_17.png" alt="image"></p>
+<p style="text-indent:2em">之后搜索原文件内容，发现有两处 4D 5A 90，这验证了图片文件是写入dll的主文件，也验证了宏代码的写入函数，也像我们证明了，dll文件中包含了两个PE的数据，为接下来的分析做铺垫。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_18.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_19.png" alt="image"></p>
+<h2 id="释放文件exchange1-dll"><a href="#释放文件exchange1-dll" class="headerlink" title="释放文件exchange1.dll"></a>释放文件exchange1.dll</h2><p style="text-indent:2em">开始分析释放的dll文件，首先查下壳，查壳的时候，用DIE第一次没有查出来。接着又查看了导入表导出表，发现导入表虽然看着dll中的函数都被识别了出来，但是还是觉得蹊跷，一个病毒dll，调用的系统dll有点少，所以还是认为文件是被加了壳的。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_20.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_21.png" alt="image"></p>
+<p style="text-indent:2em">之后换了一个查壳工具，PEID，拖进去发现果然是加了壳的，那么问题来了，首先要做的是把壳脱掉。网上查这种壳，叫做穿山甲壳。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_22.png" alt="image"></p>
+<h3 id="脱壳exchange1-dll"><a href="#脱壳exchange1-dll" class="headerlink" title="脱壳exchange1.dll"></a>脱壳exchange1.dll</h3><p style="text-indent:2em">由于是第一次遇到这种壳，决定手拖，当我把dll拖进OD的时候，发现OD没有提示代码被压缩或者被加壳，看了下开头push ebp，还是觉的挺正常的。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_23.png" alt="image"></p>
+<p style="text-indent:2em">这个时候打开了IDA，配合着看，单步跟的时候，发现主要的壳的函数并不在程序的入口处，这个壳运行的原理是首先利用系统函数在内存中申请一块空间，在这块空间中填充了解密函数，调到这个函数中执行。</p>
+<p style="text-indent:2em">于是果断dump了这个函数，拖进IDA里，先把按P将第一个转换成函数，首先发现的是壳要用的API。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_24.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_25.png" alt="image"><br>sub_0:187 处写入一段数据 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_26.png" alt="image"><br>sub_0:190 再对数据做一些处理<br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_27.png" alt="image"></p>
+<p style="text-indent:2em">随后把dump出来的PE程序再进行查壳，发现该PE程序为upx壳，这种情况下就好多了。加载进OD，利用ESP定律将壳脱了。获取样本的主要病毒dll。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_29.png" alt="image"></p>
+<p style="text-indent:2em">可以开始分析了。这里将病毒主dll名为：getandgodll.dll</p>
+
+<h2 id="分析getandgodll-dll"><a href="#分析getandgodll-dll" class="headerlink" title="分析getandgodll.dll"></a>分析getandgodll.dll</h2><h3 id="定义应用程序版本"><a href="#定义应用程序版本" class="headerlink" title="定义应用程序版本"></a>定义应用程序版本</h3><p style="text-indent:2em">在程序的开始，将定义的字符串拷贝到内存，该字符串的内容是http协议头中应用程序的版本，在此处得到病毒接下来需要利用http协议访问C&C服务器。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_30.png" alt="image"></p>
+<h3 id="获取主机名称"><a href="#获取主机名称" class="headerlink" title="获取主机名称"></a>获取主机名称</h3><p style="text-indent:2em">之后调用函数GetComputerNameExW检索了当前主机的名称，本主机名为john-PC，之后将字符串中的‘-’替换成%2d，在此过程中，调用了函数WideCharToMultiByte转换字符集，形成“john%2dPC”，之后利用字符串拷贝，将字符前面加上符号 &D=，完整为 &D=john%2dPC。保存到申请的内存块中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_31.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_32.png" alt="image"></p>
+<h3 id="获取用户名称"><a href="#获取用户名称" class="headerlink" title="获取用户名称"></a>获取用户名称</h3><p style="text-indent:2em">调用函数GetUserNameW获取当前主机用户名称，放入申请的内存中，当前用户名称为john，取字符串“&U=”，通过字符串拷贝的形式，在调用转换字符集拼接完整的字符串为“&U=john.rpc”，拷贝到指定的内存位置。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_33.png" alt="image"></p>
+<h3 id="获取操作系统版本"><a href="#获取操作系统版本" class="headerlink" title="获取操作系统版本"></a>获取操作系统版本</h3><p style="text-indent:2em">调用函数GetVersionExW获取当前主机的操作系统版本，当前主机的操作系统版本为Service Pack 1，取字符串“&OS=”，通过字符串拷贝形式，在调用转换字符集拼接完整的字符串为“&OS=6.1”，通过转换字符集将此字符串保存到内存的指定位置。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_34.png" alt="image"></p>
+<h3 id="获取进程名称"><a href="#获取进程名称" class="headerlink" title="获取进程名称"></a>获取进程名称</h3><p style="text-indent:2em">调用函数K32EnumProcesses枚举进程ID，调用函数OpenProcess获取对应ID的进程句柄，拿到句柄之后，调用函数K32GetModuleFileNameExW传入句柄值获取该句柄对应进程的绝对路径，调用函数PathFindFileNameW在绝对路径中获取进程的名称。之后将进程名称保存到指定的内存中。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_35.png" alt="image"></p>
+<h3 id="修改字符串格式"><a href="#修改字符串格式" class="headerlink" title="修改字符串格式"></a>修改字符串格式</h3><p style="text-indent:2em">之后在自定义的方法中将进程名称格式化，运行的进程均为.exe为后缀名称，函数将“.”替换成“%2e”,在“exe”后加上“%7c”。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_36.png" alt="image"></p>
+<p style="text-indent:2em">最终在指定内存中保存的主机的信息，有主机名称，用户名称，操作系统以及进程名称。如下：</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;D&#x3D;john%2dPC&amp;U&#x3D;john&amp;OS&#x3D;6.1&amp;PR&#x3D;010Editor%2eEXE%7cDwm%2eexe%7cEXCEL%2eEXE%7cEverything%2eexe%7cExplorer%2eEXE%7cLOADDLL%2eEXE%7cRolan%2eexe%7cSearchIndexer%2eexe%7cVGAuthService%2eexe%7cYoudaoDict%2eexe%7cYoudaoDictHelper%2eexe%7cchrome%2eexe%7ccsrss%2eexe%7cdie%2eexe%7cdllhost%2eexe%7cjucheck%2eexe%7cjusched%2eexe%7clsass%2eexe%7clsm%2eexe%7cmsdtc%2eexe%7cnotepad%2b%2b%2eexe%7cprocexp%2eexe%7cservices%2eexe%7csmss%2eexe%7cspoolsv%2eexe%7csvchost%2eexe%7ctaskhost%2eexe%7cvmacthlp%2eexe%7cvmtoolsd%2eexe%7cwininit%2eexe%7cwinlogon%2eexe%7cwmiprvse%2eexe%7cwmpnetwk%2eexe%7c</span><br></pre></td></tr></table></figure>
+<h3 id="设置网络相关信息"><a href="#设置网络相关信息" class="headerlink" title="设置网络相关信息"></a>设置网络相关信息</h3><h4 id="获取域名"><a href="#获取域名" class="headerlink" title="获取域名"></a>获取域名</h4><p style="text-indent:2em">首先定义了C&C服务器的域名的字符串，将此字符串拷贝到内存，之后拿到代码开始时定义的应用程序字符串，同样拷贝到内存中。此阶段获得两个信息：</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_37.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">域名：https:&#x2F;&#x2F;office-teml-en.com&#x2F;tw</span><br><span class="line">User-Agent:Mozilla&#x2F;4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident&#x2F;4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; InfoPath.2; CIBA; MS-RTC LM 8)</span><br></pre></td></tr></table></figure>
+<h4 id="获取请求类型与端口"><a href="#获取请求类型与端口" class="headerlink" title="获取请求类型与端口"></a>获取请求类型与端口</h4><p style="text-indent:2em">该部分将定义好的字符串通过拷贝内存中实现字符串的拼接，信息有请求的长度信息，请求的类型信息，请求的提交方式等，详细为：</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_38.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">请求长度：Content-Length:580</span><br><span class="line">请求类型：Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line">提交方式：POST</span><br></pre></td></tr></table></figure>
+<h4 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h4><p style="text-indent:2em">前面获取了一些参数之后，需要设置http，程序首先判断了传过来的提交方式是get还是post，之后调用WinHttpOpen函数，设置代理应用。并判断是否要添加Cookit信息等。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_39.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_40.png" alt="image"></p>
+<h4 id="连接C-amp-C服务器"><a href="#连接C-amp-C服务器" class="headerlink" title="连接C&amp;C服务器"></a>连接C&amp;C服务器</h4><p style="text-indent:2em">设置网络连接超时时间，将URL拆分成主机和访问资源，调用函数WinHttpConnect首先连接C&C服务器，并返回连接的句柄，如果连接成功，再进行之后的逻辑。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_41.png" alt="image"></p>
+<h4 id="创建请求句柄"><a href="#创建请求句柄" class="headerlink" title="创建请求句柄"></a>创建请求句柄</h4><p style="text-indent:2em">调用函数WinHttpOpenRequest设置请求句柄，请求的资源是主机地址中的tw页面，根据请求的类型判断，form表单的提交过去的数据是key-value的形式。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_42.png" alt="image"></p>
+<h4 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h4><p style="text-indent:2em">设置网络请求之后，需要发送请求参数，调用函数WinHttpSendRequest发送请求，请求的内容包含之前获取到的主机信息。在发送请求的时候，如果判断发送请求未成功，则检测主机的代理信息，然后重新设置http代理，再次发送请求。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_43.png" alt="image"></p>
+<h4 id="获取响应"><a href="#获取响应" class="headerlink" title="获取响应"></a>获取响应</h4><p style="text-indent:2em">在响应头中利用正则获取响应的数据信息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_44.png" alt="image"></p>
+<h3 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h3><p style="text-indent:2em">将响应体中获取信息，放在内存中，调用函数GetTempPathW获取temp目录，在此目录下生成文件。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_45.png" alt="image"></p>
+<h3 id="执行文件"><a href="#执行文件" class="headerlink" title="执行文件"></a>执行文件</h3><p style="text-indent:2em">在该目录下循环创建.exe文件，文件内容则是从C&C服务器上获取，创建成功这些程序之后，调用CreateProcessW函数执行这些程序。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/Macro%20virus%20analysis%20report/Macro%20virus%20analysis%20report_46.png" alt="image"></p>
+<h1 id="样本溯源"><a href="#样本溯源" class="headerlink" title="样本溯源"></a>样本溯源</h1><h2 id="样本释放文件"><a href="#样本释放文件" class="headerlink" title="样本释放文件"></a>样本释放文件</h2><table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>13.xlsx</td>
+<td>235874 bytes</td>
+<td>5AB8D92389120E4C861E20A8FBFFCA55</td>
+<td>2C70E8EF592BC1084A07D6369150BB6472667DA2</td>
+</tr>
+<tr>
+<td>13.xlsx.zip</td>
+<td>235874 bytes</td>
+<td>5AB8D92389120E4C861E20A8FBFFCA55</td>
+<td>2C70E8EF592BC1084A07D6369150BB6472667DA2</td>
+</tr>
+<tr>
+<td>607E110C.png</td>
+<td>160443 bytes</td>
+<td>279CA6428DA65D00D7BE70A980999D73</td>
+<td>B1F4C853C46A8D798D8B1631B51027A690CAE1C6</td>
+</tr>
+<tr>
+<td>oleObject1.bin</td>
+<td>164864 bytes</td>
+<td>27C9912C99DBC5052A97E9D9EB4C23FA</td>
+<td>A83A7DD1287EE01E5B1CA57741B173696717627F</td>
+</tr>
+<tr>
+<td>getandgodll.dll</td>
+<td>84480 bytes</td>
+<td>57979E7AB936530C353709B33F9184FF</td>
+<td>69B3F311503939F1C951967778EA59416A7B474C</td>
+</tr>
+</tbody></table>
+<h2 id="恶意ip追溯的域名"><a href="#恶意ip追溯的域名" class="headerlink" title="恶意ip追溯的域名"></a>恶意ip追溯的域名</h2><table>
+<thead>
+<tr>
+<th>URL\ip</th>
+<th>195.123.214.226</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>URL1</td>
+<td><a target="_blank" rel="noopener" href="https://office-teml-en.com/tw">https://office-teml-en.com/tw</a></td>
+</tr>
+<tr>
+<td>URL2</td>
+<td><a target="_blank" rel="noopener" href="http://office-teml-en.com/">http://office-teml-en.com/</a></td>
+</tr>
+<tr>
+<td>URL3</td>
+<td><a target="_blank" rel="noopener" href="http://office-teml-en.com/tw">http://office-teml-en.com/tw</a></td>
+</tr>
+<tr>
+<td>URL4</td>
+<td><a target="_blank" rel="noopener" href="http://office-teml-en.com:443/">http://office-teml-en.com:443/</a></td>
+</tr>
+<tr>
+<td>URL5</td>
+<td><a target="_blank" rel="noopener" href="https://office-teml-en.com/razda/ddn">https://office-teml-en.com/razda/ddn</a></td>
+</tr>
+<tr>
+<td>URL6</td>
+<td><a target="_blank" rel="noopener" href="http://195.123.214.226/">http://195.123.214.226/</a></td>
+</tr>
+<tr>
+<td>URL7</td>
+<td><a target="_blank" rel="noopener" href="http://office-teml-en.com/">http://office-teml-en.com/</a></td>
+</tr>
+</tbody></table>
+<h2 id="与IP相关的文件"><a href="#与IP相关的文件" class="headerlink" title="与IP相关的文件"></a>与IP相关的文件</h2><table>
+<thead>
+<tr>
+<th>FileType</th>
+<th>FileName</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MS Excel Spreadsheet</td>
+<td>psh.xls</td>
+</tr>
+<tr>
+<td>MS Excel Spreadsheet</td>
+<td>fab4ccffea6e9facc0745ee1676261917f65c42dbce02e5a4c2a41121f23cbe1</td>
+</tr>
+<tr>
+<td>MS Excel Spreadsheet</td>
+<td>Formulaire_70852.xls</td>
+</tr>
+<tr>
+<td>MS Excel Spreadsheet</td>
+<td>R1_20190912_66485.xls</td>
+</tr>
+<tr>
+<td>MS Excel Spreadsheet</td>
+<td>R1_20190912_84351.xls</td>
+</tr>
+<tr>
+<td>MS Excel Spreadsheet</td>
+<td>R1_20190912_71330.xls</td>
+</tr>
+<tr>
+<td>MS Excel Spreadsheet</td>
+<td>sales-orderV0034061_47337.xls</td>
+</tr>
+<tr>
+<td>MS Excel Spreadsheet</td>
+<td>sales-orderV0034061_13158.xls</td>
+</tr>
+<tr>
+<td>MS Excel Spreadsheet</td>
+<td>Formulaire_88544.xls</td>
+</tr>
+<tr>
+<td>MS Excel Spreadsheet</td>
+<td>sales-orderV0034061_52743.xls</td>
+</tr>
+</tbody></table>
+<h1 id="查杀方案"><a href="#查杀方案" class="headerlink" title="查杀方案"></a>查杀方案</h1><h2 id="手动清理释放文件"><a href="#手动清理释放文件" class="headerlink" title="手动清理释放文件"></a>手动清理释放文件</h2><ul>
+<li>打开计算机文件，路径中输入“%temp%”。</li>
+<li>在该路径中找到病毒释放的文件：13.xlsx、13.xlsx.zip、607E110C.png</li>
+<li>打开计算机文件，路径中输入“%appdata%”。</li>
+<li>在路径中找到病毒释放的文件：(32位)exchange1.dll、(64位)exchange2.dll</li>
+<li>在进程列表中查找程序名为boost1.exe、boost2.exe、boost3.exe ……，将这些进程杀掉。</li>
+<li>进入目录“%temp%”下，删除程序名称中包含“boost”字符的程序。<h2 id="脚本自动清理"><a href="#脚本自动清理" class="headerlink" title="脚本自动清理"></a>脚本自动清理</h2></li>
+<li>复制以下脚本代码到任意文件，修改文件后缀为.bat，双击运行即可。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">del &#x2F;f &#x2F;s &#x2F;q %temp%\13.xlsx</span><br><span class="line">del &#x2F;f &#x2F;s &#x2F;q %temp%\13.xlsx.zip</span><br><span class="line">del &#x2F;f &#x2F;s &#x2F;q %temp%\607E110C.png</span><br><span class="line">del &#x2F;f &#x2F;s &#x2F;q %appdata%\exchange1.dll</span><br><span class="line">del &#x2F;f &#x2F;s &#x2F;q %appdata%\exchange2.dll</span><br><span class="line">for &#x2F;f &quot;delims&#x3D;&quot; %%i in (&#39;dir &#x2F;a-d &#x2F;s &#x2F;b &quot;%temp%\*boost*&quot;&#39;) do (</span><br><span class="line">if &quot;%%i&quot;&#x3D;&#x3D;&quot;找不到文件&quot; (</span><br><span class="line">set n+&#x3D;n</span><br><span class="line">) else (</span><br><span class="line">echo; %%~nxi</span><br><span class="line">taskkill &#x2F;f &#x2F;im %%~nxi</span><br><span class="line">del &#x2F;f &#x2F;s &#x2F;q %%~i</span><br><span class="line">)</span><br><span class="line">)</span><br><span class="line">echo &quot;清理完成！！！&quot;</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p style="text-indent:2em">该病毒样本表面上看是宏病毒样本，但真正的病毒逻辑不在宏代码里面，利用xls中的资源文件，生成恶意dll，调用dll中的导出函数执行恶意代码，恶意代码的目的是向C&C服务器提交受害主机信息，下载服务器响应的内容，将此内容写入temp目录下的boost*.exe并启动这些程序。</p>
+<p style="text-indent:2em">对于此类病毒的防护，给出以下建议：</p>
+<p style="text-indent:2em">1.如果在邮箱中发现有附件存在，首先要看清楚发件人信息，若是，某官网的反馈邮件，有必要再官网上核实以下邮箱地址。若是陌生人邮件，无需下载或打开。</p>
+<p style="text-indent:2em">2.在打开类似文档的时候，若是有提示启用宏的消息框或者文档内容要求启用宏才能执行，此时需提高警惕，核实发件人身份与之确认文档中的确有宏存在，才能执行以下操作。</p>
+<p style="text-indent:2em">3.若不幸中招，应立即断开网络连接，利用进程查看工具processExplorer一类的工具查看可疑进程，并将可疑进程杀掉，不要急着删除病毒程序，保存好样本信息和系统信息，提交到安全分析人员进行进一步的分析，以免造成更大的损失。</p></li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/03/30/%E5%AE%8F%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">http://example.com/2021/03/30/%E5%AE%8F%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/30/WSH%20RAT%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="prev-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">WSH RAT蠕虫病毒分析报告</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/30/%E6%84%9F%E6%9F%93%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">感染病毒分析报告</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>

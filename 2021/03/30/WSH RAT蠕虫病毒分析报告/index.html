@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WSH RAT蠕虫病毒分析报告 | Hexo</title><meta name="description" content="基本信息报告名称：WSH RAT蠕虫病毒分析报告 报告更新日期：2019&#x2F;9&#x2F;17 样本发现日期：2019&#x2F;9&#x2F;15 样本格式：JS文件 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    4gdrwceq60b7dbl.sct 远控木"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/03/30/WSH%20RAT%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="WSH RAT蠕虫病毒分析报告"><meta property="og:url" content="http://example.com/2021/03/30/WSH%20RAT%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="基本信息报告名称：WSH RAT蠕虫病毒分析报告 报告更新日期：2019&#x2F;9&#x2F;17 样本发现日期：2019&#x2F;9&#x2F;15 样本格式：JS文件 可能受到威胁的系统：Windows系列 分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑     FileName FileType FileSize MD5 SHA1    4gdrwceq60b7dbl.sct 远控木"><meta property="og:image" content="http://example.com/null"><meta property="article:published_time" content="2021-03-30T05:45:25.000Z"><meta property="article:modified_time" content="2021-03-30T11:03:58.783Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"Just","hours":"hours ago","day":"days ago"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 19:03:58'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">14</div></a></div></div></div><hr/></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">基本信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">流程图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">动态行为分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">详细行为分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%A8%E9%A9%AC%E7%9A%84%E9%87%8A%E6%94%BE"><span class="toc-number">5.1.</span> <span class="toc-text">木马的释放</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B7%B7%E6%B7%86-%E7%AC%AC%E4%B8%80%E5%B1%82"><span class="toc-number">5.1.1.</span> <span class="toc-text">解混淆-第一层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B7%B7%E6%B7%86-%E7%AC%AC%E4%BA%8C%E5%B1%82"><span class="toc-number">5.1.2.</span> <span class="toc-text">解混淆-第二层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B7%B7%E6%B7%86-%E7%AC%AC%E4%B8%89%E5%B1%82"><span class="toc-number">5.1.3.</span> <span class="toc-text">解混淆-第三层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B7%B7%E6%B7%86-%E7%AC%AC%E5%9B%9B%E5%B1%82"><span class="toc-number">5.1.4.</span> <span class="toc-text">解混淆-第四层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%B7%B7%E6%B7%86%E5%AE%8C%E6%88%90"><span class="toc-number">5.1.5.</span> <span class="toc-text">解混淆完成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%A8%E9%A9%AC%E7%9A%84%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91"><span class="toc-number">5.2.</span> <span class="toc-text">木马的执行逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%A8%8B%E5%BA%8F"><span class="toc-number">5.2.1.</span> <span class="toc-text">初始化程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.2.</span> <span class="toc-text">初始化变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%B8%8E%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="toc-number">5.2.3.</span> <span class="toc-text">设置注册表与开机自启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E9%A9%B1%E5%8A%A8%E5%99%A8%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6"><span class="toc-number">5.2.4.</span> <span class="toc-text">向驱动器创建文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81is-ready%E6%8C%87%E4%BB%A4"><span class="toc-number">5.2.5.</span> <span class="toc-text">发送is-ready指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E6%8C%87%E4%BB%A4"><span class="toc-number">5.2.6.</span> <span class="toc-text">接收指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A41-disconnect-%E9%80%80%E5%87%BA"><span class="toc-number">5.2.6.1.</span> <span class="toc-text">指令1-disconnect 退出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A42-reboot-%E9%87%8D%E5%90%AF"><span class="toc-number">5.2.6.2.</span> <span class="toc-text">指令2-reboot 重启</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A43-shutdown-%E5%85%B3%E6%9C%BA"><span class="toc-number">5.2.6.3.</span> <span class="toc-text">指令3-shutdown 关机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A44-excecute-%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="toc-number">5.2.6.4.</span> <span class="toc-text">指令4-excecute 执行脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A45-install-sdk-%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">5.2.6.5.</span> <span class="toc-text">指令5-install-sdk 导入数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A46-get-pass-%E8%8E%B7%E5%8F%96%E5%AF%86%E7%A0%81"><span class="toc-number">5.2.6.6.</span> <span class="toc-text">指令6-get-pass 获取密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A47-get-pass-offline-%E8%8E%B7%E5%8F%96%E9%82%AE%E4%BB%B6%E5%AF%86%E7%A0%81"><span class="toc-number">5.2.6.7.</span> <span class="toc-text">指令7-get-pass-offline 获取邮件密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A48-update-%E6%9B%B4%E6%96%B0%E8%87%AA%E8%BA%AB"><span class="toc-number">5.2.6.8.</span> <span class="toc-text">指令8-update 更新自身</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A49-uninstall-%E8%87%AA%E5%8D%B8%E8%BD%BD"><span class="toc-number">5.2.6.9.</span> <span class="toc-text">指令9-uninstall 自卸载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A410-up-n-exec-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%B9%B6%E6%89%A7%E8%A1%8C"><span class="toc-number">5.2.6.10.</span> <span class="toc-text">指令10-up-n-exec 下载文件并执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A411-bring-log-%E4%B8%8A%E4%BC%A0%E6%97%A5%E5%BF%97"><span class="toc-number">5.2.6.11.</span> <span class="toc-text">指令11-bring-log 上传日志</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A412-down-n-exec-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%88%B0%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E5%B9%B6%E6%89%A7%E8%A1%8C"><span class="toc-number">5.2.6.12.</span> <span class="toc-text">指令12-down-n-exec 下载文件到指定位置并执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A413-filemanager-%E6%9B%B4%E6%96%B0-fm-plugin-exe"><span class="toc-number">5.2.6.13.</span> <span class="toc-text">指令13-filemanager 更新 fm-plugin.exe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A414-rdp-%E6%9B%B4%E6%96%B0-rd-plugin-exe"><span class="toc-number">5.2.6.14.</span> <span class="toc-text">指令14-rdp 更新 rd-plugin.exe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A415-keylogger-%E6%9B%B4%E6%96%B0-kl-plugin-exe"><span class="toc-number">5.2.6.15.</span> <span class="toc-text">指令15-keylogger 更新 kl-plugin.exe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A416-offline-keylogger-%E6%9B%B4%E6%96%B0-kl-plugin-exe"><span class="toc-number">5.2.6.16.</span> <span class="toc-text">指令16-offline-keylogger 更新 kl-plugin.exe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A417-browse-logs-%E4%B8%8A%E4%BC%A0%E6%97%A5%E5%BF%97%E5%B1%9E%E6%80%A7"><span class="toc-number">5.2.6.17.</span> <span class="toc-text">指令17-browse-logs 上传日志属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A418-cmd-shell-%E7%94%A8cmd-exe%E6%89%A7%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="toc-number">5.2.6.18.</span> <span class="toc-text">指令18-cmd-shell 用cmd.exe执行参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A419-get-processes-%E8%8E%B7%E5%8F%96%E8%BF%9B%E7%A8%8B%E5%88%97%E8%A1%A8"><span class="toc-number">5.2.6.19.</span> <span class="toc-text">指令19-get-processes 获取进程列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A420-disable-uac-%E7%A6%81%E7%94%A8uac"><span class="toc-number">5.2.6.20.</span> <span class="toc-text">指令20-disable-uac 禁用uac</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A421-check-eligible-%E6%A3%80%E6%9F%A5%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-number">5.2.6.21.</span> <span class="toc-text">指令21-check-eligible 检查指定文件是否存在</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A422-force-eligible-%E5%88%A9%E7%94%A8cmd%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-number">5.2.6.22.</span> <span class="toc-text">指令22-force-eligible 利用cmd执行文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A423-elevate-%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0"><span class="toc-number">5.2.6.23.</span> <span class="toc-text">指令23-elevate 执行脚本传入参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A424-if-elevate-%E5%88%A4%E6%96%AD%E5%8F%82%E6%95%B0elevated%E4%B8%8D%E5%AD%98%E5%9C%A8"><span class="toc-number">5.2.6.24.</span> <span class="toc-text">指令24-if-elevate 判断参数elevated不存在</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A425-kill-process-%E7%BB%88%E6%AD%A2%E6%8C%87%E5%AE%9A%E8%BF%9B%E7%A8%8B"><span class="toc-number">5.2.6.25.</span> <span class="toc-text">指令25-kill-process 终止指定进程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A426-sleep-%E7%AD%89%E5%BE%85%E6%8C%87%E5%AE%9A%E6%AF%AB%E7%A7%92%E5%80%BC"><span class="toc-number">5.2.6.26.</span> <span class="toc-text">指令26-sleep 等待指定毫秒值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%87%BD%E6%95%B0"><span class="toc-number">5.2.6.27.</span> <span class="toc-text">其他函数</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B7%E6%9C%AC%E6%BA%AF%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">样本溯源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E6%9D%80%E6%96%B9%E6%A1%88"><span class="toc-number">7.</span> <span class="toc-text">查杀方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E6%AD%A2%E8%BF%9B%E7%A8%8B"><span class="toc-number">7.1.</span> <span class="toc-text">终止进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%81%A2%E5%A4%8DUAC"><span class="toc-number">7.2.</span> <span class="toc-text">恢复UAC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%87%AA%E5%90%AF%E5%B9%B6%E6%81%A2%E5%A4%8D%E9%A9%B1%E5%8A%A8%E5%99%A8%E6%96%87%E4%BB%B6"><span class="toc-number">7.3.</span> <span class="toc-text">删除自启并恢复驱动器文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%81%A2%E5%A4%8D%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%88%A0%E9%99%A4%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="toc-number">7.4.</span> <span class="toc-text">恢复注册表删除开机自启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E6%96%87%E4%BB%B6"><span class="toc-number">7.5.</span> <span class="toc-text">删除开机自启文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol></div></div></div><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><span id="menus"><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">WSH RAT蠕虫病毒分析报告</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-30T05:45:25.000Z" title="Created 2021-03-30 13:45:25">2021-03-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-30T11:03:58.783Z" title="Updated 2021-03-30 19:03:58">2021-03-30</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h1><p>报告名称：WSH RAT蠕虫病毒分析报告</p>
+<p>报告更新日期：2019/9/17</p>
+<p>样本发现日期：2019/9/15</p>
+<p>样本格式：JS文件</p>
+<p>可能受到威胁的系统：Windows系列</p>
+<p>分析环境及工具：win7 32位，BCompare，ProcessMonitor，火绒剑</p>
+
+<table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileType</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4gdrwceq60b7dbl.sct</td>
+<td>远控木马</td>
+<td>403845 bytes</td>
+<td>69B7D326575C5616D82645960B3D081A</td>
+<td>0EFD687C5A912528ABEC280C05A4C3BEB5FD8631</td>
+</tr>
+</tbody></table>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p style="text-indent:2em">该病毒样本的类型为JS脚本文件，其伪装成.sct文件，在指定程序运行该文件之后，释放真正的js文件，该js经过混淆释放并执行，并且具有多种多样的功能，比如控制受害主机的重启关机，盗取受害者的浏览器中保存的密码和邮箱的密码，控制受害主机远程上传下载执行文件或者脚本命令，具有键盘记录以及对抗杀软等功能。通过该后门程序，病毒发放者可以利用C&C服务器达到各种目的。</p>
+
+<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_1.png" alt="image"></p>
+<h1 id="动态行为分析"><a href="#动态行为分析" class="headerlink" title="动态行为分析"></a>动态行为分析</h1><ul>
+<li>执行程序之后，在环境变量的%AppData%目录下，生成两个js文件。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_2.png" alt="image"></p>
+<ul>
+<li>打开这两个js文件，发现大量混淆代码</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_3.png" alt="image"></p>
+<ul>
+<li>通过观察其行为，在开机启动目录中添加了两个文件，从而设置了开机启动项。<br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_4.png" alt="image"></li>
+<li>在开启启动的注册表中，同样发现设置了启动项。<br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_5.png" alt="image"></li>
+<li>利用火绒剑观察其行为，发现木马样本进入了消息循环，同时看到了连接失败的网络行为。<br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_6.png" alt="image"><h1 id="详细行为分析"><a href="#详细行为分析" class="headerlink" title="详细行为分析"></a>详细行为分析</h1><h2 id="木马的释放"><a href="#木马的释放" class="headerlink" title="木马的释放"></a>木马的释放</h2><h3 id="解混淆-第一层"><a href="#解混淆-第一层" class="headerlink" title="解混淆-第一层"></a>解混淆-第一层</h3><p style="text-indent:2em">从木马的第一层可以分析出来，木马是通过定义对象名称和需要用到的字符串到数组，从数组中获取对象执行对应的方法。利用流对象写入到指定路径的js文件中。</p>
+
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_7.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_8.png" alt="image"></p>
+<h3 id="解混淆-第二层"><a href="#解混淆-第二层" class="headerlink" title="解混淆-第二层"></a>解混淆-第二层</h3><p style="text-indent:2em">第二层的解密是由base64来完成的，首先替换混淆字符，再进行界混淆，代码的执行逻辑也进行了一定混淆，将实例化出来的对象最为参数传递到代码执行逻辑，调用指定方法，从而达到解密的目的。</p>
+<p style="text-indent:2em">也可手动进行混淆代码的解密，将混淆代码复制到notepad++中，首先Ctrl+F对代码中的字符串进行替换，然后在插件选项中找到base64 encode，即可解密该混淆代码。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_9.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_10.png" alt="image"></p>
+<h3 id="解混淆-第三层"><a href="#解混淆-第三层" class="headerlink" title="解混淆-第三层"></a>解混淆-第三层</h3><p style="text-indent:2em">当第二层混交解完之后，就会发现有程序源码被解出来了，但是还是有一串混淆代码，这时候不要先记着分析，将这段代码利用同样的方式，把混淆解出来。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_11.png" alt="image"></p>
+<h3 id="解混淆-第四层"><a href="#解混淆-第四层" class="headerlink" title="解混淆-第四层"></a>解混淆-第四层</h3><p style="text-indent:2em">当第三层被解出来之后，发现解密出来的代码与第二层的代码类似，除了发现的混淆代码不同，其他的代码一样，判断执行方式相同，继续将这层代码解出来。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_12.png" alt="image"></p>
+<h3 id="解混淆完成"><a href="#解混淆完成" class="headerlink" title="解混淆完成"></a>解混淆完成</h3><p style="text-indent:2em">当最后一层被解密出来的时候，首先发现是没有混淆代码了，然后就会看到一些作者打上去的注释，判断这就是我们想要的源代码。</p>
+<p style="text-indent:2em">这个时候判断混淆过的代码第四层和第二层一样，那么通过对比第三层和最后一层的代码，发现执行逻辑也一样，所以判断最后一层和第二层为主要逻辑代码，首先分析这两层。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_13.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_14.png" alt="image"></p>
+<h2 id="木马的执行逻辑"><a href="#木马的执行逻辑" class="headerlink" title="木马的执行逻辑"></a>木马的执行逻辑</h2><h3 id="初始化程序"><a href="#初始化程序" class="headerlink" title="初始化程序"></a>初始化程序</h3><p style="text-indent:2em">通过观察发现，木马的代码逻辑很清晰，甚至在某些位置还给到了注释。判断此代码应该多次被人更改或者被出售，给人好像是开源的感觉。</p>
+<p style="text-indent:2em">代码首先执行的逻辑是配置选项，所谓配置选项，就是定义好了域名、端口、所要用的字符串之类的初始化的东西，判断是否是管理员运行，并绕过UAC。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_15.png" alt="image"></p>
+<h3 id="初始化变量"><a href="#初始化变量" class="headerlink" title="初始化变量"></a>初始化变量</h3><p style="text-indent:2em">在这个部分中，木马初始化了要用到的变量内容，包括一些用到的路径，程序名称以及对象名称所用到的字符串。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_16.png" alt="image"></p>
+<h3 id="设置注册表与开机自启"><a href="#设置注册表与开机自启" class="headerlink" title="设置注册表与开机自启"></a>设置注册表与开机自启</h3><p style="text-indent:2em">在主要代码执行的头部，首先获取了注册表以及设置了注册表的值，在设置的过程当中加入了开机启动项，并复制了自身到指定目录。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_16_1.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_17.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_19.png" alt="image"></p>
+<h3 id="向驱动器创建文件"><a href="#向驱动器创建文件" class="headerlink" title="向驱动器创建文件"></a>向驱动器创建文件</h3><p style="text-indent:2em">木马程序遍历主机上的驱动器判断驱动器类型，如果匹配到类型，就执行写入逻辑，首先驱动器中正常文件的属性改变，设置为隐藏，给每个文件都加上.lnk后缀，并且遍历了目录，将目录也加上后缀程序，改变快捷方式的图标等属性。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_20.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_21.png" alt="image"></p>
+<h3 id="发送is-ready指令"><a href="#发送is-ready指令" class="headerlink" title="发送is-ready指令"></a>发送is-ready指令</h3><p style="text-indent:2em">程序发送给C&C服务器is-ready的指令，表明可以接收服务器指令了，在发送指令的时候，可以发现提交的时候自定义了用户代理的类型为指定的字符串，这段字符串是受害主机的信息，包括主机名称，用户名称，操作系统类型等。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_22.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_23.png" alt="image"></p>
+<h3 id="接收指令"><a href="#接收指令" class="headerlink" title="接收指令"></a>接收指令</h3><p style="text-indent:2em">在提交is-ready指令之后，C&C服务器会给你个响应指令，通过分析发现，该指令是利用管道符“|”拼接，拿到指令后通过拆解指令，获取不同指令所对应的执行动作，以及参数等。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_24.png" alt="image"></p>
+<h4 id="指令1-disconnect-退出"><a href="#指令1-disconnect-退出" class="headerlink" title="指令1-disconnect 退出"></a>指令1-disconnect 退出</h4><p style="text-indent:2em">执行该指令，退出当前运行脚本，和指令的名称一样，断开连接，但不自删除，开机启动后还是会连接。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_25.png" alt="image"></p>
+<h4 id="指令2-reboot-重启"><a href="#指令2-reboot-重启" class="headerlink" title="指令2-reboot 重启"></a>指令2-reboot 重启</h4><p style="text-indent:2em">该指令被接收到后，执行程序自带的cmd.exe，传入参数执行强制进行重启动作。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_26.png" alt="image"></p>
+<h4 id="指令3-shutdown-关机"><a href="#指令3-shutdown-关机" class="headerlink" title="指令3-shutdown 关机"></a>指令3-shutdown 关机</h4><p style="text-indent:2em">该指令被接收到后，执行程序自带的cmd.exe，传入参数执行强制进行关机动作。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_27.png" alt="image"></p>
+<h4 id="指令4-excecute-执行脚本"><a href="#指令4-excecute-执行脚本" class="headerlink" title="指令4-excecute 执行脚本"></a>指令4-excecute 执行脚本</h4><p style="text-indent:2em">该指令被接收到后，利用管道符隔开的第2个指令作为参数，利用函数eval去执行该参数，很明显，这第2个参数是作为js代码去执行指定动作的。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_28.png" alt="image"></p>
+<h4 id="指令5-install-sdk-导入数据"><a href="#指令5-install-sdk-导入数据" class="headerlink" title="指令5-install-sdk 导入数据"></a>指令5-install-sdk 导入数据</h4><p style="text-indent:2em">该指令被接收到后，将执行http传输协议对指定url中的数据进行下载，下载之后保存到压缩包中，并将文件解压，解压完成返回给C&C服务器解压成功的消息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_28_1.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_29.png" alt="image"></p>
+<p style="text-indent:2em">解压函数</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_30.png" alt="image"></p>
+<p style="text-indent:2em">返回给C&C执行结果函数</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_31.png" alt="image"></p>
+<h4 id="指令6-get-pass-获取密码"><a href="#指令6-get-pass-获取密码" class="headerlink" title="指令6-get-pass 获取密码"></a>指令6-get-pass 获取密码</h4><p style="text-indent:2em">该指令被接收后，利用后两个指令最为参数，执行盗取木马的函数。盗取的主要是用户浏览器中保存的密码。木马首先下载一个文件，通过这个文件再读取浏览器文件下的密码文件，之后利用下载的文件进行解密，解密完之后将成功的结果，失败的结果提交给C&C服务器。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_31_1.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_32.png" alt="image"></p>
+<p style="text-indent:2em">执行解密密码的函数</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_33.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_33_1.png" alt="image"></p>
+<h4 id="指令7-get-pass-offline-获取邮件密码"><a href="#指令7-get-pass-offline-获取邮件密码" class="headerlink" title="指令7-get-pass-offline 获取邮件密码"></a>指令7-get-pass-offline 获取邮件密码</h4><p style="text-indent:2em">该指令被接收后，同样是盗取用户的密码，不过是指定了浏览器的类型，前三个函数与上面一个指令类似，不同的是最后一个函数，最后一个函数主要是盗取邮箱密码。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_34.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_35.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_36.png" alt="image"></p>
+<h4 id="指令8-update-更新自身"><a href="#指令8-update-更新自身" class="headerlink" title="指令8-update 更新自身"></a>指令8-update 更新自身</h4><p style="text-indent:2em">该指令被接收后，将指令中的内容以流的形式写入到文件中，之后再将文件运行起来，退出自身，所以是更新自身程序的指令。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_37.png" alt="image"></p>
+<h4 id="指令9-uninstall-自卸载"><a href="#指令9-uninstall-自卸载" class="headerlink" title="指令9-uninstall 自卸载"></a>指令9-uninstall 自卸载</h4><p style="text-indent:2em">该指令被接收后，进行自我删除与清理痕迹，执行该指令之后，木马将不再此主机上留有后门，结束攻击。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_38.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_39.png" alt="image"></p>
+<h4 id="指令10-up-n-exec-下载文件并执行"><a href="#指令10-up-n-exec-下载文件并执行" class="headerlink" title="指令10-up-n-exec 下载文件并执行"></a>指令10-up-n-exec 下载文件并执行</h4><p style="text-indent:2em">该指令被接收后，通过制定的url，在该url中下载指定程序，通过流的形式保存到主机中并执行。执行成功之后会将成功的结果返回给C&C服务器。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_40.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_41.png" alt="image"></p>
+<h4 id="指令11-bring-log-上传日志"><a href="#指令11-bring-log-上传日志" class="headerlink" title="指令11-bring-log 上传日志"></a>指令11-bring-log 上传日志</h4><p style="text-indent:2em">该指令被接收后，将指定文件目录下的日志文件通过写好的upload方法，上传给指定url的C&C服务器，施毒者听过日志判断木马运行的状态以及其他的一些信息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_42.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_43.png" alt="image"></p>
+<h4 id="指令12-down-n-exec-下载文件到指定位置并执行"><a href="#指令12-down-n-exec-下载文件到指定位置并执行" class="headerlink" title="指令12-down-n-exec 下载文件到指定位置并执行"></a>指令12-down-n-exec 下载文件到指定位置并执行</h4><p style="text-indent:2em">该指令被接收后，根据传入参数的不同，将文件下载到指定路径并运行，执行逻辑与download一样。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_44.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_45.png" alt="image"></p>
+<h4 id="指令13-filemanager-更新-fm-plugin-exe"><a href="#指令13-filemanager-更新-fm-plugin-exe" class="headerlink" title="指令13-filemanager 更新 fm-plugin.exe"></a>指令13-filemanager 更新 fm-plugin.exe</h4><p style="text-indent:2em">该指令被获取后，通过获取到的参数，更新主机内可能被释放的fm-pligin.exe程序。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_46.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_47.png" alt="image"></p>
+<h4 id="指令14-rdp-更新-rd-plugin-exe"><a href="#指令14-rdp-更新-rd-plugin-exe" class="headerlink" title="指令14-rdp 更新 rd-plugin.exe"></a>指令14-rdp 更新 rd-plugin.exe</h4><p style="text-indent:2em">该指令被获取后，通过取到的参数，对主机内可能释放的程序rd-plugin.exe进行更新。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_48.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_49.png" alt="image"></p>
+<h4 id="指令15-keylogger-更新-kl-plugin-exe"><a href="#指令15-keylogger-更新-kl-plugin-exe" class="headerlink" title="指令15-keylogger 更新 kl-plugin.exe"></a>指令15-keylogger 更新 kl-plugin.exe</h4><p style="text-indent:2em">该指令被获取后，通过获取到的参数，对kl-plugin程序进行更新，根据程序的名称，判断该程序是记录键盘的相关操作，传递参数的时候最后赋值为0，判断是对应的键盘类型。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_50.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_51.png" alt="image"></p>
+<h4 id="指令16-offline-keylogger-更新-kl-plugin-exe"><a href="#指令16-offline-keylogger-更新-kl-plugin-exe" class="headerlink" title="指令16-offline-keylogger 更新 kl-plugin.exe"></a>指令16-offline-keylogger 更新 kl-plugin.exe</h4><p style="text-indent:2em">该指令被获取后，通过获取的参数对程序kl-plugin.exe进行更新，最后的参数复制为1，是另外一种键盘类型。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_52.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_53.png" alt="image"></p>
+<h4 id="指令17-browse-logs-上传日志属性"><a href="#指令17-browse-logs-上传日志属性" class="headerlink" title="指令17-browse-logs 上传日志属性"></a>指令17-browse-logs 上传日志属性</h4><p style="text-indent:2em">该指令被获取后，在指定目录下获取的日志文件并检测文件的属性，将这些信息上传给C&C服务器。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_54.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_55.png" alt="image"></p>
+<h4 id="指令18-cmd-shell-用cmd-exe执行参数"><a href="#指令18-cmd-shell-用cmd-exe执行参数" class="headerlink" title="指令18-cmd-shell 用cmd.exe执行参数"></a>指令18-cmd-shell 用cmd.exe执行参数</h4><p style="text-indent:2em">该指令被接收后，下个指令被当做参数传入到方法，方法中拿出cmd.exe，传入参数执行cmd命令行。并将输出结果保存到out.txt中，将该文件中的内容上传到给C&C服务器，并销毁该输出文件。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_56.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_57.png" alt="image"></p>
+<h4 id="指令19-get-processes-获取进程列表"><a href="#指令19-get-processes-获取进程列表" class="headerlink" title="指令19-get-processes 获取进程列表"></a>指令19-get-processes 获取进程列表</h4><p style="text-indent:2em">该指令被接收后，执行检索进程的方法，将当前进程枚举并传入C&C服务器中，进程信息包括进程名称，进程的PID等。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_58.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_59.png" alt="image"></p>
+<h4 id="指令20-disable-uac-禁用uac"><a href="#指令20-disable-uac-禁用uac" class="headerlink" title="指令20-disable-uac 禁用uac"></a>指令20-disable-uac 禁用uac</h4><p style="text-indent:2em">该指令被接收后，通过修改注册表的方式，对UAC权限进行禁用或者绕过，并且将禁用的结果返回给C&C服务器，以此方法对程序权限的提升，从而达到施毒者的目的。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_60.png" alt="image"><br><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_61.png" alt="image"></p>
+<h4 id="指令21-check-eligible-检查指定文件是否存在"><a href="#指令21-check-eligible-检查指定文件是否存在" class="headerlink" title="指令21-check-eligible 检查指定文件是否存在"></a>指令21-check-eligible 检查指定文件是否存在</h4><p style="text-indent:2em">该指令被获取后，通过对后面的参数判断，获取指定文件在主机上是否存在，若存在，返回存在的信息，若不存在，返回不存在的信息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_62.png" alt="image"></p>
+<h4 id="指令22-force-eligible-利用cmd执行文件"><a href="#指令22-force-eligible-利用cmd执行文件" class="headerlink" title="指令22-force-eligible 利用cmd执行文件"></a>指令22-force-eligible 利用cmd执行文件</h4><p style="text-indent:2em">该指令被获取后，首先判断了参数elevated是否存在，如果存在则判断参数内文件是否存在，若存在则运行cmd.exe执行第三个参数，并返回执行结果，若不存在参数2的文件，返回其不存在的结果。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_63.png" alt="image"></p>
+<h4 id="指令23-elevate-执行脚本传入参数"><a href="#指令23-elevate-执行脚本传入参数" class="headerlink" title="指令23-elevate 执行脚本传入参数"></a>指令23-elevate 执行脚本传入参数</h4><p style="text-indent:2em">该指令被获取后，首先判断在运行的脚本中有没有elevated参数，如果没有，重新执行该脚本，并上传给C&C服务器执行结果，如参数本身就存在，返回给服务器同样的结果。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_64.png" alt="image"></p>
+<h4 id="指令24-if-elevate-判断参数elevated不存在"><a href="#指令24-if-elevate-判断参数elevated不存在" class="headerlink" title="指令24-if-elevate 判断参数elevated不存在"></a>指令24-if-elevate 判断参数elevated不存在</h4><p style="text-indent:2em">该指令被获取后，首先判断elevated参数是否存在，若不存在，返回给服务器不存在的信息，若存在，则返回给服务器存在的信息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_65.png" alt="image"></p>
+<h4 id="指令25-kill-process-终止指定进程"><a href="#指令25-kill-process-终止指定进程" class="headerlink" title="指令25-kill-process 终止指定进程"></a>指令25-kill-process 终止指定进程</h4><p style="text-indent:2em">该指令被获取后，调用终止进程的函数，传入参数2，为进程的PID，之后调用taskkill指令对该PID对应的进程进行强制终止。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_66.png" alt="image"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_67.png" alt="image"></p>
+<h4 id="指令26-sleep-等待指定毫秒值"><a href="#指令26-sleep-等待指定毫秒值" class="headerlink" title="指令26-sleep 等待指定毫秒值"></a>指令26-sleep 等待指定毫秒值</h4><p style="text-indent:2em">该参数被接收后，调用sleep方法，传入指定的毫秒值，等待对应的时间。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_68.png" alt="image"></p>
+<h4 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h4><p style="text-indent:2em">这里包含了调用或未调用的函数信息，获取父级路径等函数信息。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/HexLife/Picture-bed/WSH%20RAT%20virus%20analysis%20report/WSH%20RAT%20virus%20analysis%20report_69.png" alt="image"></p>
+<h1 id="样本溯源"><a href="#样本溯源" class="headerlink" title="样本溯源"></a>样本溯源</h1><table>
+<thead>
+<tr>
+<th>FileName</th>
+<th>FileSize</th>
+<th>MD5</th>
+<th>SHA1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>taskmgr.js</td>
+<td>119297 bytes</td>
+<td>5FC35DCDB5281F21314A29285DE4F8A8</td>
+<td>C33FDA03A93ADD1DD3DB85E753A3B4D4AF1401F7</td>
+</tr>
+<tr>
+<td>aFCnKVCdfY.js</td>
+<td>44197 bytes</td>
+<td>904B0A6A93010399ED6B925C599050AD</td>
+<td>3362ACE1A5247320FB18A5338DE11F675DB4EFA1</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>域名</th>
+<th>端口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>unknownsoft.duckdns.org</td>
+<td>7744</td>
+</tr>
+<tr>
+<td>globalization.duckdns.org</td>
+<td>50071</td>
+</tr>
+</tbody></table>
+<ul>
+<li>通过对程序中关键字“WSHRAT”的查询，得到WSH RAT是今年6月2日发布的一款新型的RAT恶意软件，是基于VBS的Houdini蠕虫(H-Worm)的最新变种。此新型的WSH RAT主要通过恶意URL、MHT和ZIP等多种形式进行网络钓鱼攻击主动分发，主要针对银行客户进行钓鱼攻击，同时开发者以订阅方式进行销售，每月支付50美元的客户可以解锁该工具的所有功能。<h1 id="查杀方案"><a href="#查杀方案" class="headerlink" title="查杀方案"></a>查杀方案</h1><h2 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程"></a>终止进程</h2></li>
+<li>使用processExplorer工具查找Wscript.exe执行的脚本程序，通过观察其名称，停止执行该程序。<h2 id="恢复UAC"><a href="#恢复UAC" class="headerlink" title="恢复UAC"></a>恢复UAC</h2></li>
+<li>在“运行”窗口输入regedit打开注册表</li>
+<li>打开注册表项：HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System</li>
+<li>设置UAC的键值。不同等级的UAC的键值如下，根据自身情况进行设置。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">相关键值设置：</span><br><span class="line">UAC高</span><br><span class="line">ConsentPromptBehaviorAdmin &#x3D; 2</span><br><span class="line">EnableLUA &#x3D; 1</span><br><span class="line">PromptOnSecureDesktop &#x3D; 1</span><br><span class="line">UAC中</span><br><span class="line">ConsentPromptBehaviorAdmin &#x3D; 5</span><br><span class="line">EnableLUA &#x3D; 1</span><br><span class="line">PromptOnSecureDesktop &#x3D; 1</span><br><span class="line">UAC低</span><br><span class="line">ConsentPromptBehaviorAdmin &#x3D; 5</span><br><span class="line">EnableLUA &#x3D; 1</span><br><span class="line">PromptOnSecureDesktop &#x3D; 0</span><br><span class="line">UAC关</span><br><span class="line">ConsentPromptBehaviorAdmin &#x3D; 0</span><br><span class="line">EnableLUA &#x3D; 0</span><br><span class="line">PromptOnSecureDesktop &#x3D; 0</span><br></pre></td></tr></table></figure>
+<h2 id="删除自启并恢复驱动器文件"><a href="#删除自启并恢复驱动器文件" class="headerlink" title="删除自启并恢复驱动器文件"></a>删除自启并恢复驱动器文件</h2></li>
+<li>在终止了病毒程序之后，如果有移动驱动器中毒，将以下的脚本代码复制到任意txt中，并修改其后缀为.js文件，并执行该查杀文件。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D; public var &#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;</span><br><span class="line">var shellobj &#x3D; WScript.createObject(&quot;wscript.shell&quot;);</span><br><span class="line">var filesystemobj &#x3D; WScript.createObject(&quot;scripting.filesystemobject&quot;);</span><br><span class="line">&#x2F;&#x2F;&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D; privat var &#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;-&#x3D;</span><br><span class="line">var installname1 &#x3D; &quot;taskmgr.js&quot;;                        &#x2F;&#x2F;此处替换为受害主机所释放的js文件名称和后缀</span><br><span class="line">var installname2 &#x3D; &quot;aFCnKVCdfY.js&quot;;                     &#x2F;&#x2F;此处替换为受害主机所释放的js文件名称和后缀</span><br><span class="line">var startup &#x3D; shellobj.specialFolders(&quot;startup&quot;) + &quot;\\&quot;;</span><br><span class="line">uninstall();</span><br><span class="line">function uninstall()&#123;</span><br><span class="line">try&#123;</span><br><span class="line">var filename;</span><br><span class="line">var foldername;</span><br><span class="line">try&#123;</span><br><span class="line">    shellobj.RegDelete(&quot;HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\run\\&quot; + installname1.split(&quot;.&quot;)[0]);</span><br><span class="line">	shellobj.RegDelete(&quot;HKEY_CURRENT_USER\\software\\microsoft\\windows\\currentversion\\run\\&quot; + installname2.split(&quot;.&quot;)[0]);</span><br><span class="line">    shellobj.RegDelete(&quot;HKEY_LOCAL_MACHINE\\software\\microsoft\\windows\\currentversion\\run\\&quot; + installname1.split(&quot;.&quot;)[0]);</span><br><span class="line">	shellobj.RegDelete(&quot;HKEY_LOCAL_MACHINE\\software\\microsoft\\windows\\currentversion\\run\\&quot; + installname2.split(&quot;.&quot;)[0]);</span><br><span class="line">&#125;catch(ei)&#123;&#125;</span><br><span class="line">try&#123;</span><br><span class="line">filesystemobj.deleteFile(startup + installname1 ,true);</span><br><span class="line">filesystemobj.deleteFile(startup + installname2 ,true);</span><br><span class="line">&#125;catch(eej)&#123;&#125;</span><br><span class="line">for(var dri &#x3D; new Enumerator(filesystemobj.drives); !dri.atEnd(); dri.moveNext())&#123;</span><br><span class="line">var drive &#x3D; dri.item();</span><br><span class="line">if (drive.isready &#x3D;&#x3D; true)&#123;</span><br><span class="line">if (drive.freespace &gt; 0 )&#123;</span><br><span class="line">if (drive.drivetype &#x3D;&#x3D; 1 )&#123;</span><br><span class="line">	for(var fi &#x3D; new Enumerator(filesystemobj.getfolder(drive.path + &quot;\\&quot;).files); !fi.atEnd(); fi.moveNext())&#123;</span><br><span class="line">         var file &#x3D; fi.item();</span><br><span class="line">		 try&#123;</span><br><span class="line">         if (file.name.indexOf(&quot;.&quot;))&#123;</span><br><span class="line">             if ((file.name.split(&quot;.&quot;)[file.name.split(&quot;.&quot;).length - 1]).toLowerCase() !&#x3D; &quot;lnk&quot;)&#123;</span><br><span class="line">                 file.attributes &#x3D; 0;</span><br><span class="line">                 if (file.name.toUpperCase() !&#x3D; installname.toUpperCase())&#123;</span><br><span class="line">                     filename &#x3D; file.name.split(&quot;.&quot;);</span><br><span class="line">                     filesystemobj.deleteFile(drive.path + &quot;\\&quot; + filename[0] + &quot;.lnk&quot; );</span><br><span class="line">                 &#125;else&#123;</span><br><span class="line">                     filesystemobj.deleteFile(drive.path + &quot;\\&quot; + file.name);</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;else&#123;</span><br><span class="line">                 filesystemobj.deleteFile (file.path);</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">		 &#125;catch(ex)&#123;&#125;</span><br><span class="line">     &#125;</span><br><span class="line">	 for(var fi &#x3D; new Enumerator(filesystemobj.getfolder(drive.path + &quot;\\&quot;).subFolders); !fi.atEnd(); fi.moveNext())&#123;</span><br><span class="line">		var folder &#x3D; fi.item();</span><br><span class="line">         folder.attributes &#x3D; 0;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;catch(err)&#123;&#125;</span><br><span class="line">WScript.quit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<B>注：脚本中包含删除开启自启的注册表与删除开机自启文件，可利用下面的方法对该项进行核查。</B></li>
+</ul>
+<h2 id="恢复注册表删除开机自启"><a href="#恢复注册表删除开机自启" class="headerlink" title="恢复注册表删除开机自启"></a>恢复注册表删除开机自启</h2><ul>
+<li>在“运行”窗口输入regedit打开注册表</li>
+<li>打开注册表项：”HKEY CURRENT USER\software\microsoft\windows\currentversion\run&quot;</li>
+<li>删除对应的wscript.exe执行的文件。文件名称为：taskmgr.js和aFCnKVCdfY.js<h2 id="删除开机自启文件"><a href="#删除开机自启文件" class="headerlink" title="删除开机自启文件"></a>删除开机自启文件</h2></li>
+<li>在目录中打开：C:Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup目录</li>
+<li>删除名称为：taskmgr.js和aFCnKVCdfY.js，如果有：fm-plugin.exe、rd-plugin.exe、kl-plugin.exe、kl-plugin.exe等名称的程序，则删除。<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p style="text-indent:2em">通过对文件的分析，判断该病毒文件伪装成.sct后缀的文件，在互联网上广泛传播。通过混淆js代码，使中毒者无法判断是什么导致的病毒。并且木马文件在多处都添加了开机启动项，为了增加该木马的存活时间。通过C&C服务器获取不同的指令执行不同的逻辑代码，从而达到控制受害主机的目的。</p>
+<p style="text-indent:2em">如果不幸中招，应先断开计算机网络，无论是内网还是外网。在没有安全人员的前提下首先排查的是当前进程有没有可疑的进程，发现可疑立即终止。之后按照查杀方案排查本主机。若有安全人员应立即交给有关人员进行采集信息并分析，防止造成更加一步的损失。</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2021/03/30/WSH%20RAT%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">http://example.com/2021/03/30/WSH%20RAT%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/null" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/30/Revenge%20RAT%E8%BF%9C%E6%8E%A7%E6%9C%A8%E9%A9%AC%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="prev-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Revenge RAT远控木马分析报告</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/30/%E5%AE%8F%E7%97%85%E6%AF%92%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"><img class="next-cover" src="/null" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">宏病毒分析报告</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
